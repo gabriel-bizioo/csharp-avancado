@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Interfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Interfaces\Interfaces.csproj" />
+    <ProjectReference Include="..\Enums\Enums.csproj" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore" Version ="6.03" />
+	<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.3"></PackageReference>
+  </ItemGroup>
+
+</Project>
