@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\disrct\\Documents\\ProjetoModelo\\Interfaces\\Interfaces.csproj": {}
+    "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj": {}
   },
   "projects": {
-    "C:\\Users\\disrct\\Documents\\ProjetoModelo\\Interfaces\\Interfaces.csproj": {
+    "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\disrct\\Documents\\ProjetoModelo\\Interfaces\\Interfaces.csproj",
+        "projectUniqueName": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj",
         "projectName": "Interfaces",
-        "projectPath": "C:\\Users\\disrct\\Documents\\ProjetoModelo\\Interfaces\\Interfaces.csproj",
+        "projectPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj",
         "packagesPath": "C:\\Users\\disrct\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\disrct\\Documents\\ProjetoModelo\\Interfaces\\obj\\",
+        "outputPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\disrct\\AppData\\Roaming\\NuGet\\NuGet.Config",

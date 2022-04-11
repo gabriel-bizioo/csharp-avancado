@@ -5867,11 +5867,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\disrct\\Documents\\ProjetoModelo\\testesAutomatizados\\testesAutomatizados.csproj",
+      "projectUniqueName": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\testesAutomatizados\\testesAutomatizados.csproj",
       "projectName": "testesAutomatizados",
-      "projectPath": "C:\\Users\\disrct\\Documents\\ProjetoModelo\\testesAutomatizados\\testesAutomatizados.csproj",
+      "projectPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\testesAutomatizados\\testesAutomatizados.csproj",
       "packagesPath": "C:\\Users\\disrct\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\disrct\\Documents\\ProjetoModelo\\testesAutomatizados\\obj\\",
+      "outputPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\testesAutomatizados\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\disrct\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -5888,8 +5888,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\disrct\\Documents\\ProjetoModelo\\Model\\Model.csproj": {
-              "projectPath": "C:\\Users\\disrct\\Documents\\ProjetoModelo\\Model\\Model.csproj"
+            "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Model\\Model.csproj"
             }
           }
         }
