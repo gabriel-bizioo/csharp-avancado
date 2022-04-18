@@ -10,14 +10,14 @@ namespace DAO
 {
     public class DaoContext : DbContext
     {
-        public DbSet<Address> AddressList { get; set; }
-        public DbSet<Client> ClientList { get; set; }
-        public DbSet<Owner> OwnerList { get; set; }
-        public DbSet<Store> StoreList { get; set; }
-        public DbSet<Product> ProductList { get; set; }
-        public DbSet<Purchase> PurchaseList { get; set; }
-        public DbSet<Stocks> StocksList { get; set; }
-        public DbSet<WishList> WishLists { get; set; }
+        public DbSet<Address> Address { get; set; }
+        public DbSet<Client> Client { get; set; }
+        public DbSet<Owner> Owner { get; set; }
+        public DbSet<Store> Store { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Purchase> Purchase { get; set; }
+        public DbSet<Stocks> Stocks { get; set; }
+        public DbSet<WishList> WishList { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

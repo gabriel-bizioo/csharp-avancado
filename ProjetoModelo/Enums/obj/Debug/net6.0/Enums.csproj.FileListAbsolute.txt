@@ -10,3 +10,15 @@ C:\Users\disrct\Documents\ProjetoModelo\Enums\obj\Debug\net6.0\Enums.dll
 C:\Users\disrct\Documents\ProjetoModelo\Enums\obj\Debug\net6.0\refint\Enums.dll
 C:\Users\disrct\Documents\ProjetoModelo\Enums\obj\Debug\net6.0\Enums.pdb
 C:\Users\disrct\Documents\ProjetoModelo\Enums\obj\Debug\net6.0\ref\Enums.dll
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\bin\Debug\net6.0\Enums.deps.json
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\bin\Debug\net6.0\Enums.dll
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\bin\Debug\net6.0\Enums.pdb
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\obj\Debug\net6.0\Enums.csproj.AssemblyReference.cache
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\obj\Debug\net6.0\Enums.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\obj\Debug\net6.0\Enums.AssemblyInfoInputs.cache
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\obj\Debug\net6.0\Enums.AssemblyInfo.cs
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\obj\Debug\net6.0\Enums.csproj.CoreCompileInputs.cache
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\obj\Debug\net6.0\Enums.dll
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\obj\Debug\net6.0\refint\Enums.dll
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\obj\Debug\net6.0\Enums.pdb
+C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\Enums\obj\Debug\net6.0\ref\Enums.dll
