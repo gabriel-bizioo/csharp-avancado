@@ -1,17 +1,27 @@
 {
   "version": 2,
-  "dgSpecHash": "5iesW/IDc9PUoC41loV20dD7PNUeNBY8SSlFWecqj29b/Q0lOMDR+K0m7zY1B21KpHI4WDrDya7CoqWMeaNFPg==",
-  "success": false,
-  "projectFilePath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\testesAutomatizados\\testesAutomatizados.csproj",
+  "dgSpecHash": "OOaBtRoqcPUs3Zfz5RPLAqB5pQ7XATZVkkXSJsAmmrhyzh+fO9N4vNauVGFRtGuV0uMj0PDSBHPnLpab1epBag==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\testesAutomatizados\\testesAutomatizados.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.codecoverage\\16.5.0\\microsoft.codecoverage.16.5.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.dotnet.internalabstractions\\1.0.0\\microsoft.dotnet.internalabstractions.1.0.0.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.3\\microsoft.entityframeworkcore.6.0.3.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.3\\microsoft.entityframeworkcore.abstractions.6.0.3.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.3\\microsoft.entityframeworkcore.analyzers.6.0.3.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\6.0.3\\microsoft.entityframeworkcore.relational.6.0.3.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\6.0.3\\microsoft.entityframeworkcore.sqlserver.6.0.3.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\microsoft.extensions.caching.abstractions\\6.0.0\\microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\microsoft.extensions.caching.memory\\6.0.1\\microsoft.extensions.caching.memory.6.0.1.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\6.0.0\\microsoft.extensions.configuration.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\6.0.0\\microsoft.extensions.dependencyinjection.6.0.0.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\microsoft.extensions.logging\\6.0.0\\microsoft.extensions.logging.6.0.0.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.identity.client\\4.21.1\\microsoft.identity.client.4.21.1.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.8.0\\microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg.sha512",
@@ -35,6 +45,7 @@
     "C:\\Users\\disrct\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\system.appcontext\\4.1.0\\system.appcontext.4.1.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\system.collections\\4.3.0\\system.collections.4.3.0.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\system.collections.nongeneric\\4.3.0\\system.collections.nongeneric.4.3.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\system.collections.specialized\\4.3.0\\system.collections.specialized.4.3.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\system.componentmodel\\4.3.0\\system.componentmodel.4.3.0.nupkg.sha512",
@@ -43,7 +54,7 @@
     "C:\\Users\\disrct\\.nuget\\packages\\system.componentmodel.typeconverter\\4.3.0\\system.componentmodel.typeconverter.4.3.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\system.configuration.configurationmanager\\4.7.0\\system.configuration.configurationmanager.4.7.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\system.diagnostics.debug\\4.3.0\\system.diagnostics.debug.4.3.0.nupkg.sha512",
-    "C:\\Users\\disrct\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.0\\system.diagnostics.diagnosticsource.4.7.0.nupkg.sha512",
+    "C:\\Users\\disrct\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\system.diagnostics.process\\4.3.0\\system.diagnostics.process.4.3.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\system.diagnostics.tools\\4.0.1\\system.diagnostics.tools.4.0.1.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\system.drawing.common\\4.7.0\\system.drawing.common.4.7.0.nupkg.sha512",
@@ -94,15 +105,5 @@
     "C:\\Users\\disrct\\.nuget\\packages\\system.xml.xpath\\4.3.0\\system.xml.xpath.4.3.0.nupkg.sha512",
     "C:\\Users\\disrct\\.nuget\\packages\\system.xml.xpath.xmldocument\\4.3.0\\system.xml.xpath.xmldocument.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1103",
-      "level": "Error",
-      "message": "Não é possível encontrar um pacote Microsoft.EntityFrameworkCore estável com a versão (>= 6.3.0)\r\n  - Encontradas 125 versões em nuget.org [Versão mais próxima: 7.0.0-preview.1.22076.6]\r\n  - Encontradas 0 versões em Microsoft Visual Studio Offline Packages",
-      "libraryId": "Microsoft.EntityFrameworkCore",
-      "targetGraphs": [
-        "net6.0"
-      ]
-    }
-  ]
+  "logs": []
 }

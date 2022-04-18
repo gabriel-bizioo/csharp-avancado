@@ -21,7 +21,7 @@ namespace DAO
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=localhost;database=library;user=user;password=password");
+            optionsBuilder.UseSqlServer("Data Source=CTPC3626;Initial Catalog=ProjetoC#;Integrated Security=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -99,6 +99,7 @@ namespace DAO
 
             modelBuilder.Entity<WishList>(entity =>
             {
+                entity.HasKey(E => E.ID);
                 entity.HasOne(d => d.client);
                 entity.HasOne(d => d.product);
             });

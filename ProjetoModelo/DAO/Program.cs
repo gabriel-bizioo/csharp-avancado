@@ -7,9 +7,11 @@ namespace DAO
     {
         static void Main(string[] args)
         {
+            InsertData();
+            PrintData();
         }
 
-        private void InsertData()
+        private static void InsertData()
         {
             using(var context = new DaoContext())
             {
@@ -17,7 +19,6 @@ namespace DAO
 
                 context.AddressList.Add(new Address
                 {
-                    ID = 1,
                     street = "Rua Angelo Dallarmi 303",
                     city =  "Curitiba",
                     state = "PR",

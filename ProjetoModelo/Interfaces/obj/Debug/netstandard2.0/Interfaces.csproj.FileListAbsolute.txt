@@ -8,3 +8,13 @@ C:\Users\disrct\Documents\ProjetoModelo\Interfaces\obj\Debug\netstandard2.0\Inte
 C:\Users\disrct\Documents\ProjetoModelo\Interfaces\obj\Debug\netstandard2.0\Interfaces.csproj.CoreCompileInputs.cache
 C:\Users\disrct\Documents\ProjetoModelo\Interfaces\obj\Debug\netstandard2.0\Interfaces.dll
 C:\Users\disrct\Documents\ProjetoModelo\Interfaces\obj\Debug\netstandard2.0\Interfaces.pdb
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Interfaces\bin\Debug\netstandard2.0\Interfaces.deps.json
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Interfaces\bin\Debug\netstandard2.0\Interfaces.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Interfaces\bin\Debug\netstandard2.0\Interfaces.pdb
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Interfaces\obj\Debug\netstandard2.0\Interfaces.csproj.AssemblyReference.cache
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Interfaces\obj\Debug\netstandard2.0\Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Interfaces\obj\Debug\netstandard2.0\Interfaces.AssemblyInfoInputs.cache
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Interfaces\obj\Debug\netstandard2.0\Interfaces.AssemblyInfo.cs
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Interfaces\obj\Debug\netstandard2.0\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Interfaces\obj\Debug\netstandard2.0\Interfaces.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Interfaces\obj\Debug\netstandard2.0\Interfaces.pdb

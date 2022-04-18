@@ -9,10 +9,6 @@ namespace DAO
     public class Owner : Person
     {
         public static Owner owner;
-
-        private Owner(Address endereco) : base(endereco)
-        {
-
-        }        
+      
     }
 }

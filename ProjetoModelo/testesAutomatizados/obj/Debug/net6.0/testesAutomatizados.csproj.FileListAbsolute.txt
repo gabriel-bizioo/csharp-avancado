@@ -256,3 +256,6 @@ C:\Users\disrct\Documents\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Int
 C:\Users\disrct\Documents\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\testesAutomatizados.csproj.CopyComplete
 C:\Users\disrct\Documents\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\testesAutomatizados.genruntimeconfig.cache
 C:\Users\disrct\Documents\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\ref\testesAutomatizados.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\testesAutomatizados.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\refint\testesAutomatizados.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\testesAutomatizados.pdb

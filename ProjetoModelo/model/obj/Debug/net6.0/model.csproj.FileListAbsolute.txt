@@ -15,3 +15,6 @@ C:\Users\disrct\Documents\ProjetoModelo\model\obj\Debug\net6.0\model.dll
 C:\Users\disrct\Documents\ProjetoModelo\model\obj\Debug\net6.0\refint\model.dll
 C:\Users\disrct\Documents\ProjetoModelo\model\obj\Debug\net6.0\model.pdb
 C:\Users\disrct\Documents\ProjetoModelo\model\obj\Debug\net6.0\ref\model.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\model\obj\Debug\net6.0\model.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\model\obj\Debug\net6.0\refint\model.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\model\obj\Debug\net6.0\model.pdb

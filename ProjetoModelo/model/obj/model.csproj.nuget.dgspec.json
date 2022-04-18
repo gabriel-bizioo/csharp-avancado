@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\model\\model.csproj": {}
+    "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\model\\model.csproj": {}
   },
   "projects": {
-    "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\Enums.csproj": {
+    "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\Enums.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\Enums.csproj",
+        "projectUniqueName": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\Enums.csproj",
         "projectName": "Enums",
-        "projectPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\Enums.csproj",
+        "projectPath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\Enums.csproj",
         "packagesPath": "C:\\Users\\disrct\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\obj\\",
+        "outputPath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\disrct\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -58,14 +58,14 @@
         }
       }
     },
-    "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj": {
+    "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj",
+        "projectUniqueName": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj",
         "projectName": "Interfaces",
-        "projectPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj",
+        "projectPath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj",
         "packagesPath": "C:\\Users\\disrct\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\obj\\",
+        "outputPath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\disrct\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -115,14 +115,14 @@
         }
       }
     },
-    "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\model\\model.csproj": {
+    "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\model\\model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\model\\model.csproj",
+        "projectUniqueName": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\model\\model.csproj",
         "projectName": "model",
-        "projectPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\model\\model.csproj",
+        "projectPath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\model\\model.csproj",
         "packagesPath": "C:\\Users\\disrct\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\model\\obj\\",
+        "outputPath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\disrct\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -139,11 +139,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\Enums.csproj": {
-                "projectPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\Enums.csproj"
+              "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\Enums.csproj": {
+                "projectPath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Enums\\Enums.csproj"
               },
-              "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj": {
-                "projectPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj"
+              "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj": {
+                "projectPath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj"
               }
             }
           }
@@ -160,7 +160,7 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[6.3.0, )"
+              "version": "[6.0.3, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
