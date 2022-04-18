@@ -5,6 +5,7 @@ namespace model
     public class Stocks : IValidateDataObject<Stocks>
     {
         int quantity;
+        double unit_price;
         Store store;
         Product product;
 
@@ -29,6 +30,11 @@ namespace model
             this.product = product;
         }
 
+        public void setUnitPrice(double unit_price)
+        {
+            this.unit_price = unit_price;
+        }
+
         public void setQuantity(int quantity)
         {
             this.quantity = quantity;
@@ -44,6 +50,11 @@ namespace model
             return product;
         }
 
+        public double getUnitprice()
+        {
+            return unit_price;
+        }
+
         public int GetQuantity()
         {
             return quantity;
@@ -54,6 +65,8 @@ namespace model
         public Boolean validateObject(Stocks stock)
         {
             if (stock.quantity <= 0) return false;
+
+            if (unit_price <= 0) return false;
 
             if (!stock.store.validateObject(store)) return false;
 

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\disrct\\Documents\\ProjetoModelo\\DTO\\DTO.csproj",
+      "projectUniqueName": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\DTO\\DTO.csproj",
       "projectName": "DTO",
-      "projectPath": "C:\\Users\\disrct\\Documents\\ProjetoModelo\\DTO\\DTO.csproj",
+      "projectPath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\DTO\\DTO.csproj",
       "packagesPath": "C:\\Users\\disrct\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\disrct\\Documents\\ProjetoModelo\\DTO\\obj\\",
+      "outputPath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\DTO\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\disrct\\AppData\\Roaming\\NuGet\\NuGet.Config",

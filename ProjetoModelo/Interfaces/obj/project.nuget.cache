@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "lwfZfwBfBhunAwGC1IqnsTcJ0/jiLXQRxXT8ntss9ByDc+HK/f61FEmeoJrEi7UYmQN4YRCOffy3FV0qcX+oxA==",
+  "dgSpecHash": "qhiWDksryD2ufPcyg09mC/lgheEkqIYBFR6xKFsKUvhnGPqYV3oig5vKay00sKNUlm22gC/cobL4+zYUOlvTLQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\disrct\\Documents\\Repositorios\\csharp-avancado\\ProjetoModelo\\Interfaces\\Interfaces.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\disrct\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\disrct\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }

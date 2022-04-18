@@ -8,11 +8,12 @@ public class Person
     protected string email;
     protected string phone;
     protected string login;
-    protected Address endereco;
+    protected string password;
+    protected Address address;
 
-    public Person(Address endereco)
+    public Person(Address address)
     {
-      this.endereco = endereco;
+      this.address = address;
     }
 
     public void setName(string name)
@@ -77,7 +78,7 @@ public class Person
 
     public Address getAddress()
     {
-        return endereco;
+        return address;
     }
 
 }
