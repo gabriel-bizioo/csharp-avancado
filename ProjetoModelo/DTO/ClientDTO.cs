@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DTO
 {
@@ -10,7 +6,7 @@ namespace DTO
     {
         public AddressDTO client_address;
 
-        public string nome;
+        public string name;
 
         public DateTime date_of_birth;
 

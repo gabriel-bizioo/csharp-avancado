@@ -15,6 +15,6 @@ namespace DTO
         string number_confirmation;
         string number_nf;
 
-        List<ProductDTO> purchase_products;
+        List<ProductDTO> purchase_products = new List<ProductDTO>();
     }
 }

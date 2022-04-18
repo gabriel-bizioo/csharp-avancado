@@ -10,7 +10,7 @@ namespace DTO
     {
         public AddressDTO owner_address;
 
-        public string nome;
+        public string name;
 
         public DateTime date_of_birth;
 

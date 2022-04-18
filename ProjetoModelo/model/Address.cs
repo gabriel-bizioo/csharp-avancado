@@ -4,7 +4,7 @@ using DAO;
 using DTO;
 using System.Collections.Generic;
 
-namespace Model;
+namespace model;
 
 public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
 {
