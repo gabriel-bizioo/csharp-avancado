@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using model;
+using Model;
 using System.Collections.Generic;
 using System;
 
@@ -79,7 +79,7 @@ namespace testesAutomatizados
 
             Client testClient = Client.getInstance(adr);
 
-            WishList wishList = new WishList(adr, testClient);
+            WishList wishList = new WishList(testClient);
 
             Product product1 = new Product();
             product1.setName("produto teste1");

@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    internal class PurchaseDTO
+    public class PurchaseDTO
     {
-        DateTime purchase_date;
-        double purchase_value;
-        int payment_type;
-        int purchase_status;
-        string number_confirmation;
-        string number_nf;
+        public DateTime purchase_date;
+        public double purchase_value;
+        public int payment_type;
+        public int purchase_status;
+        public string number_confirmation;
+        public string number_nf;
 
-        List<ProductDTO> purchase_products = new List<ProductDTO>();
+        public List<ProductDTO> purchase_products = new List<ProductDTO>();
     }
 }

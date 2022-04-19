@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using model;
+using Model;
 
 namespace testesAutomatizados
 {

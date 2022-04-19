@@ -1,10 +1,13 @@
 ﻿using Interfaces;
-
+using DAO;
+using DTO;
 namespace model
 {
-    public class Stocks : IValidateDataObject<Stocks>
+    public class Stocks : IValidateDataObject, IDataController<StocksDTO, Stocks>
     {
         int quantity;
+        double unit_price;
+        
         Store store;
         Product product;
 
@@ -49,17 +52,84 @@ namespace model
             return quantity;
         }
 
-        
 
-        public Boolean validateObject(Stocks stock)
+        public Boolean validateObject()
         {
-            if (stock.quantity <= 0) return false;
+            if (quantity <= 0) return false;
 
-            if (!stock.store.validateObject(store)) return false;
+            if (!store.validateObject()) return false;
 
-            if(!stock.product.validateObject(product)) return false;
+            if (!store.validateObject()) return false;
 
             return true;
         }
+
+        public StocksDTO convertModelToDTO()
+        {
+            StocksDTO obj = new StocksDTO();
+            obj.quantity = this.quantity;
+            obj.unit_price = this.unit_price;
+            obj.store = this.store.convertModelToDTO();
+            obj.product = this.product.convertModelToDTO();
+
+            return obj;
+        }
+
+        public Stocks onvertDTOToModel(StocksDTO obj)//implementar
+        {
+            Stocks purchase = new Stocks(Store.convertDTOToModel(obj.store), Product.convertDTOToModel(obj.product));
+
+            purchase.quantity = this.quantity;
+            purchase.unit_price = obj.unit_price;            
+
+            return purchase;
+        }
+
+        public StocksDTO findById(int id)
+        {
+            StocksDTO purchase = null;
+
+            return purchase;
+        }
+
+        public List<StocksDTO> getAll()
+        {
+            List<StocksDTO> list = new List<StocksDTO>();
+
+            return list;
+        }
+
+        //public int save()
+        //{
+        //    var id = 0;
+
+        //    using (var context = new DaoContext())
+        //    {
+
+        //        var product = new DAO.Product
+        //        {
+        //            name = this.name,
+        //            bar_code = this.bar_code
+        //        };
+
+
+        //        context.Product.Add(product);
+
+        //        id = product.ID;
+
+        //    }
+        //    return id;
+        //}
+
+        public void update(StocksDTO purchase)
+        {
+            Console.WriteLine("Not yet implemented");
+        }
+
+        public void delete(StocksDTO purchase)
+        {
+            Console.WriteLine("Not yet implemented");
+        }
     }
+    
 }

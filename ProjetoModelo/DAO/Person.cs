@@ -10,8 +10,8 @@ namespace DAO
         public string email;
         public string phone;
         public string login;
-        public string password;
-        public Address endereco;
+        public string passwd;
+        public Address address;
 
     }
 }

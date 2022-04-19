@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    internal class StoreDTO
+    public class StoreDTO
     {
         public OwnerDTO Owner;
         public string name;

@@ -1,5 +1,6 @@
 ﻿using System;
 using Interfaces;
+using DAO;
 using DTO;
 
 namespace model
@@ -10,7 +11,7 @@ namespace model
 
         Guid uuid;
 
-        private Owner(Address endereco) : base(endereco)
+        public Owner(Address endereco) : base(endereco)
         {
 
         }
@@ -33,17 +34,17 @@ namespace model
         public OwnerDTO convertModelToDTO()
         {
             OwnerDTO obj = new OwnerDTO();
-            this.name = obj.name;
-            this.email = obj.email;
-            this.phone = obj.phone;
-            this.login = obj.login;
-            this.passwd = obj.passwd;
-            this.date_of_birth = obj.date_of_birth;
+            obj.name = this.name;
+            obj.email = this.email;
+            obj.phone = this.phone;
+            obj.login = this.login;
+            obj.passwd = this.passwd;
+            obj.date_of_birth = this.date_of_birth;
 
             return obj;
         }
 
-        public Owner convertDTOToModel(OwnerDTO obj)
+        public static Owner convertDTOToModel(OwnerDTO obj)
         {
             Owner owner = new Owner(Address.convertDTOToModel(obj.owner_address));
 
@@ -71,10 +72,39 @@ namespace model
             return list;
         }
 
-        public int save()
-        {
-            return 0;
-        }
+        //public int save()
+        //{
+        //    var id = 0;
+
+        //    using (var context = new DaoContext())
+        //    {
+        //        var save_address = new DAO.Address
+        //        {
+        //            street = this.address.getStreet(),
+        //            city = this.address.getCity(),
+        //            state = this.address.getState(),
+        //            country = this.address.getCountry(),
+        //            postal_code = this.address.getPostalCode()
+        //        };
+
+        //        var owner = new DAO.Owner
+        //        {
+        //            name = this.name,
+        //            email = this.email,
+        //            phone = this.phone,
+        //            login = this.login,
+        //            passwd = this.passwd,
+        //            date_of_birth = this.date_of_birth,
+        //            address = save_address
+        //        };
+
+        //        context.Owner.Add(owner);
+
+        //        id = owner.ID;
+
+        //    }
+        //    return id;
+        //}
 
         public void update(OwnerDTO owner)
         {

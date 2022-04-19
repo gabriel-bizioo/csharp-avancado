@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    internal class StocksDTO
+    public class StocksDTO
     {
         public int quantity;
-        double unit_price;
+        public double unit_price;
 
         public StoreDTO store;
         public ProductDTO product;

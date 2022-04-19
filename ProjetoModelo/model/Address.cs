@@ -49,30 +49,30 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
 
     }
 
-    public int save()
-    {
-        var id = 0;
+    //public int save()
+    //{
+    //    var id = 0;
 
-        using (var context = new DaoContext())
-        {
-            var address = new DAO.Address
-            {
-                street = this.street,
-                city = this.city,
-                state = this.state,
-                country = this.country,
-                postal_code = this.postal_code
-            };
+    //    using (var context = new DaoContext())
+    //    {
+    //        var address = new DAO.Address
+    //        {
+    //            street = this.street,
+    //            city = this.city,
+    //            state = this.state,
+    //            country = this.country,
+    //            postal_code = this.postal_code
+    //        };
 
-            context.Address.Add(address);
+    //        context.Address.Add(address);
 
-            context.SaveChanges();
+    //        context.SaveChanges();
 
-            id = address.ID;
+    //        id = address.ID;
 
-        }
-        return id;
-    }
+    //    }
+    //    return id;
+    //}
 
     public void update(AddressDTO obj)
     {

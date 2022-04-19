@@ -31,20 +31,20 @@ namespace model
             return true;
         }
 
-        public ClientDTO convertModeltoDTO()
+        public ClientDTO convertModelToDTO()
         {
             ClientDTO obj = new ClientDTO();
-            this.name = obj.name;
-            this.email = obj.email;
-            this.phone = obj.phone;
-            this.login = obj.login;
-            this.passwd = obj.passwd;
-            this.date_of_birth = obj.date_of_birth;
+            obj.name = this.name;
+            obj.email = this.email;
+            obj.phone = this.phone;
+            obj.login = this.login;
+            obj.passwd = this.passwd;
+            obj.date_of_birth = this.date_of_birth;
 
             return obj;
         }
 
-        public Client convertDTOToModel(ClientDTO obj)
+        public static Client convertDTOToModel(ClientDTO obj)
         {
             Client client = new Client(Address.convertDTOToModel(obj.client_address));
 
@@ -72,25 +72,40 @@ namespace model
             return list;
         }
 
-        public int save()
-        {
-            var id = 0;
+        //public int save()
+        //{
+        //    var id = 0;
 
-            using (var context = new DaoContext())
-            {
-                var address = new DAO.Address
-                {
-                    street = this.address.getStreet(),
-                    city = this.address.getCity(),
-                    state = this.address.getState(),
-                    country = this.address.getCountry(),
-                    postal_code = this.address.getPostalCode()
-                };
+        //    using (var context = new DaoContext())
+        //    {
+        //        var save_address = new DAO.Address
+        //        {
+        //            street = this.address.getStreet(),
+        //            city = this.address.getCity(),
+        //            state = this.address.getState(),
+        //            country = this.address.getCountry(),
+        //            postal_code = this.address.getPostalCode()
+        //        };
+
+        //        var client = new DAO.Client
+        //        {
+        //            name = this.name,
+        //            email = this.email,
+        //            phone = this.phone,
+        //            login = this.login,
+        //            passwd = this.passwd,
+        //            date_of_birth = this.date_of_birth,
+        //            address = save_address
+        //        };
 
 
-            }
-            return 0;
-        }
+        //        context.Client.Add(client);
+
+        //        id = client.ID;
+
+        //    }
+        //    return id;
+        //}
 
         public void update(ClientDTO client)
         {
