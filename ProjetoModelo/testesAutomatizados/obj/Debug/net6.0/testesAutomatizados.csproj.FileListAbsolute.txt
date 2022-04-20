@@ -1,5 +1,0 @@
-C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\testesAutomatizados.csproj.AssemblyReference.cache
-C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\testesAutomatizados.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\testesAutomatizados.AssemblyInfoInputs.cache
-C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\testesAutomatizados.AssemblyInfo.cs
-C:\Users\disrct\Documents\repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\testesAutomatizados.csproj.CoreCompileInputs.cache
