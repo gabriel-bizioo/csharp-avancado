@@ -6,7 +6,6 @@ namespace model
     public class Stocks : IValidateDataObject, IDataController<StocksDTO, Stocks>
     {
         int quantity;
-        double unit_price;
         
         Store store;
         Product product;
@@ -68,7 +67,6 @@ namespace model
         {
             StocksDTO obj = new StocksDTO();
             obj.quantity = this.quantity;
-            obj.unit_price = this.unit_price;
             obj.store = this.store.convertModelToDTO();
             obj.product = this.product.convertModelToDTO();
 
@@ -79,8 +77,7 @@ namespace model
         {
             Stocks purchase = new Stocks(Store.convertDTOToModel(obj.store), Product.convertDTOToModel(obj.product));
 
-            purchase.quantity = this.quantity;
-            purchase.unit_price = obj.unit_price;            
+            purchase.quantity = this.quantity;         
 
             return purchase;
         }

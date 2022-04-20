@@ -81,18 +81,18 @@ namespace model
         //{
         //    var id = 0;
 
-        //    using (var context = new DaoContext())
+        //    using (var context = new daocontext())
         //    {
-        //        var save_address = new DAO.Address
+        //        var save_address = new dao.address
         //        {
-        //            street = this.address.getStreet(),
-        //            city = this.address.getCity(),
-        //            state = this.address.getState(),
-        //            country = this.address.getCountry(),
-        //            postal_code = this.address.getPostalCode()
+        //            street = this.address.getstreet(),
+        //            city = this.address.getcity(),
+        //            state = this.address.getstate(),
+        //            country = this.address.getcountry(),
+        //            postal_code = this.address.getpostalcode()
         //        };
 
-        //        var owner = new DAO.Owner
+        //        var owner = new dao.owner
         //        {
         //            name = this.name,
         //            email = this.email,
@@ -103,9 +103,9 @@ namespace model
         //            address = save_address
         //        };
 
-        //        context.Owner.Add(owner);
+        //        context.owner.add(owner);
 
-        //        id = owner.ID;
+        //        id = owner.id;
 
         //    }
         //    return id;

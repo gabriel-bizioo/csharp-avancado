@@ -44,7 +44,7 @@ namespace DAO
             {
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.name).IsRequired();
-                entity.HasOne(d => d.endereco);
+                entity.HasOne(d => d.address);
                 entity.Property(e => e.email).IsRequired();
                 entity.Property(e => e.phone).IsRequired();
                 entity.Property(e => e.login).IsRequired();
@@ -54,19 +54,18 @@ namespace DAO
             {
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.name).IsRequired();
-                entity.HasOne(d => d.endereco);
+                entity.HasOne(d => d.address);
                 entity.Property(e => e.email).IsRequired();
                 entity.Property(e => e.phone).IsRequired();
                 entity.Property(e => e.login).IsRequired();
-                entity.Property(e => e.password).IsRequired();
+                entity.Property(e => e.passwd).IsRequired();
             });
 
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(e => e.ID);
-                entity.Property(e => e.nome).IsRequired();
+                entity.Property(e => e.name).IsRequired();
                 entity.Property(e => e.bar_code).IsRequired();
-                entity.Property(e => e.unit_price).IsRequired();
             });
 
             modelBuilder.Entity<Purchase>(entity =>

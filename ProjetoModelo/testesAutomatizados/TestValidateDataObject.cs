@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using Model;
+using model;
 using System.Collections.Generic;
 using System;
 

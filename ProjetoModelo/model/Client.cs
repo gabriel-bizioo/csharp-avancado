@@ -72,40 +72,40 @@ namespace model
             return list;
         }
 
-        //public int save()
-        //{
-        //    var id = 0;
+        public int save()
+        {
+            var id = 0;
 
-        //    using (var context = new DaoContext())
-        //    {
-        //        var save_address = new DAO.Address
-        //        {
-        //            street = this.address.getStreet(),
-        //            city = this.address.getCity(),
-        //            state = this.address.getState(),
-        //            country = this.address.getCountry(),
-        //            postal_code = this.address.getPostalCode()
-        //        };
+            using (var context = new DaoContext())
+            {
+                var save_address = new DAO.Address
+                {
+                    street = this.address.getStreet(),
+                    city = this.address.getCity(),
+                    state = this.address.getState(),
+                    country = this.address.getCountry(),
+                    postal_code = this.address.getPostalCode()
+                };
 
-        //        var client = new DAO.Client
-        //        {
-        //            name = this.name,
-        //            email = this.email,
-        //            phone = this.phone,
-        //            login = this.login,
-        //            passwd = this.passwd,
-        //            date_of_birth = this.date_of_birth,
-        //            address = save_address
-        //        };
+                var client = new DAO.Client
+                {
+                    name = this.name,
+                    email = this.email,
+                    phone = this.phone,
+                    login = this.login,
+                    passwd = this.passwd,
+                    date_of_birth = this.date_of_birth,
+                    address = save_address
+                };
 
 
-        //        context.Client.Add(client);
+                context.Client.Add(client);
 
-        //        id = client.ID;
+                id = client.ID;
 
-        //    }
-        //    return id;
-        //}
+            }
+            return id;
+        }
 
         public void update(ClientDTO client)
         {

@@ -2,9 +2,8 @@ using System;
 
 namespace Interfaces
 {
-    public interface IValidateDataObject
-    {
-
+    public interface IValidateDataObject{
+       
         Boolean validateObject();
     }
 }

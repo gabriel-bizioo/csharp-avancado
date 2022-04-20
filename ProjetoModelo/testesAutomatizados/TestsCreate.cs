@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using Model;
+using model;
 using System.Collections.Generic;
 using System;
 
@@ -156,7 +156,7 @@ namespace testesAutomatizados
 
             Assert.That(product.getBarCode(), Is.EqualTo("1234567878998745613"));
 
-            Assert.That(product.getUnitprice(), Is.EqualTo(25.25));
+            Assert.That(product.getUnitPrice(), Is.EqualTo(25.25));
 
         }
 

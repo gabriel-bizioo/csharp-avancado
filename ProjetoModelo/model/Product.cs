@@ -8,6 +8,7 @@ namespace model
     {
         string name;
         string bar_code;
+        double unit_price;
 
         public void setName(string name)
         {
@@ -19,6 +20,17 @@ namespace model
             this.bar_code = barcode;
         }
 
+        public void setUnitPrice(double value)
+        {
+            if (value < 0)
+            {
+                unit_price = 0;
+            }
+
+            unit_price = value;
+        }
+        
+
         public string getName()
         {
             return name;
@@ -27,6 +39,11 @@ namespace model
         public string getBarCode()
         {
             return bar_code;
+        }
+        
+        public double getUnitPrice()
+        {
+            return unit_price;
         }
 
 

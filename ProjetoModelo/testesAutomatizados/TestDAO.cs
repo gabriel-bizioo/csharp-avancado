@@ -1,5 +1,5 @@
 using NUnit.Framework;
-using Model;
+using model;
 using DTO;
 
 namespace testesAutomatizados
@@ -26,9 +26,9 @@ namespace testesAutomatizados
 
             var addressModel = Address.convertDTOToModel(addressDTO);
 
-            if(addressModel.validateObject()){
-                id = addressModel.save();
-            }
+            //if(addressModel.validateObject()){
+            //    id = addressModel.save();
+            //}
 
             Assert.That(id, Is.Not.EqualTo(0));
         }
@@ -59,17 +59,20 @@ namespace testesAutomatizados
 
             clientDTO.login = "aldo.batista@email.com";
 
-            clientDTO.address = addressDTO;
+            clientDTO.client_address = addressDTO;
 
             clientDTO.passwd = "sdfsdgfgd";
 
             clientDTO.phone = "41999999999";
+            
+            clientDTO.document = "1524521515";
+            
 
-            var clientModel = Client.converteDTOToModel(clientDTO);
+            var clientModel = Client.convertDTOToModel(clientDTO);
 
-            if(clientModel.validateObject()){
-                id = clientModel.save();
-            }
+            //if(clientModel.validateObject()){
+            //    id = clientModel.save();
+            //}
 
             Assert.That(id, Is.Not.EqualTo(0));
         }
@@ -100,17 +103,20 @@ namespace testesAutomatizados
 
             ownerDTO.login = "carlos.ribeiro@email.com";
 
-            ownerDTO.address = addressDTO;
+            ownerDTO.owner_address = addressDTO;
 
             ownerDTO.passwd = "sdfsdgfgd";
 
             ownerDTO.phone = "41999999999";
+            
+            ownerDTO.document = "1252451245";
+            
 
-            var ownerModel = Owner.converteDTOToModel(ownerDTO);
+            var ownerModel = Owner.convertDTOToModel(ownerDTO);
 
-            if(ownerModel.validateObject()){
-                id = ownerModel.save();
-            }
+            //if(ownerModel.validateObject()){
+            //    id = ownerModel.save();
+            //}     
 
             Assert.That(id, Is.Not.EqualTo(0));
 
