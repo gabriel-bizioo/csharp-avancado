@@ -1,6 +1,7 @@
 ﻿using Interfaces;
 using DTO;
 using DAO;
+using System.Linq;
 
 namespace model
 {
@@ -8,7 +9,6 @@ namespace model
     {
         string name;
         string bar_code;
-        double unit_price;
 
         public void setName(string name)
         {
@@ -18,16 +18,6 @@ namespace model
         public void setBarCode(string barcode)
         {
             this.bar_code = barcode;
-        }
-
-        public void setUnitPrice(double value)
-        {
-            if (value < 0)
-            {
-                unit_price = 0;
-            }
-
-            unit_price = value;
         }
         
 
@@ -40,11 +30,7 @@ namespace model
         {
             return bar_code;
         }
-        
-        public double getUnitPrice()
-        {
-            return unit_price;
-        }
+  
 
 
         public Boolean validateObject()
@@ -89,27 +75,29 @@ namespace model
             return list;
         }
 
-        //public int save()
-        //{
-        //    var id = 0;
+        public int save()
+        {
+            var id = 0;
 
-        //    using (var context = new DaoContext())
-        //    {
+            using (var context = new DaoContext())
+            {
 
-        //        var product = new DAO.Product
-        //        {
-        //            name = this.name,
-        //            bar_code = this.bar_code
-        //        };
+                var product = new DAO.Product
+                {
+                    name = this.name,
+                    bar_code = this.bar_code
+                };
 
 
-        //        context.Product.Add(product);
+                context.Product.Add(product);
 
-        //        id = product.ID;
+                context.SaveChanges();
 
-        //    }
-        //    return id;
-        //}
+                id = product.ID;
+
+            }
+            return id;
+        }
 
         public void update(ProductDTO client)
         {

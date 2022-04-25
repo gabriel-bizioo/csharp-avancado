@@ -2,6 +2,7 @@
 using Interfaces;
 using DAO;
 using DTO;
+using System.Linq;
 
 namespace model
 {
@@ -38,6 +39,7 @@ namespace model
             obj.email = this.email;
             obj.phone = this.phone;
             obj.login = this.login;
+            obj.document = this.document;
             obj.passwd = this.passwd;
             obj.date_of_birth = this.date_of_birth;
 
@@ -50,6 +52,7 @@ namespace model
 
             owner.name = obj.name;
             owner.email = obj.email;
+            owner.document = obj.document;
             owner.phone = obj.phone;
             owner.login = obj.login;
             owner.passwd = obj.passwd;
@@ -72,39 +75,41 @@ namespace model
             return list;
         }
 
-        //public int save()
-        //{
-        //    var id = 0;
+        public int save()
+        {
+            var id = 0;
 
-        //    using (var context = new DaoContext())
-        //    {
-        //        var save_address = new DAO.Address
-        //        {
-        //            street = this.address.getStreet(),
-        //            city = this.address.getCity(),
-        //            state = this.address.getState(),
-        //            country = this.address.getCountry(),
-        //            postal_code = this.address.getPostalCode()
-        //        };
+            using (var context = new DaoContext())
+            {
+                var save_address = new DAO.Address
+                {
+                    street = this.address.getStreet(),
+                    city = this.address.getCity(),
+                    state = this.address.getState(),
+                    country = this.address.getCountry(),
+                    postal_code = this.address.getPostalCode()
+                };
 
-        //        var owner = new DAO.Owner
-        //        {
-        //            name = this.name,
-        //            email = this.email,
-        //            phone = this.phone,
-        //            login = this.login,
-        //            passwd = this.passwd,
-        //            date_of_birth = this.date_of_birth,
-        //            address = save_address
-        //        };
+                var owner = new DAO.Owner
+                {
+                    name = this.name,
+                    email = this.email,
+                    phone = this.phone,
+                    login = this.login,
+                    passwd = this.passwd,
+                    date_of_birth = this.date_of_birth,
+                    address = save_address
+                };
 
-        //        context.Owner.Add(owner);
+                context.Owner.Add(owner);
 
-        //        id = owner.ID;
+                context.SaveChanges();
 
-        //    }
-        //    return id;
-        //}
+                id = owner.ID;
+
+            }
+            return id;
+        }
 
         public void update(OwnerDTO owner)
         {

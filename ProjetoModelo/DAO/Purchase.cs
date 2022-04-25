@@ -7,14 +7,15 @@ namespace DAO
     {
         public int ID;
         public DateTime purchase_date;
-        public string number_confirmation;
+        public string confirmation_number;
         public string number_nf;
-        public PaymentEnum Payment;
-        public PurchaseStatusEnum PurchaseStatus;
+        public int Payment;
+        public int PurchaseStatus;
+        public double purchase_value;
 
         public Client client;
 
-        public Product products;
+        public Product product;
 
         public Store store;
 

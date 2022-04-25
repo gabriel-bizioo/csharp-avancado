@@ -7,10 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="Interfaces.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Interfaces\Interfaces.csproj" />
     <ProjectReference Include="..\Enums\Enums.csproj" />
 	<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.3" />

@@ -6,5 +6,6 @@ namespace DAO
     {
         public Client client;
         public Product product;
+        public int ID;
     }
 }

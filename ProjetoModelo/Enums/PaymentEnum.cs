@@ -10,7 +10,6 @@ namespace Enums
     {
         credit,
         debit,
-        transfer,
-        initial
+        transfer
     }
 }

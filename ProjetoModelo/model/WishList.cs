@@ -1,6 +1,7 @@
 ﻿using Interfaces;
 using DAO;
 using DTO;
+using System.Linq;
 
 namespace model
 {
@@ -12,6 +13,11 @@ namespace model
         public WishList(Client client)
         {
             this.client = client;
+        }
+
+        public WishList()
+        {
+
         }
         
         public void addProductToWishList(Product product)
@@ -77,39 +83,31 @@ namespace model
             return list;
         }
 
-        //public int save()
-        //{
-        //    var id = 0;
+        public int save(string document, int productID)
+        {
+            var id = 0;
 
-        //    using (var context = new daocontext())
-        //    {
-        //        var save_address = new dao.address
-        //        {
-        //            street = this.address.getstreet(),
-        //            city = this.address.getcity(),
-        //            state = this.address.getstate(),
-        //            country = this.address.getcountry(),
-        //            postal_code = this.address.getpostalcode()
-        //        };
+            using (var context = new DaoContext())
+            {
+                var client = context.Client.FirstOrDefault(c => c.document == document);
+                var product = context.Product.Where(p => p.ID == productID).Single();
+                
+                var wishlist = new DAO.WishList
+                {
+                    client = client,
+                    product = product
 
-        //        var owner = new dao.owner
-        //        {
-        //            name = this.name,
-        //            email = this.email,
-        //            phone = this.phone,
-        //            login = this.login,
-        //            passwd = this.passwd,
-        //            date_of_birth = this.date_of_birth,
-        //            address = save_address
-        //        };
+                };
 
-        //        context.owner.add(owner);
+                context.WishList.Add(wishlist);
 
-        //        id = owner.id;
+                context.SaveChanges();
 
-        //    }
-        //    return id;
-        //}
+                id = wishlist.ID;
+
+            }
+            return id;
+        }
 
         public void update(WishListDTO wishlist)
         {

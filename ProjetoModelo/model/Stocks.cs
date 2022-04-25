@@ -1,11 +1,13 @@
 ﻿using Interfaces;
 using DAO;
 using DTO;
+using System.Linq;
 namespace model
 {
     public class Stocks : IValidateDataObject, IDataController<StocksDTO, Stocks>
     {
         int quantity;
+        double unit_price;
         
         Store store;
         Product product;
@@ -20,6 +22,7 @@ namespace model
         {
 
         }
+
 
         public void setStore(Store store)
         {
@@ -66,6 +69,7 @@ namespace model
         public StocksDTO convertModelToDTO()
         {
             StocksDTO obj = new StocksDTO();
+            obj.unit_price = this.unit_price;
             obj.quantity = this.quantity;
             obj.store = this.store.convertModelToDTO();
             obj.product = this.product.convertModelToDTO();
@@ -73,7 +77,7 @@ namespace model
             return obj;
         }
 
-        public Stocks onvertDTOToModel(StocksDTO obj)//implementar
+        public Stocks convertDTOToModel(StocksDTO obj)
         {
             Stocks purchase = new Stocks(Store.convertDTOToModel(obj.store), Product.convertDTOToModel(obj.product));
 
@@ -96,27 +100,38 @@ namespace model
             return list;
         }
 
-        //public int save()
-        //{
-        //    var id = 0;
+        public int save(int storeID, int productID, int quantity, double unit_price)
+        {
+            var id = 0;
+            
 
-        //    using (var context = new DaoContext())
-        //    {
+            using (var context = new DaoContext())
+            {
+                var store = context.Store.Where(s => s.ID == storeID).Single();
 
-        //        var product = new DAO.Product
-        //        {
-        //            name = this.name,
-        //            bar_code = this.bar_code
-        //        };
+                var product = context.Product.Where(p => p.ID == productID).Single();
+
+                var stocks = new DAO.Stocks
+                {
+                    quantity = quantity,
+
+                    unit_price = unit_price,
+
+                    store = store,
+
+                    product = product
+                };
 
 
-        //        context.Product.Add(product);
+                context.Stocks.Add(stocks);
 
-        //        id = product.ID;
+                context.SaveChanges();
 
-        //    }
-        //    return id;
-        //}
+                id = stocks.ID;
+
+            }
+            return id;
+        }
 
         public void update(StocksDTO purchase)
         {

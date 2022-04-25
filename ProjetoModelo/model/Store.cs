@@ -1,6 +1,7 @@
 ﻿using Interfaces;
 using DAO;
 using DTO;
+using System.Linq;
 
 namespace model
 {
@@ -26,6 +27,11 @@ namespace model
             this.name = name;
             this.cnpj = cnpj;
             this.purchases = purchases;
+        }
+
+        public Store()
+        {
+
         }
         
         public Store(Owner owner)
@@ -116,39 +122,31 @@ namespace model
             return list;
         }
 
-        //public int save()
-        //{
-        //    var id = 0;
+        public int save(int ownerID)
+        {
+            var id = 0;
 
-        //    using (var context = new DaoContext())
-        //    {
-        //        var save_address = new DAO.Address
-        //        {
-        //            street = this.address.getStreet(),
-        //            city = this.address.getCity(),
-        //            state = this.address.getState(),
-        //            country = this.address.getCountry(),
-        //            postal_code = this.address.getPostalCode()
-        //        };
+            using (var context = new DaoContext())
+            {
 
-        //        var owner = new DAO.Owner
-        //        {
-        //            name = this.name,
-        //            email = this.email,
-        //            phone = this.phone,
-        //            login = this.login,
-        //            passwd = this.passwd,
-        //            date_of_birth = this.date_of_birth,
-        //            address = save_address
-        //        };
+                var owner = context.Owner.Where(o => o.ID == ownerID).Single();
 
-        //        context.Owner.Add(owner);
+                var store = new DAO.Store
+                {
+                    owner = owner,
+                    name = this.name,
+                    cnpj = this.cnpj
+                };
 
-        //        id = owner.ID;
+                context.Store.Add(store);
 
-        //    }
-        //    return id;
-        //}
+                context.SaveChanges();
+
+                id = store.ID;
+
+            }
+            return id;
+        }
 
         public void update(StoreDTO store)
         {

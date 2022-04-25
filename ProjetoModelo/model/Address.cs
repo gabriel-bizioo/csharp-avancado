@@ -51,7 +51,7 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
 
     public int save()
     {
-        var id = 0;
+        int id = 0;
 
         using (var context = new DaoContext())
         {

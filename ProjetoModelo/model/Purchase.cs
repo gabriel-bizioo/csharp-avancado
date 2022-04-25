@@ -2,17 +2,20 @@
 using Interfaces;
 using DAO;
 using DTO;
+using System.Linq;
 
 namespace model
 {
     public class Purchase : IValidateDataObject, IDataController<PurchaseDTO, Purchase>
     {
         DateTime purchase_date;
-        string number_confirmation;
+        string confirmation_number;
         string number_nf;
-        double purchase_value;
         PaymentEnum payment_type;
         PurchaseStatusEnum purchase_status;
+        public double purchase_value;
+
+        Store store;
 
         Client client;
 
@@ -25,7 +28,7 @@ namespace model
 
         public void setNumberConfirmation(string number)
         {
-            this.number_confirmation = number;
+            this.confirmation_number = number;
         }
 
         public void setNumberNf(string number_nf)
@@ -60,7 +63,7 @@ namespace model
 
         public string getNumberConfirmation()
         {
-            return number_confirmation;
+            return confirmation_number;
         }
 
         public string getNumberNf()
@@ -85,7 +88,7 @@ namespace model
 
         public Boolean validateObject()
         {
-            if (number_confirmation == null)
+            if (confirmation_number == null)
             {
                 return false;
             }
@@ -103,7 +106,7 @@ namespace model
             obj.payment_type = (int)this.payment_type;
             obj.purchase_value = this.purchase_value;
             obj.purchase_status = (int)this.purchase_status;
-            obj.number_confirmation = this.number_confirmation;
+            obj.confirmation_number = this.confirmation_number;
             obj.number_nf = this.number_nf;
             
             foreach(var product in this.products)
@@ -118,7 +121,7 @@ namespace model
         {
             Purchase purchase = new Purchase();
 
-            purchase.number_confirmation = obj.number_confirmation;
+            purchase.confirmation_number = obj.confirmation_number;
             purchase.number_nf = obj.number_nf;
             purchase.payment_type = (PaymentEnum)obj.payment_type;
             purchase.purchase_status = (PurchaseStatusEnum)obj.purchase_status;
@@ -146,27 +149,41 @@ namespace model
             return list;
         }
 
-        //public int save()
-        //{
-        //    var id = 0;
+        public int save()
+        {
+            var id = 0;
 
-        //    using (var context = new DaoContext())
-        //    {
+            using (var context = new DaoContext())
+            {
+                var store = context.Store.Where(s => s.cnpj == this.store.getCNPJ()).Single();
 
-        //        var product = new DAO.Product
-        //        {
-        //            name = this.name,
-        //            bar_code = this.bar_code
-        //        };
+                var client = context.Client.Where(c => c.document == this.client.getDocument()).Single();
+
+                var product = context.Product.Where(p => p.name == this.products[0].getName()).Single();
+                
+                var purchase = new DAO.Purchase
+                {
+                    purchase_date = this.purchase_date,
+                    confirmation_number = this.confirmation_number,
+                    purchase_value = this.purchase_value,
+                    number_nf = this.number_nf,
+                    PurchaseStatus = (int)this.purchase_status,
+                    Payment = (int)this.payment_type,
+                    store = store,
+                    client = client,
+                    product = product
+                };
 
 
-        //        context.Product.Add(product);
+                context.Purchase.Add(purchase);
 
-        //        id = product.ID;
+                context.SaveChanges();
 
-        //    }
-        //    return id;
-        //}
+                id = purchase.ID;
+
+            }
+            return id;
+        }
 
         public void update(PurchaseDTO purchase)
         {
@@ -176,6 +193,18 @@ namespace model
         public void delete(PurchaseDTO purchase)
         {
             Console.WriteLine("Not yet implemented");
+        }
+
+        public void updateStatus()
+        {
+            if(this.purchase_status == PurchaseStatusEnum.awaitingPayment)
+            {
+                this.purchase_status = PurchaseStatusEnum.confirmedPayment;
+            }
+            else
+            {
+                this.purchase_status = PurchaseStatusEnum.awaitingPayment;
+            }
         }
     }
 }

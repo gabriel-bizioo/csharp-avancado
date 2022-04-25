@@ -7,9 +7,11 @@ namespace DAO
     {
         static void Main(string[] args)
         {
+            InsertData();
+            PrintData();
         }
 
-        private void InsertData()
+        public static void InsertData()
         {
             using(var context = new DaoContext())
             {
@@ -17,7 +19,6 @@ namespace DAO
 
                 context.Address.Add(new Address
                 {
-                    ID = 1,
                     street = "Rua Angelo Dallarmi 303",
                     city =  "Curitiba",
                     state = "PR",
@@ -29,7 +30,7 @@ namespace DAO
             }
         }
 
-        private static void PrintData()
+        public static void PrintData()
         {
             // Gets and prints all books in database
             using (var context = new DaoContext())

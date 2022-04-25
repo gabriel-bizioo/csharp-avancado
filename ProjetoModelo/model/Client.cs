@@ -26,7 +26,7 @@ namespace model
             return client;
         }
         
-        public bool validateObject()
+        public Boolean validateObject()
         {
             return true;
         }
@@ -37,6 +37,7 @@ namespace model
             obj.name = this.name;
             obj.email = this.email;
             obj.phone = this.phone;
+            obj.document = this.document;
             obj.login = this.login;
             obj.passwd = this.passwd;
             obj.date_of_birth = this.date_of_birth;
@@ -53,6 +54,7 @@ namespace model
             client.phone = obj.phone;
             client.login = obj.login;
             client.passwd = obj.passwd;
+            client.document = obj.document;
             client.date_of_birth = obj.date_of_birth;
 
             return client;
@@ -74,7 +76,7 @@ namespace model
 
         public int save()
         {
-            var id = 0;
+            int id = 0;
 
             using (var context = new DaoContext())
             {
@@ -101,7 +103,10 @@ namespace model
 
                 context.Client.Add(client);
 
+                context.SaveChanges();
+
                 id = client.ID;
+
 
             }
             return id;
