@@ -11,7 +11,7 @@ namespace model
         string name;
         string cnpj;
 
-        List<Purchase> purchases;
+        List<Purchase> purchases = new List<Purchase>();
 
         public Store(string name, string cnpj, Owner owner)
         {
@@ -75,9 +75,6 @@ namespace model
 
             if(cnpj == null) return false;
 
-            if(!owner.validateObject()) return false;
-
-            if(purchases == null) return false;
 
             return true;
         }
@@ -100,10 +97,20 @@ namespace model
         public static Store convertDTOToModel(StoreDTO obj)
         {
 
-            Store store = new Store(Owner.convertDTOToModel(obj.Owner));
+            Store store = new Store();
+
+            if(obj.Owner != null)
+            {
+                store.owner = Owner.convertDTOToModel(obj.Owner);
+            }
 
             store.name = obj.name;
             store.cnpj = obj.CNPJ;
+
+            foreach (var purchase in obj.purchases)
+            {
+                store.AddNewPurchase(Purchase.convertDTOToModel(purchase));
+            }
 
             return store;
         }
@@ -139,6 +146,8 @@ namespace model
                 };
 
                 context.Store.Add(store);
+
+                context.Entry(store.owner).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
 
                 context.SaveChanges();
 

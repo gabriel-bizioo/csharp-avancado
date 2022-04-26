@@ -245,14 +245,14 @@
         }
       }
     },
-    "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Model\\Model.csproj": {
+    "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\model\\model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Model\\Model.csproj",
-        "projectName": "Model",
-        "projectPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Model\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\model\\model.csproj",
+        "projectName": "model",
+        "projectPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\model\\model.csproj",
         "packagesPath": "C:\\Users\\disrct\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\Model\\obj\\",
+        "outputPath": "C:\\Users\\disrct\\Documents\\repositorios\\csharp-avancado\\ProjetoModelo\\model\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\disrct\\AppData\\Roaming\\NuGet\\NuGet.Config",

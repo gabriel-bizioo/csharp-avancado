@@ -28,6 +28,13 @@ namespace model
         
         public Boolean validateObject()
         {
+            if(document == null) return false;
+            if(name == null) return false;
+            if(email == null) return false;
+            if(phone == null) return false;
+            if(login == null) return false;
+            if(passwd == null) return false;
+
             return true;
         }
 

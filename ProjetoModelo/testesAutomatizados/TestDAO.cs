@@ -568,7 +568,7 @@ namespace testesAutomatizados
                     for(int product = 1; product<5;product++){
                         var wishList = new model.WishList();
 
-                        id = wishList.save(cliente.document, product);
+                        id = wishList.save(cliente.ID, product);
 
                         Assert.That(id, Is.Not.EqualTo(0));
 
@@ -627,7 +627,19 @@ namespace testesAutomatizados
 
             storeDTO1.name = "Loja 98";
 
-            storeDTO1.CNPJ = "52647825458";      
+            storeDTO1.CNPJ = "52647825458";
+
+            var addressDTO5 = new AddressDTO();
+
+            addressDTO5.street = "rua cliente 1";
+
+            addressDTO5.state = "estado cliente 1";
+
+            addressDTO5.city = "cidade cliente 1";
+
+            addressDTO5.country = "pais cliente 1";
+
+            addressDTO5.postal_code = "12cliente5";
 
             var clientDTO5 = new ClientDTO();
 
@@ -638,6 +650,8 @@ namespace testesAutomatizados
             clientDTO5.login = "beatriz.silva@email.com";
 
             clientDTO5.passwd = "sdfsdgfgd";
+
+            clientDTO5.client_address = addressDTO5;
 
             clientDTO5.phone = "41999999999";
 
@@ -654,6 +668,10 @@ namespace testesAutomatizados
             if(purchase.validateObject()){
                 id=purchase.save();
             }
+            
+            Assert.That(id, Is.Not.EqualTo(0));
+
+            id = 0;
         }
 
         

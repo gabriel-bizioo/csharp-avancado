@@ -83,13 +83,13 @@ namespace model
             return list;
         }
 
-        public int save(string document, int productID)
+        public int save(int clientID, int productID)
         {
             var id = 0;
 
             using (var context = new DaoContext())
             {
-                var client = context.Client.FirstOrDefault(c => c.document == document);
+                var client = context.Client.FirstOrDefault(c => c.ID == clientID);
                 var product = context.Product.Where(p => p.ID == productID).Single();
                 
                 var wishlist = new DAO.WishList
@@ -100,6 +100,9 @@ namespace model
                 };
 
                 context.WishList.Add(wishlist);
+
+                context.Entry(wishlist.client).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                context.Entry(wishlist.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
 
                 context.SaveChanges();
 

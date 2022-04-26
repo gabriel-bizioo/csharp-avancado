@@ -16,6 +16,8 @@ public class Person
       this.address = address;
     }
 
+    public Person() { }
+
     public void setName(string name)
     {
         this.name = name;

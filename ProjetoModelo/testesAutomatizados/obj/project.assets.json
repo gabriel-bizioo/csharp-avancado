@@ -1866,7 +1866,7 @@
           "bin/placeholder/Interfaces.dll": {}
         }
       },
-      "Model/1.0.0": {
+      "model/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
@@ -1878,10 +1878,10 @@
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.3"
         },
         "compile": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/model.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Model.dll": {}
+          "bin/placeholder/model.dll": {}
         }
       }
     }
@@ -6498,19 +6498,19 @@
       "path": "../Interfaces/Interfaces.csproj",
       "msbuildProject": "../Interfaces/Interfaces.csproj"
     },
-    "Model/1.0.0": {
+    "model/1.0.0": {
       "type": "project",
-      "path": "../Model/Model.csproj",
-      "msbuildProject": "../Model/Model.csproj"
+      "path": "../model/model.csproj",
+      "msbuildProject": "../model/model.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "DTO >= 1.0.0",
       "Microsoft.NET.Test.Sdk >= 16.5.0",
-      "Model >= 1.0.0",
       "NUnit >= 3.12.0",
-      "NUnit3TestAdapter >= 3.16.1"
+      "NUnit3TestAdapter >= 3.16.1",
+      "model >= 1.0.0"
     ]
   },
   "packageFolders": {

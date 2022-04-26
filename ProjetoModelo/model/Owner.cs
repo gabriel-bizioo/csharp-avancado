@@ -12,11 +12,13 @@ namespace model
 
         Guid uuid;
 
+
         public Owner(Address endereco) : base(endereco)
         {
-
+            address = endereco;
         }
         
+        private Owner() { }
         
         public static Owner getInstance(Address endereco)
         {
@@ -48,8 +50,8 @@ namespace model
 
         public static Owner convertDTOToModel(OwnerDTO obj)
         {
-            Owner owner = new Owner(Address.convertDTOToModel(obj.owner_address));
-
+            Owner owner = new Owner();
+            owner.address = Address.convertDTOToModel(obj.owner_address);
             owner.name = obj.name;
             owner.email = obj.email;
             owner.document = obj.document;

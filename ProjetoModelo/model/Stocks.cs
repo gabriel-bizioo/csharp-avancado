@@ -61,7 +61,8 @@ namespace model
 
             if (!store.validateObject()) return false;
 
-            if (!store.validateObject()) return false;
+            if (!product.validateObject()) return false;
+
 
             return true;
         }
@@ -107,9 +108,9 @@ namespace model
 
             using (var context = new DaoContext())
             {
-                var store = context.Store.Where(s => s.ID == storeID).Single();
+                var store = context.Store.FirstOrDefault(s => s.ID == storeID);
 
-                var product = context.Product.Where(p => p.ID == productID).Single();
+                var product = context.Product.FirstOrDefault(p => p.ID == productID);
 
                 var stocks = new DAO.Stocks
                 {
@@ -124,6 +125,9 @@ namespace model
 
 
                 context.Stocks.Add(stocks);
+
+                context.Entry(stocks.store).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                context.Entry(stocks.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
 
                 context.SaveChanges();
 

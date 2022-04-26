@@ -19,7 +19,7 @@ namespace model
 
         Client client;
 
-        List<Product> products;
+        List<Product> products = new List<Product>();
 
         public void setDataPurchase(DateTime date)
         {
@@ -155,11 +155,11 @@ namespace model
 
             using (var context = new DaoContext())
             {
-                var store = context.Store.Where(s => s.cnpj == this.store.getCNPJ()).Single();
+                var store = context.Store.FirstOrDefault(s => s.ID == 1);
 
-                var client = context.Client.Where(c => c.document == this.client.getDocument()).Single();
+                var client = context.Client.FirstOrDefault(c => c.ID == 1);
 
-                var product = context.Product.Where(p => p.name == this.products[0].getName()).Single();
+                var product = context.Product.Where(p => p.ID == 1).Single();
                 
                 var purchase = new DAO.Purchase
                 {
@@ -176,6 +176,10 @@ namespace model
 
 
                 context.Purchase.Add(purchase);
+
+                context.Entry(purchase.client).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                context.Entry(purchase.store).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                context.Entry(purchase.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
 
                 context.SaveChanges();
 
