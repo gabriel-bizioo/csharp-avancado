@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Controllers
 {
+    [ApiController]
+    [Route("product")]
     public class ProductController
     {
         
@@ -14,9 +16,20 @@ namespace Controllers
 
         }
 
-        public void createProducts(ProductDTO product)
+        [HttpPost]
+        [Route("register")]
+        public object registerProducts([FromBody]ProductDTO productDTO)
         {
+            var product = model.Product.convertDTOToModel(productDTO);
 
+            int id = product.save();
+
+            return new
+            {
+                name = productDTO.name,
+                bar_code = productDTO.bar_code,
+                ID = id
+            };
         }
 
         public void deleteProduct(ProductDTO product)

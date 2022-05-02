@@ -27,7 +27,7 @@ namespace Controllers
                 login = clientDTO.login,
                 passwd = clientDTO.passwd,
                 address = clientDTO.client_address,
-                ID = id
+                id = id
             };
 
         }

@@ -11,7 +11,7 @@ namespace Controllers
     {
         [HttpPost]
         [Route("register")]
-        public object registerOwner(OwnerDTO ownerDTO)
+        public object registerOwner([FromBody]OwnerDTO ownerDTO)
         {
             var owner = model.Owner.convertDTOToModel(ownerDTO);
 
