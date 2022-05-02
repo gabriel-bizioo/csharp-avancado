@@ -108,6 +108,8 @@ namespace model
             obj.purchase_status = (int)this.purchase_status;
             obj.confirmation_number = this.confirmation_number;
             obj.number_nf = this.number_nf;
+            obj.client = this.client.convertModelToDTO();
+            obj.store = this.store.convertModelToDTO();
             
             foreach(var product in this.products)
             {
@@ -125,6 +127,8 @@ namespace model
             purchase.number_nf = obj.number_nf;
             purchase.payment_type = (PaymentEnum)obj.payment_type;
             purchase.purchase_status = (PurchaseStatusEnum)obj.purchase_status;
+            purchase.client = model.Client.convertDTOToModel(obj.client);
+            purchase.store = model.Store.convertDTOToModel(obj.store);
 
             foreach(var product in obj.purchase_products)
             {
