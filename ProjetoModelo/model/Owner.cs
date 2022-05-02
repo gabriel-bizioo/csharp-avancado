@@ -37,6 +37,7 @@ namespace model
         public OwnerDTO convertModelToDTO()
         {
             OwnerDTO obj = new OwnerDTO();
+            obj.owner_address = address.convertModelToDTO();
             obj.name = this.name;
             obj.email = this.email;
             obj.phone = this.phone;

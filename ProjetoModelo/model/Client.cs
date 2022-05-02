@@ -12,7 +12,7 @@ namespace model
         
         private Client(Address address) : base(address)
         {
-
+            this.address = address;
         }
 
 

@@ -17,6 +17,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTO\DTO.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{89083DD5-6277-485A-873D-827BEFDCBB42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{14B0BE8A-6356-40A4-9617-7B50C69ADB8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{89083DD5-6277-485A-873D-827BEFDCBB42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89083DD5-6277-485A-873D-827BEFDCBB42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89083DD5-6277-485A-873D-827BEFDCBB42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14B0BE8A-6356-40A4-9617-7B50C69ADB8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14B0BE8A-6356-40A4-9617-7B50C69ADB8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14B0BE8A-6356-40A4-9617-7B50C69ADB8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14B0BE8A-6356-40A4-9617-7B50C69ADB8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
