@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAO", "DAO\DAO.csproj", "{B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTO", "DTO\DTO.csproj", "{2F388173-BAA0-4CB5-8FF2-E36D76765ED2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console", "Console\Console.csproj", "{3458E180-41C6-44A4-B1E7-FE6919BABF45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controller", "Controller\Controller.csproj", "{25885119-8C1C-4C3A-833F-68F78524BAFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{2F388173-BAA0-4CB5-8FF2-E36D76765ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F388173-BAA0-4CB5-8FF2-E36D76765ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F388173-BAA0-4CB5-8FF2-E36D76765ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3458E180-41C6-44A4-B1E7-FE6919BABF45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3458E180-41C6-44A4-B1E7-FE6919BABF45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3458E180-41C6-44A4-B1E7-FE6919BABF45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3458E180-41C6-44A4-B1E7-FE6919BABF45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25885119-8C1C-4C3A-833F-68F78524BAFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25885119-8C1C-4C3A-833F-68F78524BAFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25885119-8C1C-4C3A-833F-68F78524BAFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25885119-8C1C-4C3A-833F-68F78524BAFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

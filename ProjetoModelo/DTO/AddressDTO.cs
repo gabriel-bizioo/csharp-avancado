@@ -1,6 +1,7 @@
 namespace DTO;
 public class AddressDTO
 {
+    public int id;
     public string street;
     public string city;
     public string state;

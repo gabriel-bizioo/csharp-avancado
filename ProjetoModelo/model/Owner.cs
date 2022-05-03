@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using DAO;
 using Interfaces;
 using DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace model
 {
@@ -16,12 +17,18 @@ namespace model
 
         private Owner(Address address) : base(address)
         {
-
+            this.address = address;
         }
+
+        public Owner() { }
 
         public static Owner convertDTOToModel(OwnerDTO obj)
         {
-            Owner owner = new Owner(Address.convertDTOToModel(obj.address));
+            Owner owner = new Owner();
+
+            if (obj.address != null) { owner.address = Address.convertDTOToModel(obj.address); }
+
+            owner.id = obj.id;
 
             owner.name = obj.name;
 
@@ -42,6 +49,14 @@ namespace model
 
         public Boolean validateObject()
         {
+            if(id == null) { return false; }
+            if (name == null) {return false;}
+            if (document == null) {return false;}
+            //if (date_of_birth == null) {return false;}
+            if (email == null) {return false;}
+            if (phone == null) {return false;}
+            if (login == null) {return false;}
+            if(password == null) {return false;}
             return true;
         }
 
@@ -56,8 +71,19 @@ namespace model
 
             using (var context = new DaoContext())
             {
-                var address = new DAO.Owner
+                var address = new DAO.Address
                 {
+                    street = this.address.getStreet(),
+                    city = this.address.getCity(),
+                    state = this.address.getState(),
+                    country = this.address.getCountry(),
+                    postal_code = this.address.getPostalCode()
+                };
+
+                var owner = new DAO.Owner
+                {
+                    ID = id,
+                    address = address,
                     name = this.name,
                     date_of_birth = this.date_of_birth,
                     document = this.document,
@@ -67,25 +93,44 @@ namespace model
                     password = this.password
                 };
 
-                context.OwnerList.Add(address);
+                context.Owner.Add(owner);
 
                 context.SaveChanges();
 
-                id = address.ID;
+                id = owner.ID;
 
             }
             return id;
         }
 
-        public void update(ClientDTO obj)
+        public void update(OwnerDTO obj)
         {
 
         }
 
-        public ClientDTO findById(int id)
+        public static object find(String document)
+        {
+            using (var context = new DaoContext())
+            {
+                var client = context.Client.Include(i => i.address).FirstOrDefault(d => d.document == document);
+                return new
+                {
+                    name = client.name,
+                    date_of_birth = client.date_of_birth,
+                    document = client.document,
+                    email = client.email,
+                    login = client.login,
+                    password = client.password,
+                    phone = client.phone,
+                    address = client.address
+                };
+            }
+        }
+
+        public OwnerDTO findById(int id)
         {
 
-            return new ClientDTO();
+            return new OwnerDTO();
         }
 
         public List<OwnerDTO> getAll()
@@ -98,7 +143,11 @@ namespace model
         {
             var ownerDTO = new OwnerDTO();
 
+            ownerDTO.id = this.id;
+
             ownerDTO.name = this.name;
+
+            ownerDTO.address = this.address.convertModelToDTO();
 
             ownerDTO.date_of_birth = this.date_of_birth;
 

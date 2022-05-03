@@ -10,18 +10,18 @@ namespace DAO
 {
     public class DaoContext : DbContext
     {
-        public DbSet<Address> AddressList { get; set; }
-        public DbSet<Client> ClientList { get; set; }
-        public DbSet<Owner> OwnerList { get; set; }
-        public DbSet<Store> StoreList { get; set; }
-        public DbSet<Product> ProductList { get; set; }
-        public DbSet<Purchase> PurchaseList { get; set; }
-        public DbSet<Stocks> StocksList { get; set; }
-        public DbSet<WishList> WishLists { get; set; }
+        public DbSet<Address> Address { get; set; }
+        public DbSet<Client> Client { get; set; }
+        public DbSet<Owner> Owner { get; set; }
+        public DbSet<Store> Store { get; set; }
+        public DbSet<Product> Product { get; set; }
+        public DbSet<Purchase> Purchase { get; set; }
+        public DbSet<Stocks> Stocks { get; set; }
+        public DbSet<WishList> WishList { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=CTPC3626;Initial Catalog=ProjetoC#;Integrated Security=true");
+            optionsBuilder.UseSqlServer("Data Source=CTPC3626;Initial Catalog=ProjetoMarktplace;Integrated Security=true");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -44,7 +44,7 @@ namespace DAO
             {
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.name).IsRequired();
-                entity.HasOne(d => d.endereco);
+                entity.HasOne(d => d.address);
                 entity.Property(e => e.email).IsRequired();
                 entity.Property(e => e.phone).IsRequired();
                 entity.Property(e => e.login).IsRequired();
@@ -54,7 +54,7 @@ namespace DAO
             {
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.name).IsRequired();
-                entity.HasOne(d => d.endereco);
+                entity.HasOne(d => d.address);
                 entity.Property(e => e.email).IsRequired();
                 entity.Property(e => e.phone).IsRequired();
                 entity.Property(e => e.login).IsRequired();
@@ -64,9 +64,8 @@ namespace DAO
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(e => e.ID);
-                entity.Property(e => e.nome).IsRequired();
+                entity.Property(e => e.name).IsRequired();
                 entity.Property(e => e.bar_code).IsRequired();
-                entity.Property(e => e.unit_price).IsRequired();
             });
 
             modelBuilder.Entity<Purchase>(entity =>
@@ -76,7 +75,7 @@ namespace DAO
                 entity.Property(e => e.PurchaseStatus).IsRequired();
                 entity.Property(e => e.Payment).IsRequired();
                 entity.HasOne(d => d.client).WithMany();
-                entity.HasOne(m => m.products);
+                entity.HasOne(m => m.product);
                 entity.HasOne(d => d.store);
             });
 
@@ -85,6 +84,7 @@ namespace DAO
             {
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.quantity).IsRequired();
+                entity.Property(e => e.unit_price).IsRequired();
                 entity.HasOne(d => d.store);
                 entity.HasOne(d => d.product);
             });
@@ -106,7 +106,5 @@ namespace DAO
 
         }
     }
-
-
 }
 

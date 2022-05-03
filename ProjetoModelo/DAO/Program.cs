@@ -17,7 +17,7 @@ namespace DAO
             {
                 context.Database.EnsureCreated();
 
-                context.AddressList.Add(new Address
+                context.Address.Add(new Address
                 {
                     street = "Rua Angelo Dallarmi 303",
                     city =  "Curitiba",
@@ -35,7 +35,7 @@ namespace DAO
             // Gets and prints all books in database
             using (var context = new DaoContext())
             {
-                var enderecos = context.AddressList;
+                var enderecos = context.Address;
 
                 foreach (var endereco in enderecos)
                 {

@@ -36,12 +36,23 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
 
     public Boolean validateObject()
     {
+        if (street == null) { return false; }
+        if (city == null) { return false; }
+        if (state == null) { return false; }
+        if (country == null) { return false; }
+        if (post_code == null) { return false; }
         return true;
     }
 
     public void delete(AddressDTO obj)
     {
+        using (var context = new DaoContext())
+        {
+            var address = context.Address.FirstOrDefault(/*x => x.id == this.id*/);
+            context.Address.Remove(address);
+            context.SaveChanges();
 
+        }
     }
 
     public int save()
@@ -59,7 +70,7 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
                 postal_code = this.post_code
             };
 
-            context.AddressList.Add(address);
+            context.Address.Add(address);
 
             context.SaveChanges();
 
@@ -109,50 +120,50 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
         this.street = street;
     }
 
-        public void setCity(string city)
-        {
-            this.city = city;
-        }
+    public void setCity(string city)
+    {
+        this.city = city;
+    }
 
-        public void setState(string state)
-        {
-            this.state = state;
-        }
+     public void setState(string state)
+     {
+         this.state = state;
+     }
 
-        public void setCountry(string country)
-        {
-            this.country = country;
-        }
+     public void setCountry(string country)
+     {
+         this.country = country;
+     }
 
-        public void setPostCode(string post_code)
-        {
-            this.post_code = post_code;
-        }
+     public void setPostCode(string post_code)
+     {
+         this.post_code = post_code;
+     }
 
-        public string getStreet()
-        {
-            return street;
-        }
+     public string getStreet()
+     {
+         return street;
+     }
 
-        public string getCity()
-        {
-            return city;
-        }
+     public string getCity()
+     {
+         return city;
+     }
 
-        public string getState()
-        {
-            return state;
-        }
+     public string getState()
+     {    
+         return state;   
+     } 
 
-        public string getCountry()
-        {
-            return country;
-        }
+     public string getCountry()
+     {
+         return country;
+     }
 
-        public string getPostalCode()
-        {
-            return post_code;
-        }
+     public string getPostalCode()
+     {
+         return post_code;
+     }  
         
 
-    }
+}

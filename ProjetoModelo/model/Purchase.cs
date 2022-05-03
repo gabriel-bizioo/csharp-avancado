@@ -1,19 +1,190 @@
 ﻿using Enums;
 using Interfaces;
+using DAO;
+using DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace model
 {
-    public class Purchase : IValidateDataObject<Purchase>
+    public class Purchase : IValidateDataObject, IDataController<PurchaseDTO, Purchase>
     {
         DateTime purchase_date;
-        string number_confirmation;
+        string confirmation_number;
         string number_nf;
-        PaymentEnum Payment;
-        PurchaseStatusEnum PurchaseStatus;
+        PaymentEnum payment_type;
+        PurchaseStatusEnum purchase_status;
+        public double purchase_value;
+
+        Store store;
 
         Client client;
 
-        List<Product> products;
+        List<Product> products = new List<Product>();
+
+       
+        public Boolean validateObject()
+        {
+            if (confirmation_number == null) {return false;}
+            if (number_nf == null) {return false;}
+            //if(purchase_value == null) {return false;}
+
+            return true;
+        }
+
+        public PurchaseDTO convertModelToDTO()
+        {
+            PurchaseDTO purchaseDTO = new PurchaseDTO();
+            purchaseDTO.purchase_date = this.purchase_date;
+            purchaseDTO.payment_type = (int)this.payment_type;
+            purchaseDTO.purchase_value = this.purchase_value;
+            purchaseDTO.purchase_status = (int)this.purchase_status;
+            purchaseDTO.number_confirmation = this.confirmation_number;
+            purchaseDTO.number_nf = this.number_nf;
+
+            foreach (var product in this.products)
+            {
+                purchaseDTO.products.Add(product.convertModelToDTO());
+            }
+
+            return purchaseDTO;
+        }
+
+        public static Purchase convertDTOToModel(PurchaseDTO obj)
+        {
+            Purchase purchase = new Purchase();
+
+            if (obj.client != null)
+            {
+                purchase.client = Client.convertDTOToModel(obj.client);
+            }
+
+            purchase.confirmation_number = obj.number_confirmation;
+            purchase.number_nf = obj.number_nf;
+            purchase.payment_type = (PaymentEnum)obj.payment_type;
+            purchase.purchase_status = (PurchaseStatusEnum)obj.purchase_status;
+            purchase.purchase_date = obj.purchase_date;
+            purchase.purchase_value = obj.purchase_value;
+
+
+            return purchase;
+        }
+
+        public PurchaseDTO findById(int id)
+        {
+            PurchaseDTO purchase = null;
+
+            return purchase;
+        }
+
+        public List<PurchaseDTO> getAll()
+        {
+            List<PurchaseDTO> list = new List<PurchaseDTO>();
+
+            return list;
+        }
+
+        public int save()
+        {
+            var id = 0;
+
+            using (var context = new DaoContext())
+            {
+                var storeDAO = context.Store.FirstOrDefault(s => s.ID == 1);
+                var clientDAO = context.Client.FirstOrDefault(c => c.ID == 1);
+                var productDAO = context.Product.Where(p => p.ID == 1).Single();
+
+                var purchase = new DAO.Purchase
+                {
+                    purchase_date = this.purchase_date,
+                    number_confirmation = this.confirmation_number,
+                    purchase_value = this.purchase_value,
+                    number_nf = this.number_nf,
+                    PurchaseStatus = (int)this.purchase_status,
+                    Payment = (int)this.payment_type,
+                    store = storeDAO,
+                    client = clientDAO,
+                    product = productDAO
+                };
+
+
+                context.Purchase.Add(purchase);
+                if (purchase.client != null) { context.Entry(purchase.client).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged; }
+                if (purchase.store != null) {context.Entry(purchase.store).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged; }
+                if (purchase.product != null) {context.Entry(purchase.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged; }
+                
+
+                context.SaveChanges();
+                id = purchase.ID;
+
+            }
+            return id;
+        }
+
+        public void update(PurchaseDTO purchase)
+        {
+            Console.WriteLine("Not yet implemented");
+        }
+
+        public void delete(PurchaseDTO purchase)
+        {
+            Console.WriteLine("Not yet implemented");
+        }
+
+        public void updateStatus()
+        {
+            if (this.purchase_status == PurchaseStatusEnum.awaitingPayment)
+            {
+                this.purchase_status = PurchaseStatusEnum.confirmedPayment;
+            }
+            else
+            {
+                this.purchase_status = PurchaseStatusEnum.awaitingPayment;
+            }
+        }
+
+        public static List<object> getStorePurchases(int storeID)
+        {
+            using(var context = new DaoContext())
+            {
+                var storePurchase = context.Purchase
+                    .Include(s => s.store)
+                    .Include(o => o.store.owner)
+                    .Include(a => a.store.owner.address)
+                    .Include(p => p.product)
+                    .Include(c => c.client)
+                    .Include(a => a.client.address)
+                    .Where(p => p.store.ID == storeID);
+                List<object> purchases = new List<object>();
+                foreach(var compra in storePurchase)
+                {
+                    purchases.Add(compra);
+                }
+                return purchases;
+
+            }
+        }
+
+        public static List<object> getClientPurchases(int clientID)
+        {
+            using (var context = new DaoContext())
+            {
+                var clientPurchase = context.Purchase
+                    .Include(s => s.store)
+                    .Include(o => o.store.owner)
+                    .Include(a => a.store.owner.address)
+                    .Include(p => p.product)
+                    .Include(c => c.client)
+                    .Include(a => a.client.address)
+                    .Where(p => p.store.ID == clientID);
+                List<object> purchases = new List<object>();
+                foreach (var compra in clientPurchase)
+                {
+                    purchases.Add(compra);
+                }
+                return purchases;
+
+            }
+        }
 
         public void setDataPurchase(DateTime date)
         {
@@ -22,7 +193,7 @@ namespace model
 
         public void setNumberConfirmation(string number)
         {
-            this.number_confirmation = number;
+            this.confirmation_number = number;
         }
 
         public void setNumberNf(string number_nf)
@@ -32,12 +203,12 @@ namespace model
 
         public void setPaymentType(PaymentEnum type)
         {
-            this.Payment = type;
+            this.payment_type = type;
         }
 
         public void setPurchaseStatus(PurchaseStatusEnum status)
         {
-            this.PurchaseStatus = status;
+            this.purchase_status = status;
         }
 
         public void setProducts(List<Product> products)
@@ -52,12 +223,12 @@ namespace model
 
         public int getPaymentType()
         {
-            return (int)Payment;
+            return (int)payment_type;
         }
 
         public string getNumberConfirmation()
         {
-            return number_confirmation;
+            return confirmation_number;
         }
 
         public string getNumberNf()
@@ -77,20 +248,7 @@ namespace model
 
         public int getPurchaseStatus()
         {
-            return (int)PurchaseStatus;
-        }
-
-        public Boolean validateObject(Purchase purchase)
-        {
-            if (purchase.number_confirmation == null)
-            {
-                return false;
-            }
-            if(purchase.number_nf == null)
-            {
-                return false;
-            }
-            return true;
+            return (int)purchase_status;
         }
     }
 }

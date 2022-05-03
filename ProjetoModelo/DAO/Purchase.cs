@@ -1,5 +1,4 @@
-﻿using Enums;
-using Interfaces;
+﻿using Interfaces;
 
 namespace DAO
 {
@@ -9,12 +8,13 @@ namespace DAO
         public DateTime purchase_date;
         public string number_confirmation;
         public string number_nf;
-        public PaymentEnum Payment;
-        public PurchaseStatusEnum PurchaseStatus;
+        public int Payment;
+        public int PurchaseStatus;
+        public double purchase_value;
 
         public Client client;
 
-        public Product products;
+        public Product product;
 
         public Store store;
 

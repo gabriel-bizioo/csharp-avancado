@@ -2,6 +2,7 @@
 namespace model;
 public class Person
 {
+    protected int id;
     protected string name;
     protected DateTime date_of_birth;
     protected string document;
@@ -14,6 +15,13 @@ public class Person
     public Person(Address address)
     {
       this.address = address;
+    }
+
+    public Person() { }
+
+    public void setId(int id)
+    {
+        this.id = id;
     }
 
     public void setName(string name)
@@ -44,6 +52,11 @@ public class Person
     public void setLogin(string login)
     {
         this.login = login;
+    }
+
+    public int getId()
+    {
+        return id;
     }
 
     public string getName()

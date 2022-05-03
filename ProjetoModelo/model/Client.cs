@@ -1,6 +1,7 @@
 ﻿using Interfaces;
 using DTO;
 using DAO;
+using Microsoft.EntityFrameworkCore;
 
 namespace model
 {
@@ -11,12 +12,14 @@ namespace model
 
         private Client(Address address) : base(address)
         {
-
+            this.address = address;
         }
 
         public static Client convertDTOToModel(ClientDTO obj)
         {
             Client client = new Client(Address.convertDTOToModel(obj.address));
+
+            client.id = obj.id;
 
             client.name = obj.name;
 
@@ -37,6 +40,14 @@ namespace model
 
         public Boolean validateObject()
         {
+            if(id == null) { return false; }
+            if (name == null) { return false; }
+            if (document == null) { return false; }
+            if (date_of_birth == null) { return false; }
+            if (email == null) { return false; }
+            if (phone == null) { return false; }
+            if (login == null) { return false; }
+            if (password == null) { return false; }
             return true;
         }
 
@@ -51,8 +62,9 @@ namespace model
 
             using (var context = new DaoContext())
             {
-                var address = new DAO.Client
+                var client = new DAO.Client
                 {
+                    ID = this.id,
                     name = this.name,
                     date_of_birth = this.date_of_birth,
                     document = this.document,
@@ -62,11 +74,11 @@ namespace model
                     password = this.password
                 };
 
-                context.ClientList.Add(address);
+                context.Client.Add(client);
 
                 context.SaveChanges();
 
-                id = address.ID;
+                id = client.ID;
 
             }
             return id;
@@ -75,6 +87,25 @@ namespace model
         public void update(ClientDTO obj)
         {
 
+        }
+
+        public static object find(String document)
+        {
+            using (var context = new DaoContext())
+            {
+                var client = context.Client.Include(i => i.address).FirstOrDefault(d => d.document == document);
+                return new
+                {
+                    name = client.name,
+                    date_of_birth = client.date_of_birth,
+                    document = client.document,
+                    email = client.email,
+                    login = client.login,
+                    password = client.password,
+                    phone = client.phone,
+                    address = client.address
+                };
+            }
         }
 
         public ClientDTO findById(int id)
@@ -92,6 +123,8 @@ namespace model
         public ClientDTO convertModelToDTO()
         {
             var clientDTO = new ClientDTO();
+
+            clientDTO.id = this.id;
 
             clientDTO.name = this.name;
 

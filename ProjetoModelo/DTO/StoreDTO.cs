@@ -2,5 +2,7 @@
 public class StoreDTO
 {
     public string name;
-    public string CNPJ;
+    public string cnpj;
+    public OwnerDTO owner;  
+    public List<PurchaseDTO> purchases = new List<PurchaseDTO>();
 }

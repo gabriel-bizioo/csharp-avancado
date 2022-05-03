@@ -11,7 +11,7 @@ namespace DAO
         public string phone;
         public string login;
         public string password;
-        public Address endereco;
+        public Address address;
 
     }
 }
