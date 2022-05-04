@@ -8,28 +8,6 @@ namespace Controller.Controllers;
 
 public class PurchaseController : ControllerBase
 {
-    //[HttpPost]
-    //[Route("register")]
-    //public object registerPurchase([FromBody] PurchaseDTO purchase)
-    //{
-    //    var purchaseModel = model.Purchase.convertDTOToModel(purchase);
-    //    var id = purchaseModel.save();
-    //    return new
-    //    {
-    //        purchaseDate = purchase.purchase_date,
-    //        numberConfirmation = purchase.number_confirmation,
-    //        numberNf = purchase.number_nf,
-    //        purchaseStatus = purchase.purchase_status,
-    //        paymentType = purchase.payment_type,
-    //        purchaseValue = purchase.purchase_value,
-    //        products = purchase.products,
-    //        client = purchase.client,
-    //        store = purchase.store,
-
-    //        id = id
-    //    };
-    //}
-
     [HttpGet]
     [Route("getClient/{clientID}")]
     public object getClientPurchase(int clientID)
@@ -47,11 +25,11 @@ public class PurchaseController : ControllerBase
     }
 
     [HttpPost]
-    [Route("make/{clientID}/{storeID}/{productID}")]
-    public object makePurchase(PurchaseDTO purchase, int clientID, int storeID, int productID)
+    [Route("make")]
+    public object makePurchase(PurchaseDTO purchase)
     {
         var purchaseModel = model.Purchase.convertDTOToModel(purchase);
-        var id = purchaseModel.save(clientID, storeID, productID);
+        var id = purchaseModel.save();
         return new
         {
             purchaseDate = purchase.purchase_date,

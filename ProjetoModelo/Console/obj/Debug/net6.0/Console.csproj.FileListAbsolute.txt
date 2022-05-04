@@ -11,15 +11,7 @@ C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.Identity.Client.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
@@ -69,3 +61,7 @@ C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\obj
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\obj\Debug\net6.0\Console.pdb
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\obj\Debug\net6.0\Console.genruntimeconfig.cache
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\obj\Debug\net6.0\ref\Console.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Newtonsoft.Json.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\Console\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

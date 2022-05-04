@@ -65,7 +65,7 @@ namespace model
                 };
 
                 context.Store.Add(store);
-
+                context.Entry(store.owner).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
                 context.SaveChanges();
 
                 id = store.ID;
@@ -103,16 +103,45 @@ namespace model
             return storeDTO;
         }
 
-        public static object getStoreInformation(int storeId)
+        public static object getStoreInformation(string cnpj)
         {
             using(var context = new DaoContext())
             {
-                var storeDAO = context.Store.Include(s => s.owner).Where(p => p.ID == storeId);
+                var storeDAO = context.Store.Include(s => s.owner).Include(s => s.owner.address).FirstOrDefault(p => p.cnpj == cnpj);
 
-                return storeDAO;
+                return new
+                {
+                    name = storeDAO.name,
+                    cnpj = storeDAO.cnpj,
+                    owner = storeDAO.owner
+                };
             }
         }
 
+        public static List<object> getStores()
+        {
+            using (var context = new DaoContext())
+            {
+                var stores = context.Store.Include(s => s.owner).Include(a => a.owner.address);
+                List<object> lojas = new List<object>();
+                foreach(var store in stores)
+                {
+                    lojas.Add(store);
+                }
+                return lojas;
+            }
+        }
+
+        public static int getOwnerId(Owner owner)
+        {
+            int id;
+            using (var context = new DaoContext())
+            {
+                var ownerDAO = context.Owner.FirstOrDefault(i => i.document == owner.getDocument());
+                id = ownerDAO.ID;
+            }
+            return id;
+        }
 
         public void setName(string name)
         {

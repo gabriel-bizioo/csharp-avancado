@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DTO;
 
+
 namespace Controller.Controllers;
 
 [ApiController]
@@ -8,34 +9,34 @@ namespace Controller.Controllers;
 
 public class StoreController : ControllerBase
 {
-    public void getAllStore() { }
+    [HttpGet]
+    [Route ("get/all")]
+    public object getAllStore()
+    {
+        var lojas = model.Store.getStores();
+        return lojas;
+    }
 
     [HttpPost]
     [Route("register")]
-    public object registerStore(StoreDTO store)
+    public Object regiterStore([FromBody] StoreDTO storeDTO)
     {
-        var storeModel = model.Store.convertDTOToModel(store);
-
-        //var owner = model.Owner.convertDTOToModel(store.owner);
-
-        // var ownerOBJ = owner.find();
-
-        var id = storeModel.save(5);
+        var store = model.Store.convertDTOToModel(storeDTO);
+        var id = store.save(model.Store.getOwnerId(store.getOwner()));
         return new
         {
-            nome = store.name,
-            cnpj = store.cnpj,
-            owner = store.owner,
-            purchase = store.purchases,
+            name = storeDTO.name,
+            cnpj = storeDTO.cnpj,
+            owner = storeDTO.owner.name,
             id = id
         };
     }
 
     [HttpGet]
-    [Route("getStoreInformation /{id}")]
-    public object getStoreInformation(int id)
+    [Route("getStoreInformation/{cnpj}")]
+    public object getStoreInformation(string cnpj)
     {
-        var store = model.Store.getStoreInformation(id);
+        var store = model.Store.getStoreInformation(cnpj);
 
         return store;
     }

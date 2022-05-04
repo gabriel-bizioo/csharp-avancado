@@ -28,8 +28,6 @@ namespace model
 
             if (obj.address != null) { owner.address = Address.convertDTOToModel(obj.address); }
 
-            owner.id = obj.id;
-
             owner.name = obj.name;
 
             owner.date_of_birth = obj.date_of_birth;
@@ -49,7 +47,6 @@ namespace model
 
         public Boolean validateObject()
         {
-            if(id == null) { return false; }
             if (name == null) {return false;}
             if (document == null) {return false;}
             //if (date_of_birth == null) {return false;}
@@ -142,8 +139,6 @@ namespace model
         public OwnerDTO convertModelToDTO()
         {
             var ownerDTO = new OwnerDTO();
-
-            ownerDTO.id = this.id;
 
             ownerDTO.name = this.name;
 

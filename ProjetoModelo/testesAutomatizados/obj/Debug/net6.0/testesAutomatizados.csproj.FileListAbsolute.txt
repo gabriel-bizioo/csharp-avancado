@@ -282,15 +282,7 @@ C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutom
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.Extensions.Logging.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.Extensions.Options.dll
-C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.Extensions.Primitives.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.Identity.Client.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
@@ -413,3 +405,6 @@ C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutom
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\testesAutomatizados.csproj.CopyComplete
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\testesAutomatizados.genruntimeconfig.cache
 C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\obj\Debug\net6.0\ref\testesAutomatizados.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\disrct\Documents\Repositorios\csharp-avancado\ProjetoModelo\testesAutomatizados\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll

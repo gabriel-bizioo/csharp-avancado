@@ -19,7 +19,7 @@ namespace model
         {
             Client client = new Client(Address.convertDTOToModel(obj.address));
 
-            client.id = obj.id;
+            if (obj.address != null) { client.address = Address.convertDTOToModel(obj.address); }
 
             client.name = obj.name;
 
@@ -40,7 +40,6 @@ namespace model
 
         public Boolean validateObject()
         {
-            if(id == null) { return false; }
             if (name == null) { return false; }
             if (document == null) { return false; }
             if (date_of_birth == null) { return false; }
@@ -64,7 +63,6 @@ namespace model
             {
                 var client = new DAO.Client
                 {
-                    ID = this.id,
                     name = this.name,
                     date_of_birth = this.date_of_birth,
                     document = this.document,
@@ -123,8 +121,6 @@ namespace model
         public ClientDTO convertModelToDTO()
         {
             var clientDTO = new ClientDTO();
-
-            clientDTO.id = this.id;
 
             clientDTO.name = this.name;
 

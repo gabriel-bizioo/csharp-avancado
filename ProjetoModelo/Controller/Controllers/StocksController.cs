@@ -16,5 +16,7 @@ public class StocksController : ControllerBase
 
     }
 
+    [HttpPut]
+    [Route("update")]
     public void updateStock(Object request) { }
 }
