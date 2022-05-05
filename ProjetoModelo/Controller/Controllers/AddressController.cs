@@ -35,9 +35,11 @@ namespace Controller.Controllers
             
         }
 
+        [HttpPut]
+        [Route("update")]
         public void updateAddress(AddressDTO address)
         {
-
+            
         }
     }
 }

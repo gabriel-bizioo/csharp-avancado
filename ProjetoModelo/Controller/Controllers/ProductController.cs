@@ -10,10 +10,13 @@ namespace Controllers
     [Route("product")]
     public class ProductController
     {
-        
-        public void allProducts()
+        [HttpGet]
+        [Route("getAll")]
+        public List<object> allProducts()
         {
+            var products = model.Product.getAllProducts();
 
+            return products;
         }
 
         [HttpPost]

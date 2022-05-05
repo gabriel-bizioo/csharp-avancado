@@ -3,6 +3,8 @@ using Interfaces;
 using DAO;
 using DTO;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace model
 {
@@ -69,6 +71,25 @@ namespace model
             OwnerDTO owner = null;
 
             return owner;
+        }
+
+        public static object find(int id)
+        {
+            using (var context = new DaoContext())
+            {
+                var owner = context.Owner.Include(i => i.address).FirstOrDefault(c => c.ID == id);
+                return new
+                {
+                    name = owner.name,
+                    email = owner.email,
+                    phone = owner.phone,
+                    login = owner.login,
+                    passwd = owner.passwd,
+                    document = owner.document,
+                    date_of_birth = owner.date_of_birth,
+                    address = owner.address
+                };
+            }
         }
 
         public List<OwnerDTO> getAll()

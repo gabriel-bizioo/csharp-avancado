@@ -12,7 +12,7 @@ namespace Controllers
 
         [HttpPost]
         [Route("register")]
-        public object requestClientPurchase([FromBody]PurchaseDTO purchaseDTO)
+        public object registerClientPurchase([FromBody]PurchaseDTO purchaseDTO)
         {   
             var purchase = model.Purchase.convertDTOToModel(purchaseDTO);
             
@@ -30,8 +30,16 @@ namespace Controllers
             };
         }
 
-        
-        public void getStorePurchase()
+        [HttpGet]
+        [Route("getFromClient")]
+        public void getClientPurchases()
+        {
+            
+
+        }
+        [HttpGet]
+        [Route("getFromStore")]
+        public void getStorePurchases()
         {
 
         }

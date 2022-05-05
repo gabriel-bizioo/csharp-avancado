@@ -32,9 +32,13 @@ namespace Controllers
 
         }
 
-        public void getInformations()
+        [HttpGet]
+        [Route("get")]
+        public object getInformations([FromBody] int clientID)
         {
-            
+            var clientInfo = model.Client.find(clientID);
+
+            return clientInfo;
         }
     }
 }

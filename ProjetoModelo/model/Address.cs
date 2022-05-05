@@ -46,7 +46,7 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
 
     public void delete(AddressDTO obj)
     {
-
+        
     }
 
     public int save()
@@ -81,8 +81,24 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
 
     public AddressDTO findById(int id)
     {
-
         return new AddressDTO();
+    }
+
+    public static object find(int id)
+    {
+        using(var context = new DaoContext())
+        {
+            var address = context.Address.FirstOrDefault(a => a.ID == id);
+            return new
+            {
+                street = address.street,
+                state = address.state,
+                city = address.city,
+                country = address.country,
+                postal_code = address.postal_code
+
+            };
+        }
     }
 
     public List<AddressDTO> getAll()

@@ -129,6 +129,24 @@ namespace model
             return list;
         }
 
+        
+        public static List<object> getAllStores()
+        {
+            using(var context = new DaoContext())
+            {
+                var stores = context.Store;
+
+                List<object> storelist = new List<object>();
+
+                foreach(var store in stores)
+                {
+                    storelist.Add(store);
+                }
+
+                return storelist;
+            }
+        }
+
         public int save(int ownerID)
         {
             var id = 0;

@@ -1,6 +1,8 @@
 ﻿using Interfaces;
 using DAO;
 using DTO;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace model
 {
@@ -69,9 +71,26 @@ namespace model
 
         public ClientDTO findById(int id)
         {
-            ClientDTO client = null;
+            return new ClientDTO();
+        }
 
-            return client;
+        public static object find(int id)
+        {
+            using(var context = new DaoContext())
+            {
+                var client = context.Client.Include(i => i.address).FirstOrDefault(c => c.ID == id);
+                return new
+                {
+                    name = client.name,
+                    email = client.email,
+                    phone = client.phone,
+                    login = client.login,
+                    passwd = client.passwd,
+                    document = client.document,
+                    date_of_birth = client.date_of_birth,
+                    address = client.address
+                };
+            }
         }
 
         public List<ClientDTO> getAll()

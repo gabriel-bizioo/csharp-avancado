@@ -26,13 +26,18 @@ namespace Controllers
                 //id = id
             };
         }
-        
-        public void getAllStore()
+
+        [HttpGet]
+        [Route("getAll")]
+        public List<object> getAllStores()
         {
-            
+            var storelist = model.Store.getAllStores();
+
+            return storelist; 
         }
     
-
+        [HttpGet]
+        [Route("get")]
         public void getStoreInformation()
         {
         

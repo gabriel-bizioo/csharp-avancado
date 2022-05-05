@@ -70,9 +70,25 @@ namespace model
 
         public List<ProductDTO> getAll()
         {
-            List<ProductDTO> list = new List<ProductDTO>();
 
-            return list;
+            return new List<ProductDTO>();
+        }
+
+        public static List<object> getAllProducts()
+        {
+            using (var context = new DaoContext())
+            {
+                var products = context.Product;
+
+                List<object> productlist = new List<object>();
+
+                foreach(var product in products)
+                {
+                    productlist.Add(product);
+                }
+
+                return productlist;
+            }           
         }
 
         public int save()
