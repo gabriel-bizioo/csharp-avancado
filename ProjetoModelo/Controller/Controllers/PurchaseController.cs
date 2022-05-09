@@ -15,7 +15,7 @@ namespace Controllers
         public void getClientPurchases()
         {
             
-
+                
         }
 
         [HttpGet]

@@ -122,6 +122,16 @@ namespace model
             return store;
         }
 
+        public static DAO.Store find(int id)
+        {
+            using(var context = new DaoContext())
+            {
+                var store = context.Store.FirstOrDefault(s => s.ID == id);
+
+                return store;
+            }
+        }
+
         public List<StoreDTO> getAll()
         {
             List<StoreDTO> list = new List<StoreDTO>();

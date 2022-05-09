@@ -18,7 +18,8 @@ namespace Controller.Controllers
                 var address = model.Address.convertDTOToModel(addressDTO);
 
                 var id = address.save();
-                return new {
+                return new 
+                {
                     street = addressDTO.street,
                     state = addressDTO.state,
                     city = addressDTO.city,
@@ -29,17 +30,18 @@ namespace Controller.Controllers
         }
 
         [HttpDelete]
-        [Route("remove")]
-        public void removeAddress(AddressDTO address)
+        [Route("remove/{id}")]
+        public void removeAddress(int id)
+
         {
-            
+            model.Address.delete(id);
         }
 
         [HttpPut]
-        [Route("update")]
-        public void updateAddress(AddressDTO address)
+        [Route("update/{id}")]
+        public void updateAddress(int id, [FromBody]AddressDTO address)
         {
-            
+            model.Address.update(id, address);
         }
     }
 }

@@ -39,9 +39,11 @@ namespace Controllers
 
         [HttpGet]
         [Route("get")]
-        public void getStoreInformation()
+        public object getStoreInformation([FromBody] int storeID)
         {
-        
+            var store_info = model.Store.find(storeID);
+
+            return store_info;
         }
 
     }
