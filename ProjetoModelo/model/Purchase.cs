@@ -76,6 +76,11 @@ namespace model
             return client;
         }
 
+        public Store getStore()
+        {
+            return store;
+        }
+
         public List<Product> getProducts()
         {
             return products;

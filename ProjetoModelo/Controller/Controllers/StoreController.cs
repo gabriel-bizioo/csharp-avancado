@@ -9,23 +9,6 @@ namespace Controllers
     [Route("store")]
     public class StoreController
     {
-        [HttpPost]
-        [Route("register")]
-        public object registerStore([FromBody] StoreDTO storeDTO)
-        {
-            var store = model.Store.convertDTOToModel(storeDTO);
-
-            //int id = store.save(store.owner.save());
-
-            return new 
-            {
-                owner = storeDTO.Owner,
-                name = storeDTO.name,
-                cnpj = storeDTO.CNPJ,
-                purchases = storeDTO.purchases,
-                //id = id
-            };
-        }
 
         [HttpGet]
         [Route("getAll")]
@@ -35,7 +18,25 @@ namespace Controllers
 
             return storelist; 
         }
-    
+
+        [HttpPost]
+        [Route("register")]
+        public object registerStore([FromBody] StoreDTO storeDTO)
+        {
+            var store = model.Store.convertDTOToModel(storeDTO);
+
+            int id = store.save(store.owner.getID());
+
+            return new
+            {
+                owner = storeDTO.Owner,
+                name = storeDTO.name,
+                cnpj = storeDTO.CNPJ,
+                purchases = storeDTO.purchases,
+                id = id
+            };
+        }
+
         [HttpGet]
         [Route("get")]
         public void getStoreInformation()

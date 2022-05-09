@@ -36,6 +36,23 @@ namespace model
             return true;
         }
 
+        public int getID()
+        {
+            using(var context = new DaoContext())
+            {
+                var owner = context.Owner.FirstOrDefault(i => i.document == this.document);
+                if (owner != null)
+                {
+                    return owner.ID;
+                }
+                else
+                {
+                    return 0;
+                }
+                
+            }
+        }
+
         public OwnerDTO convertModelToDTO()
         {
             OwnerDTO obj = new OwnerDTO();
