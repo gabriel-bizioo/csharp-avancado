@@ -31,17 +31,20 @@ namespace Controller.Controllers
 
         [HttpDelete]
         [Route("remove/{id}")]
-        public void removeAddress(int id)
-
+        public string removeAddress(int id)
         {
             model.Address.delete(id);
+
+            return "address removed";
         }
 
         [HttpPut]
         [Route("update/{id}")]
-        public void updateAddress(int id, [FromBody]AddressDTO address)
+        public string updateAddress(int id, [FromBody]AddressDTO address)
         {
             model.Address.update(id, address);
+
+            return "address updated";
         }
     }
 }

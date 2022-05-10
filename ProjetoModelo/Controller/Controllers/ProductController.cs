@@ -35,15 +35,19 @@ namespace Controllers
             };
         }
 
-        public void deleteProduct(ProductDTO product)
+        [HttpDelete]
+        [Route("remove/{id}")]
+        public void deleteProduct(int id)
         {
-            
+            model.Product.delete(id);
         }
 
 
-        public void updateProduct(ProductDTO product)
+        [HttpPut]
+        [Route("update/{id}")]
+        public void updateProduct(int id, [FromBody]ProductDTO productDTO)
         {
-
+            model.Product.update(id, productDTO);
         }
         
     }

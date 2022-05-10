@@ -115,14 +115,37 @@ namespace model
             return id;
         }
 
-        public void update(ProductDTO client)
+        public static void update(int productID, ProductDTO productDTO)
         {
-            Console.WriteLine("Not yet implemented");
+            using(var context = new DaoContext())
+            {
+                var product = context.Product.FirstOrDefault(p => p.ID == productID);
+
+                if(product != null)
+                {
+                    if(productDTO.name != null)
+                    {
+                        product.name = productDTO.name;
+                    }
+                    if(productDTO.bar_code != null)
+                    {
+                        product.bar_code = productDTO.bar_code;
+                    }
+                }
+                
+                context.SaveChanges();
+            }
         }
 
-        public void delete(ProductDTO client)
+        public static void delete(int productID)
         {
-            Console.WriteLine("Not yet implemented");
+            using(var context = new DaoContext())
+            {
+
+                context.Product.Remove(context.Product.FirstOrDefault(p => p.ID == productID));
+
+                context.SaveChanges();
+            }
         }
     }
 }

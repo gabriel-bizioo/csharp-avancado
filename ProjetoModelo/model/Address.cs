@@ -48,9 +48,7 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
     {
         using(var context = new DaoContext())
         {
-            var address = context.Address.FirstOrDefault(a => a.ID == id);
-
-            context.Address.Remove(address);
+            context.Address.Remove(context.Address.FirstOrDefault(a => a.ID == id));
 
             context.SaveChanges();
         }
