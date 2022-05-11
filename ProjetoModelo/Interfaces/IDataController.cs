@@ -6,7 +6,7 @@ public interface IDataController<T, O>
 {
     public T findById(int id);
 
-    public List<T> getAll();
+    //public List<T> getAll();
 
     //public int save();
 

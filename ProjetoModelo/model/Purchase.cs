@@ -151,9 +151,9 @@ namespace model
             return purchase;
         }
 
-        public List<PurchaseDTO> getAll()
+        public static List<PurchaseDTO> getAll(int id, bool client)
         {
-            List<PurchaseDTO> list = new List<PurchaseDTO>();
+            List<PurchaseDTO> list = new List<PurchaseDTO>();            
 
             return list;
         }
@@ -164,11 +164,11 @@ namespace model
 
             using (var context = new DaoContext())
             {
-                var store = context.Store.FirstOrDefault(s => s.ID == 1);
+                var store = context.Store.FirstOrDefault(s => s.cnpj == this.store.getCNPJ());
 
-                var client = context.Client.FirstOrDefault(c => c.ID == 1);
+                var client = context.Client.FirstOrDefault(c => c.login == this.client.getLogin());
 
-                var product = context.Product.Where(p => p.ID == 1).Single();
+                var product = context.Product.FirstOrDefault(p => p.bar_code == this.products.First().getBarCode());
                 
                 var purchase = new DAO.Purchase
                 {
@@ -198,14 +198,50 @@ namespace model
             return id;
         }
 
-        public void update(PurchaseDTO purchase)
+        public void update(int purchaseID, PurchaseDTO purchaseDTO)
         {
-            Console.WriteLine("Not yet implemented");
+            using(var context = new DaoContext())
+            {
+                var purchase = context.Purchase.FirstOrDefault(p => p.ID == purchaseID);
+
+                if(purchase != null)
+                {
+                    if(purchaseDTO.purchase_date != null)
+                    {
+                        purchase.purchase_date = purchaseDTO.purchase_date;
+                    }
+                    if(purchaseDTO.confirmation_number != null)
+                    {
+                        purchase.confirmation_number = purchaseDTO.confirmation_number;
+                    }
+                    if(purchaseDTO.number_nf != null)
+                    {
+                        purchase.number_nf = purchaseDTO.number_nf;
+                    }
+                    if(purchaseDTO.payment_type != null)
+                    {
+                        purchase.Payment = purchaseDTO.payment_type;
+                    }
+                    if(purchaseDTO.purchase_status != null)
+                    {
+                        purchase.PurchaseStatus = purchaseDTO.purchase_status;
+                    }
+                    if(purchaseDTO.purchase_value != null)
+                    {
+                        purchase.purchase_value = purchaseDTO.purchase_value;
+                    }
+                }
+                
+                context.SaveChanges();
+            }
         }
 
-        public void delete(PurchaseDTO purchase)
+        public void delete(int purchaseID)
         {
-            Console.WriteLine("Not yet implemented");
+            using(var context = new DaoContext())
+            {
+                context.Purchase.Remove(context.Purchase.FirstOrDefault(p => p.ID == purchaseID));
+            }
         }
 
         public void updateStatus()

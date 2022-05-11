@@ -17,6 +17,10 @@ namespace model
             this.address = address;
         }
 
+        private Client()
+        {
+            
+        }
 
         public static Client getInstance(Address endereco)
         {
@@ -56,7 +60,9 @@ namespace model
 
         public static Client convertDTOToModel(ClientDTO obj)
         {
-            Client client = new Client(Address.convertDTOToModel(obj.client_address));
+            Client client = new Client();
+
+            if(obj.client_address != null) { client.address = Address.convertDTOToModel(obj.client_address); }
 
             client.name = obj.name;
             client.email = obj.email;
