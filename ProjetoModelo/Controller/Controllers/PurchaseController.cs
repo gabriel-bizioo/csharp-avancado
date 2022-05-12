@@ -11,18 +11,17 @@ namespace Controllers
     {
 
         [HttpGet]
-        [Route("getClient/{ClientID}")]
-        public void getClientPurchases(int ClientID)
+        [Route("getclient/{clientID}")]
+        public List<object> getClientPurchases(int clientID)
         {
-            
-            
+            return model.Purchase.getClientPurchases(clientID);
         }
 
         [HttpGet]
-        [Route("getStore/{storeID}")]
-        public void getStorePurchases()
+        [Route("getstore/{storeID}")]
+        public List<object> getStorePurchases(int storeID)
         {
-            
+            return model.Purchase.getStorePurchases(storeID);
         }
 
         [HttpPost]
@@ -35,8 +34,7 @@ namespace Controllers
             return new
             {
                 purchase_id = id,
-                purchase_client = purchase.getClient().getName(),
-                purchase_store = purchase.getStore().getName()
+                purchase_date = purchase.getPurchaseDate()
             };
 
         }

@@ -40,7 +40,7 @@ namespace model
         {
             using(var context = new DaoContext())
             {
-                var owner = context.Owner.FirstOrDefault(i => i.document == this.document);
+                var owner = context.Owner.FirstOrDefault(i => i.login == this.login);
                 if (owner != null)
                 {
                     return owner.ID;
@@ -71,7 +71,7 @@ namespace model
         public static Owner convertDTOToModel(OwnerDTO obj)
         {
             Owner owner = new Owner();
-            owner.address = Address.convertDTOToModel(obj.owner_address);
+            if(obj.owner_address != null) { owner.address = Address.convertDTOToModel(obj.owner_address); }
             owner.name = obj.name;
             owner.email = obj.email;
             owner.document = obj.document;

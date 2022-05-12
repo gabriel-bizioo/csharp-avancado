@@ -46,7 +46,7 @@ namespace DAO
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.name).IsRequired();
                 entity.HasOne(d => d.address);
-                entity.Property(e => e.document).IsRequired();
+                //entity.Property(e => e.document).IsRequired();
                 entity.Property(e => e.email).IsRequired();
                 entity.Property(e => e.phone).IsRequired();
                 entity.Property(e => e.login).IsRequired();
@@ -57,7 +57,7 @@ namespace DAO
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.name).IsRequired();
                 entity.HasOne(d => d.address);
-                entity.Property(e => e.document).IsRequired();
+                //entity.Property(e => e.document).IsRequired();
                 entity.Property(e => e.email).IsRequired();
                 entity.Property(e => e.phone).IsRequired();
                 entity.Property(e => e.login).IsRequired();

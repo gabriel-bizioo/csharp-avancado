@@ -2,7 +2,7 @@
 using Interfaces;
 using DAO;
 using DTO;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace model
 {
@@ -128,6 +128,7 @@ namespace model
         {
             Purchase purchase = new Purchase();
 
+            purchase.purchase_date = obj.purchase_date;
             purchase.confirmation_number = obj.confirmation_number;
             purchase.number_nf = obj.number_nf;
             purchase.payment_type = (PaymentEnum)obj.payment_type;
@@ -135,11 +136,15 @@ namespace model
             purchase.client = model.Client.convertDTOToModel(obj.client);
             purchase.store = model.Store.convertDTOToModel(obj.store);
 
-            foreach(var product in obj.purchase_products)
+            if(obj.purchase_products != null)
             {
+                foreach(var product in obj.purchase_products)
+                {
 
-                purchase.products.Add(Product.convertDTOToModel(product));
+                    purchase.products.Add(Product.convertDTOToModel(product));
+                }
             }
+            
 
             return purchase;
         }
@@ -218,18 +223,12 @@ namespace model
                     {
                         purchase.number_nf = purchaseDTO.number_nf;
                     }
-                    if(purchaseDTO.payment_type != null)
-                    {
-                        purchase.Payment = purchaseDTO.payment_type;
-                    }
-                    if(purchaseDTO.purchase_status != null)
-                    {
-                        purchase.PurchaseStatus = purchaseDTO.purchase_status;
-                    }
-                    if(purchaseDTO.purchase_value != null)
-                    {
-                        purchase.purchase_value = purchaseDTO.purchase_value;
-                    }
+                    
+                    purchase.Payment = purchaseDTO.payment_type;
+ 
+                    purchase.PurchaseStatus = purchaseDTO.purchase_status;
+                    
+                    purchase.purchase_value = purchaseDTO.purchase_value;
                 }
                 
                 context.SaveChanges();
@@ -253,6 +252,47 @@ namespace model
             else
             {
                 this.purchase_status = PurchaseStatusEnum.awaitingPayment;
+            }
+        }
+
+        public static List<object> getClientPurchases(int clientID)
+        {
+            using(var context = new DaoContext())
+            {
+                var get_purchases = context.Purchase
+                    .Include(p => p.product)
+                    .Include(p => p.store)
+                    .Where(p => p.client.ID == clientID);
+
+                List<object> purchases = new List<object>();
+
+                foreach(var purchase in get_purchases)
+                {
+                    purchases.Add(purchase);
+                }
+
+                return purchases;
+                
+            }
+        }
+
+        public static List<object> getStorePurchases(int storeID)
+        {
+            using(var context = new DaoContext())
+            {
+                var get_purchases = context.Purchase
+                    .Include(p => p.product)
+                    .Include(p => p.store)
+                    .Where(p => p.store.ID == storeID);
+
+                List<object> purchases = new List<object>();
+
+                foreach(var purchase in get_purchases)
+                {
+                    purchases.Add(purchase);
+                }
+
+                return purchases;
             }
         }
     }

@@ -22,9 +22,7 @@ namespace model
         
         public void addProductToWishList(Product product)
         {
-
             products.Add(product);
-
         }
 
         public Client getClient()
@@ -59,12 +57,15 @@ namespace model
             return obj;
         }
 
-        public WishList convertDTOToModel(WishListDTO obj)
+        public static WishList convertDTOToModel(WishListDTO obj)
         {
 
             WishList wishlist = new WishList(Client.convertDTOToModel(obj.client));
 
-
+            foreach(var product in obj.wishlist_products)
+            {
+                wishlist.products.Add(model.Product.convertDTOToModel(product));
+            }
 
             return wishlist;
         }
@@ -83,14 +84,14 @@ namespace model
             return list;
         }
 
-        public int save(int clientID, int productID)
+        public int save()
         {
             var id = 0;
 
             using (var context = new DaoContext())
             {
-                var client = context.Client.FirstOrDefault(c => c.ID == clientID);
-                var product = context.Product.Where(p => p.ID == productID).Single();
+                var client = context.Client.FirstOrDefault(c => c.login == this.client.getLogin());
+                var product = context.Product.FirstOrDefault(p => p.bar_code == this.products.First().getBarCode());
                 
                 var wishlist = new DAO.WishList
                 {
@@ -117,9 +118,14 @@ namespace model
             Console.WriteLine("Not yet implemented");
         }
 
-        public void delete(WishListDTO wishlist)
+        public static void delete(int wishlistID)
         {
-            Console.WriteLine("Not yet implemented");
+            using(var context = new DaoContext())
+            {
+                context.Remove(context.WishList.FirstOrDefault(w => w.ID == wishlistID));
+
+                context.SaveChanges();
+            }
         }
     }
 }

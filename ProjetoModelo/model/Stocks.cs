@@ -1,7 +1,6 @@
 ﻿using Interfaces;
 using DAO;
 using DTO;
-using System.Linq;
 namespace model
 {
     public class Stocks : IValidateDataObject, IDataController<StocksDTO, Stocks>
@@ -54,6 +53,11 @@ namespace model
             return quantity;
         }
 
+        public double getUnitPrice()
+        {
+            return unit_price;
+        }
+
 
         public Boolean validateObject()
         {
@@ -78,11 +82,11 @@ namespace model
             return obj;
         }
 
-        public Stocks convertDTOToModel(StocksDTO obj)
+        public static Stocks convertDTOToModel(StocksDTO obj)
         {
             Stocks purchase = new Stocks(Store.convertDTOToModel(obj.store), Product.convertDTOToModel(obj.product));
 
-            purchase.quantity = this.quantity;         
+            purchase.quantity = obj.quantity;         
 
             return purchase;
         }
@@ -101,22 +105,22 @@ namespace model
             return list;
         }
 
-        public int save(int storeID, int productID, int quantity, double unit_price)
+        public int save()
         {
             var id = 0;
             
 
             using (var context = new DaoContext())
             {
-                var store = context.Store.FirstOrDefault(s => s.ID == storeID);
+                var store = context.Store.FirstOrDefault(s => s.cnpj == this.store.getCNPJ());
 
-                var product = context.Product.FirstOrDefault(p => p.ID == productID);
+                var product = context.Product.FirstOrDefault(p => p.bar_code == this.product.getBarCode());
 
                 var stocks = new DAO.Stocks
                 {
-                    quantity = quantity,
+                    quantity = this.quantity,
 
-                    unit_price = unit_price,
+                    unit_price = this.unit_price,
 
                     store = store,
 
@@ -137,9 +141,26 @@ namespace model
             return id;
         }
 
-        public void update(StocksDTO purchase)
+        public static void update(int stockID, StocksDTO stocksDTO)
         {
-            Console.WriteLine("Not yet implemented");
+            using(var context = new DaoContext())
+            {
+                var stock = context.Stocks.FirstOrDefault(s => s.ID == stockID);
+
+                if(stock != null)
+                {
+                    if(stocksDTO.quantity >= 0)
+                    {
+                        stock.quantity = stocksDTO.quantity;
+                    }
+                    if(stocksDTO.unit_price >= 0)
+                    {
+                        stock.unit_price = stocksDTO.unit_price;
+                    }
+
+                    context.SaveChanges();
+                }
+            }
         }
 
         public void delete(StocksDTO purchase)

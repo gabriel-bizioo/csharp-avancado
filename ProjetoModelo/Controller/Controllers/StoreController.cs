@@ -11,7 +11,7 @@ namespace Controllers
     {
 
         [HttpGet]
-        [Route("getAll")]
+        [Route("getall")]
         public List<object> getAllStores()
         {
             var storelist = model.Store.getAllStores();
@@ -38,8 +38,8 @@ namespace Controllers
         }
 
         [HttpGet]
-        [Route("get")]
-        public object getStoreInformation([FromBody] int storeID)
+        [Route("get/{storeID}")]
+        public object getStoreInformation(int storeID)
         {
             var store_info = model.Store.find(storeID);
 

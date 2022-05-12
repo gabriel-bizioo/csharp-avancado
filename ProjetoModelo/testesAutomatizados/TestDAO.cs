@@ -546,7 +546,7 @@ namespace testesAutomatizados
 
                     double unit = (i*j*3.14);
 
-                    id = stc.save(i, j, i+j, unit);
+                    //id = stc.save(i, j, i+j, unit);
 
                     Assert.That(id, Is.Not.EqualTo(0));
 
