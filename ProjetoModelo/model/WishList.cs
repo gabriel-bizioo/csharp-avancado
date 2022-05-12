@@ -19,14 +19,14 @@ namespace model
 
         public static WishList convertDTOToModel(WishListDTO obj)
         {
-            WishList wishlist = new WishList(Client.convertDTOToModel(obj.client));
+            var wishList = new WishList(Client.convertDTOToModel(obj.client));
 
-            foreach (var product in obj.products)
+            foreach (var prod in obj.products)
             {
-                wishlist.products.Add(Product.convertDTOToModel(product));
+                wishList.addProductToWishList(Product.convertDTOToModel(prod));
             }
 
-            return wishlist;
+            return wishList;
         }
 
         public Boolean validateObject()
@@ -47,7 +47,7 @@ namespace model
             using (var context = new DaoContext())
             {
                 var client = context.Client.FirstOrDefault(c => c.ID == clientID);
-                var product = context.Product.Where(p => p.ID == productID).Single();
+                var product = context.Product.FirstOrDefault(p => p.ID == productID);
 
                 var wishlist = new DAO.WishList();
                 {
@@ -57,12 +57,21 @@ namespace model
 
                 context.WishList.Add(wishlist);
 
-                context.SaveChanges();
-
                 id = wishlist.ID;
-
                 context.Entry(wishlist.client).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
                 context.Entry(wishlist.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                context.SaveChanges();
+            }
+            return id;
+        }
+
+        public static int GetClientID(Client client)
+        {
+            int id;
+            using (var context = new DaoContext())
+            {
+                var clientDAO = context.Client.FirstOrDefault(i => i.document == client.getDocument());
+                id = clientDAO.ID;
             }
             return id;
         }
@@ -97,6 +106,15 @@ namespace model
             return wishListDTO;
         }
 
+        public static int findId(string document)
+        {
+            using (var context = new DaoContext())
+            {
+                var client = context.Client.FirstOrDefault(s => s.document == document);
+                return client.ID;
+            }
+        }
+
         public void addProductToWishList(Product product)
         {
 
@@ -112,6 +130,16 @@ namespace model
         public List<Product> getProducts()
         {
             return products;
+        }
+
+        public void SetClient(Client client)
+        {
+            this.client = client;
+        }
+
+        public void SetProducts(List<Product> products)
+        {
+            this.products = products;
         }
     }
 }

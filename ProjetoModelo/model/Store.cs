@@ -143,6 +143,15 @@ namespace model
             return id;
         }
 
+        public static int findId(string cnpj)
+        {
+            using (var context = new DaoContext())
+            {
+                var store = context.Store.FirstOrDefault(s => s.cnpj == cnpj);
+                return store.ID;
+            }
+        }
+
         public void setName(string name)
         {
             this.name = name;

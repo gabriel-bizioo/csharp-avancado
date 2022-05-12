@@ -93,6 +93,25 @@ namespace model
             return productDTO;
         }
 
+        public static int findId(string bar_code)
+        {
+            using(var context = new DaoContext())
+            {
+                var product = context.Product.FirstOrDefault(S => S.bar_code == bar_code);
+                return product.ID;
+            }
+        }
+
+        public static int find(ProductDTO product)
+        {
+            using (var context = new DaoContext())
+            {
+                var products = context.Product.FirstOrDefault(s => s.bar_code == product.bar_code);
+                return products.ID;
+            }
+        }
+
+
 
         public void setName(string nome)
         {

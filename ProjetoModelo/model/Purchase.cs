@@ -58,12 +58,22 @@ namespace model
                 purchase.client = Client.convertDTOToModel(obj.client);
             }
 
+            if(obj.store != null)
+            {
+                purchase.store = Store.convertDTOToModel(obj.store);
+            }
+
             purchase.confirmation_number = obj.number_confirmation;
             purchase.number_nf = obj.number_nf;
             purchase.payment_type = (PaymentEnum)obj.payment_type;
             purchase.purchase_status = (PurchaseStatusEnum)obj.purchase_status;
             purchase.purchase_date = obj.purchase_date;
             purchase.purchase_value = obj.purchase_value;
+
+            foreach(var product in obj.products)
+            {
+                purchase.products.Add(Product.convertDTOToModel(product));
+            }
 
 
             return purchase;
@@ -96,10 +106,10 @@ namespace model
                     purchase_date = this.purchase_date,
                     number_confirmation = this.confirmation_number,
                     number_nf = this.number_nf,
-                    Payment =(int) this.payment_type,
+                    Payment = (int) this.payment_type,
                     PurchaseStatus = (int)this.purchase_status,
-                    client = context.Client.Where(c => c.document == this.client.getDocument()).Single(),
-                    store = context.Store.Where(s => s.cnpj == this.store.getCNPJ()).Single(),
+                    client = context.Client.FirstOrDefault(c => c.document == this.client.getDocument()),
+                    store = context.Store.FirstOrDefault(s => s.cnpj == this.store.getCNPJ()),
                     product = context.Product.Where(p => p.bar_code == this.products.First().getBarCode()).Single()
                 };
 
@@ -170,7 +180,7 @@ namespace model
                     .Include(p => p.product)
                     .Include(c => c.client)
                     .Include(a => a.client.address)
-                    .Where(p => p.store.ID == clientID);
+                    .Where(p => p.client.ID == clientID);
                 List<object> purchases = new List<object>();
                 foreach (var compra in clientPurchase)
                 {

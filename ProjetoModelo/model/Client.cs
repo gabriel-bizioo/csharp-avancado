@@ -15,9 +15,14 @@ namespace model
             this.address = address;
         }
 
+        private Client()
+        {
+
+        }
+
         public static Client convertDTOToModel(ClientDTO obj)
         {
-            Client client = new Client(Address.convertDTOToModel(obj.address));
+            Client client = new Client();
 
             if (obj.address != null) { client.address = Address.convertDTOToModel(obj.address); }
 
@@ -55,14 +60,25 @@ namespace model
 
         }
 
-        public int save()
+       public int save()
         {
             var id = 0;
 
             using (var context = new DaoContext())
             {
+                var address = new DAO.Address
+                {
+                    street = this.address.getStreet(),
+                    city = this.address.getCity(),
+                    state = this.address.getState(),
+                    country = this.address.getCountry(),
+                    postal_code = this.address.getPostalCode()
+                };
+
                 var client = new DAO.Client
                 {
+                    ID = id,
+                    address = address,
                     name = this.name,
                     date_of_birth = this.date_of_birth,
                     document = this.document,
@@ -105,6 +121,7 @@ namespace model
                 };
             }
         }
+
 
         public ClientDTO findById(int id)
         {

@@ -109,17 +109,17 @@ namespace model
         {
             using (var context = new DaoContext())
             {
-                var client = context.Client.Include(i => i.address).FirstOrDefault(d => d.document == document);
+                var owner = context.Owner.Include(i => i.address).FirstOrDefault(d => d.document == document);
                 return new
                 {
-                    name = client.name,
-                    date_of_birth = client.date_of_birth,
-                    document = client.document,
-                    email = client.email,
-                    login = client.login,
-                    password = client.password,
-                    phone = client.phone,
-                    address = client.address
+                    name = owner.name,
+                    date_of_birth = owner.date_of_birth,
+                    document = owner.document,
+                    email = owner.email,
+                    login = owner.login,
+                    password = owner.password,
+                    phone = owner.phone,
+                    address = owner.address
                 };
             }
         }
