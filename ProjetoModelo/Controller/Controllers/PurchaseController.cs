@@ -30,6 +30,7 @@ public class PurchaseController : ControllerBase
     {
         var purchaseModel = model.Purchase.convertDTOToModel(purchase);
         var id = purchaseModel.save();
+        
         return new
         {
             purchaseDate = purchase.purchase_date,

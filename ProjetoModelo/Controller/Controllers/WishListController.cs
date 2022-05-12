@@ -24,6 +24,18 @@ public class WishListController : ControllerBase
     //         };
     // }
 
+    [HttpDelete]
+    [Route ("delete")]
+    public object removeProductToWishList([FromBody] WishListDTO whishListDTO)
+    {
+        var whishList = model.WishList.convertDTOToModel(whishListDTO);
 
-    public void removeProductToWishList(Object request) { }
+        whishList.delete(whishListDTO);
+
+        return new
+        {
+            status = "ok",
+            mensagem = "excluído"
+        };
+    }
 }
