@@ -568,7 +568,7 @@ namespace testesAutomatizados
                     for(int product = 1; product<5;product++){
                         var wishList = new model.WishList();
 
-                        id = wishList.save(cliente.ID, product);
+                        //id = wishList.save(cliente.ID, product);
 
                         Assert.That(id, Is.Not.EqualTo(0));
 

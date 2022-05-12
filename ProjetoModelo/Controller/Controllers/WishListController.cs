@@ -9,23 +9,19 @@ namespace Controllers
     [Route("wishlist")]
     public class WishListController
     {
-        [HttpPut]
+        [HttpPost]
         [Route("add")]
-        public object addProductToWishList([FromBody] ProductDTO productDTO, [FromBody] WishListDTO wishlistDTO)
+        public object addProductToWishList([FromBody] WishListDTO wishlistDTO)
         {
-            var product = model.Product.convertDTOToModel(productDTO);
             var wishlist = model.WishList.convertDTOToModel(wishlistDTO);
-
-            wishlist.addProductToWishList(product);
 
             int id = wishlist.save();
             
             return new 
             {
                 id = id,
-                Client = wishlist.getClient().getLogin(),
+                client = wishlist.getClient().getLogin(),
                 product = wishlist.getProducts().First().getBarCode()
-
             };
         }
 

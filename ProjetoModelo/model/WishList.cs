@@ -60,7 +60,9 @@ namespace model
         public static WishList convertDTOToModel(WishListDTO obj)
         {
 
-            WishList wishlist = new WishList(Client.convertDTOToModel(obj.client));
+            WishList wishlist = new WishList();
+
+            wishlist.client = Client.convertDTOToModel(obj.client);
 
             foreach(var product in obj.wishlist_products)
             {
