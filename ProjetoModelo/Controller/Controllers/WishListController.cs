@@ -14,22 +14,30 @@ namespace Controllers
         public object addProductToWishList([FromBody] WishListDTO wishlistDTO)
         {
             var wishlist = model.WishList.convertDTOToModel(wishlistDTO);
-
+            
             int id = wishlist.save();
             
             return new 
             {
                 id = id,
                 client = wishlist.getClient().getLogin(),
-                product = wishlist.getProducts().First().getBarCode()
+                product = wishlist.getProducts()
             };
         }
 
         [HttpDelete]
         [Route("remove")]
-        public void removeProductFromwishList()
+        public object removeProductFromwishList([FromBody] WishListDTO wishListDTO)
         {
-            
+            var wishlist = model.WishList.convertDTOToModel(wishListDTO);
+
+            wishlist.delete();
+
+            return new 
+            {
+                delete = "ok",
+                problems = "no"
+            };
         }
         
     }

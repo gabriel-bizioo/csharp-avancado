@@ -93,23 +93,28 @@ namespace model
             using (var context = new DaoContext())
             {
                 var client = context.Client.FirstOrDefault(c => c.login == this.client.getLogin());
-                var product = context.Product.FirstOrDefault(p => p.bar_code == this.products.First().getBarCode());
                 
-                var wishlist = new DAO.WishList
+                
+                foreach(var product in this.products)
                 {
-                    client = client,
-                    product = product
+                    var currentProduct = context.Product.FirstOrDefault(p => p.bar_code == product.getBarCode());
 
-                };
+                    var wishlist = new DAO.WishList
+                    {
+                        client = client,
+                        product = currentProduct
 
-                context.WishList.Add(wishlist);
+                    };
 
-                context.Entry(wishlist.client).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
-                context.Entry(wishlist.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                    context.WishList.Add(wishlist);
 
-                context.SaveChanges();
+                    context.Entry(wishlist.client).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                    context.Entry(wishlist.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
 
-                id = wishlist.ID;
+                    context.SaveChanges();
+
+                    id = wishlist.ID;
+                }                   
 
             }
             return id;
@@ -120,11 +125,15 @@ namespace model
             Console.WriteLine("Not yet implemented");
         }
 
-        public static void delete(int wishlistID)
+        public async void delete()
         {
             using(var context = new DaoContext())
             {
-                context.Remove(context.WishList.FirstOrDefault(w => w.ID == wishlistID));
+                var wishlist = context.WishList.Where(w => w.client.login == this.client.getLogin());
+                foreach(var product in this.products)
+                {
+                    context.Remove(wishlist.FirstOrDefault(w => w.product.bar_code == product.getBarCode()));
+                }
 
                 context.SaveChanges();
             }
