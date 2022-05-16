@@ -17,6 +17,7 @@ namespace model
             this.client = client;
         }
 
+
         public static WishList convertDTOToModel(WishListDTO obj)
         {
             var wishList = new WishList(Client.convertDTOToModel(obj.client));
@@ -35,9 +36,14 @@ namespace model
             return true;
         }
 
-        public void delete(WishListDTO obj)
+        public static void delete(int wishList)
         {
+            using (var context = new DaoContext())
+            {
+                context.WishList.Remove(context.WishList.FirstOrDefault(a => a.ID == wishList));
+                context.SaveChanges();
 
+            }
         }
 
         public int save(int clientID, int productID)

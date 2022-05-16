@@ -44,16 +44,32 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
         return true;
     }
 
-    public void delete(AddressDTO obj)
+    public static void delete(int id)
     {
         using (var context = new DaoContext())
         {
-            var address = context.Address.FirstOrDefault(/*x => x.id == this.id*/);
-            context.Address.Remove(address);
-            context.SaveChanges();
+            var address = context.Address.FirstOrDefault(a => a.ID == id);
+            var client = context.Client.FirstOrDefault(c => c.address.ID == address.ID);
+            var owner = context.Owner.FirstOrDefault(o => o.address.ID == address.ID);
+            if (client != null)
+            {
+                context.Remove(client.address);
 
+            }
+            else if (owner != null)
+            {
+                context.Remove(owner.address);
+            }
+            else
+            {
+                context.Remove(address);
+            }
+
+            context.SaveChanges();
         }
     }
+
+
 
     public int save()
     {
@@ -80,9 +96,37 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
         return id;
     }
 
-    public void update(AddressDTO obj)
+    public static void update(int id, AddressDTO addressDTO)
     {
+        using (var context = new DaoContext())
+        {
+            var address = context.Address.FirstOrDefault(a => a.ID == id);
 
+            if (address != null)
+            {
+                if (addressDTO.street != null)
+                {
+                    address.street = addressDTO.street;
+                }
+                if (addressDTO.city != null)
+                {
+                    address.city = addressDTO.city;
+                }
+                if (addressDTO.state != null)
+                {
+                    address.state = addressDTO.state;
+                }
+                if (addressDTO.country != null)
+                {
+                    address.country = addressDTO.country;
+                }
+                if (addressDTO.poste_code != null)
+                {
+                    address.postal_code = addressDTO.poste_code;
+                }
+            }
+            context.SaveChanges();
+        }
     }
 
     public AddressDTO findById(int id)

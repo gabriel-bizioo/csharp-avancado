@@ -37,7 +37,7 @@ namespace model
             return true;
         }
 
-        public void delete(StocksDTO obj)
+        public static void delete(StocksDTO obj)
         {
 
         }
@@ -70,9 +70,26 @@ namespace model
             return id;
         }
 
-        public void update(StocksDTO obj)
+        public static void update(int id,StocksDTO stocksDTO)
         {
+            using (var context = new DaoContext())
+            {
+                var stock = context.Stocks.FirstOrDefault(s => s.ID == id);
 
+                if (stock != null)
+                {
+                    if (stocksDTO.quantity >= 0)
+                    {
+                        stock.quantity = stocksDTO.quantity;
+                    }
+                    if (stocksDTO.unit_price >= 0)
+                    {
+                        stock.unit_price = stocksDTO.unit_price;
+                    }
+
+                    context.SaveChanges();
+                }
+            }
         }
 
         public StocksDTO findById(int id)

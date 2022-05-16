@@ -33,15 +33,15 @@ namespace model
             return true;
         }
 
-        public void delete(ProductDTO obj)
+        public static void delete(int productDTO)
         {
             using (var context = new DaoContext())
             {
-                     var product =  context.Product.FirstOrDefault(/*x => x.ID = id*/);
-                     context.Product.Remove(product);
-                     context.SaveChanges();
-                 }
+                context.Product.Remove(context.Product.FirstOrDefault(p => p.ID == productDTO));
+                context.SaveChanges();
+
             }
+        }
 
         public int save()
         {
@@ -65,9 +65,25 @@ namespace model
             return id;
         }
 
-        public void update(ProductDTO obj)
+        public static void update(int id, ProductDTO productDTO)
         {
+            using (var context = new DaoContext())
+            {
+                var product = context.Product.FirstOrDefault(a => a.ID == id);
 
+                if (product != null)
+                {
+                    if (productDTO.name != null)
+                    {
+                        product.name = productDTO.name;
+                    }
+                    if(productDTO.bar_code != null)
+                    {
+                        product.bar_code = productDTO.bar_code;
+                    }
+                }
+                context.SaveChanges();
+            }
         }
 
         public ProductDTO findById(int id)

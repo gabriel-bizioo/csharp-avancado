@@ -125,7 +125,7 @@ namespace model
             return id;
         }
 
-        public void update(PurchaseDTO purchase)
+        public static void update(PurchaseDTO purchase)
         {
             Console.WriteLine("Not yet implemented");
         }
