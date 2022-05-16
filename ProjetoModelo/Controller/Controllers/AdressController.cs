@@ -28,18 +28,16 @@ public class AdressController : ControllerBase
         };
     }
 
-    [HttpDelete]
-    public object removeAdress(AddressDTO address) 
-    {
-        // var addressModel = model.Address.convertDTOToModel(address);
-         //addressModel.delete(address)
-        return new
-        {
-            //status = "ok",
-            //mensagem = "Excluido com sucesso"
-        };
-    }
-
+   [HttpDelete]
+   [Route("remove/{id}")]
+   public void removeAddress(int id)
+   {
+      model.Address.delete(id);
+   }
     [HttpPut]
-    public void updateAdress(AddressDTO adress) { }
+    [Route("update/{id}")]
+    public void updateAddress(int id, AddressDTO address)
+    {
+        model.Address.update(id, address);
+    }
 }

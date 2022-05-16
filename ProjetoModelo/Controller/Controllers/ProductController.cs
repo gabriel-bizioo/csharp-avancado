@@ -25,19 +25,16 @@ public class ProductController : ControllerBase
     }
 
     [HttpDelete]
-    [Route("delete")]
-    public object deleteProduct(ProductDTO product)
+    [Route("delete/{id}")]
+    public void deleteProduct(int id)
     {
-        var productModel = model.Product.convertDTOToModel(product);
-        productModel.delete(product);
-        return new
-        {
-            status = "ok",
-            mensagem = "Excluido com sucesso"
-        };
+       model.Product.delete(id);
     }
 
     [HttpPut]
-    [Route("put")]
-    public void updateProduct(ProductDTO product) { }
+    [Route("put/{id}")]
+    public void updateProduct(int id, ProductDTO product) 
+    {
+        model.Product.update(id,product);
+    }
 }

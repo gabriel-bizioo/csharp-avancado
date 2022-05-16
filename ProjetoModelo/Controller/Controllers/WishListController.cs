@@ -12,7 +12,8 @@ public class WishListController : ControllerBase
     [Route ("register")]
     public object addProductToWishList([FromBody] WishListDTO wishList)
     {
-        var wishListModel = model.WishList.convertDTOToModel(wishList);
+       
+        var wishListModel = new model.WishList();
         var idClient = model.WishList.findId(wishList.client.document);
         var id = 0;
         foreach (var product in wishList.products)
@@ -22,24 +23,16 @@ public class WishListController : ControllerBase
         }
         return new
         {
-            id = id,
+            id =0,
             client = wishList.client.document,
             produto = wishList.products
         };
     }
 
     [HttpDelete]
-    [Route ("delete")]
-    public object removeProductToWishList([FromBody] WishListDTO whishListDTO)
+    [Route ("delete/{id}")]
+    public void removeProductToWishList(int whishListDTO)
     {
-        var whishList = model.WishList.convertDTOToModel(whishListDTO);
-
-        whishList.delete(whishListDTO);
-
-        return new
-        {
-            status = "ok",
-            mensagem = "excluído"
-        };
+        model.WishList.delete(whishListDTO);
     }
 }

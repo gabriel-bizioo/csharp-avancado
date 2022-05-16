@@ -30,6 +30,9 @@ public class StocksController : ControllerBase
     }
 
     [HttpPut]
-    [Route("update")]
-    public void updateStock(Object request) { }
+    [Route("update/{id}")]
+    public void updateStock(int id, StocksDTO stocks) 
+    {
+        model.Stocks.update(id, stocks);
+    }
 }
