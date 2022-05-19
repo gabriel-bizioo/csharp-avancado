@@ -8,11 +8,11 @@ import axios from 'axios';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-
+  titlePage="Products";
   products: [Product] | undefined;
   constructor()
   {
-    this.getAllProducts();
+    //this.getAllProducts();
   }
 
   ngOnInit(): void {

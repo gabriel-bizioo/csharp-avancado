@@ -1,0 +1,138 @@
+/*RESET*/
+*, *:before, *:after{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.content{
+    width: 500px;
+    min-height: 560px;
+    margin:0px auto;
+    position: relative;
+    top: 80px;
+}
+
+
+h1{
+    font-size: 48px;
+    color: #066a75;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+h1::after{
+    content: ' ';
+    display: block;
+    width: 100%;
+    height: 2px;
+    margin-top: 10px;
+    background: -webkit-gradient(left, rbba(147,184,189,0), rgba(147,184,189,0) 20%, rgba(147,184,189,1)53%, rgba(147,184,189,0.8)79%,rgba(147,184,189,0)100%);
+    background: linear-gradient(left, rgba(147,184,189,0) 0%,rgba(147,184,189,0.8) 20%,rgba(147,184,189,1) 53%,rgba(147,184,189,0.8) 79%,rgba(147,184,189,0) 100%);
+}
+
+p{
+    margin-bottom: 15px;
+}
+
+.content p:first-child{
+    margin: 0px;
+}
+
+label{
+    color: #405c60;
+    position: relative;
+}
+
+
+input{
+    outline: none;
+}
+
+/*style input*/
+input:not([type="checkbox"]){
+    width: 100%;
+    margin-top: 4px;
+    padding: 10px;
+    border: 1px solid #b2b2b2;
+
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+
+    -webkit-box-shadow: 0px 1px 4px 0px rbba(168,168,168,0.6 inset);
+    box-shadow: 3px;
+
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+/*style button submit*/
+input[type="submit"]{
+    width: 100%!important;
+    cursor: pointer;
+    background: rgb(61,157,179);
+    padding: 8px 5px;
+    color:#fff;
+    font-size: 20px;
+    border: 1px solid #fff;
+    margin-bottom: 10px;
+    text-shadow: 0 1px 1px #333;
+    border-radius: 5px;
+    transition: all 0.2s linear;
+}
+
+
+.link{
+    position: absolute;
+    background: #e1eaeb;
+    color: #7f7c7c;
+    left: 0px;
+    height: 10px;
+    width: 438px;
+    padding: 17px 25px 25px 25px;
+    font-size: 15px;
+    text-align: center;
+    border-top: 1px solid #dbe5e8;
+}
+
+.link a{
+    font-weight: bold;
+    background: #f7f8f1;
+    padding: 6px;
+    color: rgb(29,162,193);
+    margin-left: 10px;
+
+    border-radius: 4px;
+    transition: all 0.4s linear;
+}
+
+.link a:hover{
+    color: #39bfd7;
+    background: #f7f7f7;
+    border: 1px solid #4ab3c6;
+}
+
+#login{
+    position: absolute;
+    top: 0px;
+    width: 88%;
+    padding: 18px 6% 60px 6%;
+    background: #f7f7f7;
+    border: 1px solid rgba(147,184,189,0.8);
+
+    border-radius: 5px;
+    animation-duration: 0.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+}
+
+/*effect button login*/
+#paralogin:target ~ .content #login{
+    z-index: 2;
+    animation-name: fadeInLeft;
+    animation-delay: .1s;
+}
+
+
