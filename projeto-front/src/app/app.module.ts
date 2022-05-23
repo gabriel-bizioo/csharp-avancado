@@ -21,7 +21,11 @@ import { LoginComponent } from './login/login.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot([])
+    RouterModule.forRoot([
+      {path: '', component : ProductListComponent},
+      {path: 'product/:productID', component: ProductDetailComponent},
+      {path: 'login', component: LoginComponent}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
