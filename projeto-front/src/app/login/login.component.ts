@@ -7,7 +7,7 @@ import axios from 'axios';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  titlePage = "Site";
+  titlePage="Login";
   constructor() { }
 
   ngOnInit(): void {

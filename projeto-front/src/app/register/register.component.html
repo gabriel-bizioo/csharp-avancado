@@ -1,0 +1,53 @@
+<app-top-bar [titulo]="titlePage"></app-top-bar>
+<div class="content">
+    <div id="login">
+        <form method="post" action="">
+            <h1>REGISTER</h1>
+
+            <p> 
+                <label for="nome_cad">Full Name</label>
+                <input id="nome_cad" name="nome_cad" required="required" type="text" />
+            </p>
+
+            <p> 
+                <label for="nome_cad">Name Login</label>
+                <input id="nome_cad" name="nome_cad" required="required" type="text" />
+            </p>
+
+            <p> 
+                <label for="nome_cad">Document</label>
+                <input id="nome_cad" name="nome_cad" required="required" type="number" />
+            </p>
+
+            <p> 
+                <label for="nome_cad">  Date of Birthday</label>
+                <input id="nome_cad" name="nome_cad" required="required" type="text" />
+            </p>
+
+            <p> 
+                <label for="nome_cad">Phone</label>
+                <input id="nome_cad" name="nome_cad" required="required" type="tel" />
+            </p>
+               
+            <p> 
+                <label for="email_cad">E-mail</label>
+                <input id="email_cad" name="email_cad" required="required" type="email"/> 
+            </p>
+               
+            <p> 
+                <label for="senha_cad">Password</label>
+                <input id="senha_cad" name="senha_cad" required="required" type="password"/>          
+            </p>
+               
+            <p> 
+                <input type="submit" value="Cadastrar"/> 
+            </p>
+               
+            <p class="link">  
+                Já tem conta?
+                <a [routerLink]="['login']"> Fazer Login </a>
+           </p>
+        </form>
+    </div>
+</div>     
+            

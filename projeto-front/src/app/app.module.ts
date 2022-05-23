@@ -8,6 +8,7 @@ import { TopBarComponent } from './top-bar/top-bar.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { LoginComponent } from './login/login.component';
     TopBarComponent,
     ProductListComponent,
     ProductDetailComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { LoginComponent } from './login/login.component';
     RouterModule.forRoot([
       {path: '', component : ProductListComponent},
       {path: 'product/:productID', component: ProductDetailComponent},
-      {path: 'login', component: LoginComponent}
+      {path: 'login', component: LoginComponent},
+      {path: 'register', component: RegisterComponent}
     ])
   ],
   providers: [],
