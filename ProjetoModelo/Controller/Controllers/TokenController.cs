@@ -18,11 +18,11 @@
 //         }    
 //         [HttpPost]
 //         [Route("api")]
-//         public IActionResult GenerateToken([FromBody]LoggingBuilderExtensions Login)
+//         public IActionResult GenerateToken([FromBody]ClientDTO Login)
 //         {
 //             if(Login != null && Login.login != null && Login.passwd != null)
 //             {
-//                 var user = model.Client.getLogin(Login);
+//                 var user = model.Client.GetLogin(Login);
 //                 if(user != null )
 //                 {
 //                     var claims = new[]

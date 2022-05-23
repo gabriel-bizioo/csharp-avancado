@@ -99,6 +99,36 @@ namespace model
             }
         }
 
+        public static Client GetLogin(ClientDTO ClientLogin)
+        {
+            Client? obj;
+
+            using(var context = new DaoContext())
+            {
+                var Client = context.Client.FirstOrDefault(c => c.login == ClientLogin.login && c.passwd == ClientLogin.passwd);
+
+                if(Client != null)
+                {
+                    obj = new Client
+                    {
+                        date_of_birth = Client.date_of_birth,
+                        document = Client.document,
+                        email = Client.email,
+                        name = Client.name,
+                        login = Client.login,
+                        passwd = Client.passwd,
+                        phone = client.phone
+                    };
+                }
+                else
+                {
+                    obj = null;
+                }
+                
+            }
+
+            return obj;
+        }
         public List<ClientDTO> getAll()
         {
             List<ClientDTO> list = new List<ClientDTO>();
@@ -142,6 +172,22 @@ namespace model
 
             }
             return id;
+        }
+
+        public int getId()
+        {
+            using(var context = new DaoContext())
+            {
+                var Client = context.Client.FirstOrDefault(c => c.login == this.login && c.passwd == this.passwd);
+                if(Client != null)
+                {
+                    return Client.ID;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
         }
 
         public void update(ClientDTO client)
