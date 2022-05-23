@@ -3,7 +3,7 @@ using DTO;
 using model;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Controllers
+namespace Controller.Controllers
 {
     [ApiController]
     [Route("owner")]

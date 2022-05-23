@@ -4,7 +4,7 @@ using model;
 using Microsoft.AspNetCore.Mvc;
 
 
-namespace Controllers
+namespace Controller.Controllers
 {
     [ApiController]
     [Route("product")]
