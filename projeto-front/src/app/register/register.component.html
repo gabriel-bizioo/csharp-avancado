@@ -1,51 +1,57 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
 <div class="content">
-    <div id="login">
+    <div id="cadastro">
         <form method="post" action="">
-            <h1>REGISTER</h1>
+            <h1>CREATE ACCOUNT</h1>
 
-            <p> 
-                <label for="nome_cad">Full Name</label>
-                <input id="nome_cad" name="nome_cad" required="required" type="text" />
-            </p>
-
-            <p> 
-                <label for="nome_cad">Name Login</label>
-                <input id="nome_cad" name="nome_cad" required="required" type="text" />
-            </p>
-
-            <p> 
-                <label for="nome_cad">Document</label>
-                <input id="nome_cad" name="nome_cad" required="required" type="number" />
-            </p>
-
-            <p> 
-                <label for="nome_cad">  Date of Birthday</label>
-                <input id="nome_cad" name="nome_cad" required="required" type="text" />
-            </p>
-
-            <p> 
-                <label for="nome_cad">Phone</label>
-                <input id="nome_cad" name="nome_cad" required="required" type="tel" />
-            </p>
-               
-            <p> 
-                <label for="email_cad">E-mail</label>
-                <input id="email_cad" name="email_cad" required="required" type="email"/> 
-            </p>
-               
-            <p> 
-                <label for="senha_cad">Password</label>
-                <input id="senha_cad" name="senha_cad" required="required" type="password"/>          
-            </p>
-               
-            <p> 
-                <input type="submit" value="Cadastrar"/> 
-            </p>
-               
+            <div class="input-group">
+                <div class="input-box"> 
+                    <label for="nome_cad">Full Name</label>
+                    <input id="nome_cad" name="nome_cad" required="required" type="text" />
+                </div>
+    
+                <div class="input-box"> 
+                    <label for="nome_cad">Name Login</label>
+                    <input id="nome_cad" name="nome_cad" required="required" type="text" />
+                </div>
+    
+                <div class="input-box"> 
+                    <label for="Document">Document</label>
+                    <input id="Document" name="Document" required="required" type="text" />
+                </div>
+    
+                <div class="input-box"> 
+                    <label for="Birthday">  Date of Birthday</label>
+                    <input id="Birthday" name="Birthday" required="required" type="date" />
+                </div>
+    
+                <div class="input-box"> 
+                    <label for="number">Phone</label>
+                    <input id="number" name="number" required="required" type="tel" />
+                </div>
+                   
+                <div class="input-box"> 
+                    <label for="email_cad">E-mail</label>
+                    <input id="email_cad" name="email_cad" required="required" type="email"/> 
+                </div>
+                   
+                <div class="input-box"> 
+                    <label for="password">Password</label>
+                    <input id="password" name="password" required="required" type="password"/>          
+                </div>
+    
+                <div class="input-box"> 
+                    <label for="password">Confirm Password</label>
+                    <input id="password" name="Confirmpassword" required="required" type="password"/>          
+                </div>        
+            </div>
+            
+            <div class="register-button"> 
+               <button [routerLink]="['/']" type="submit">Cadastrar</button>
+            </div>
             <p class="link">  
-                Já tem conta?
-                <a [routerLink]="['login']"> Fazer Login </a>
+                Already have an account?
+                <a [routerLink]="['login']"> Login </a>
            </p>
         </form>
     </div>

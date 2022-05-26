@@ -9,7 +9,6 @@ import axios from 'axios';
 export class LoginComponent implements OnInit {
   titlePage="Login";
   constructor() { }
-
   ngOnInit(): void {
   }
 

@@ -3,25 +3,25 @@
     <div id="login">
         <form method="post" action="">
             <h1>LOGIN</h1>
-            <p>
-                <label for="nome_login">Login</label>
-                <input id="nome+login" name="nome-login" required="required" type="text"/>
-            </p>
-            <p> 
-                <label for="password">Password</label>
-                <input id="password" name="password" required="required" type="password"/> 
-            </p>
-
-            <p> 
-                <input type="submit" value="Logar"/> 
-            </p>
+            <div class="input-group">
+                <div class="input-box">
+                    <label for="nome_login">Login</label>
+                    <input id="nome+login" name="nome-login" required="required" type="text"/>
+                </div>
+                <div class="input-box"> 
+                    <label for="password">Password</label>
+                    <input id="password" name="password" required="required" type="password"/> 
+                </div>    
+            </div>
+            
+            <div class="register-button"> 
+                <button [routerLink]="['/']" type="submit">Log In</button>
+             </div>
                
             <p class="link">
-                Ainda não tem conta?
-                <a [routerLink]="['register']">Cadastre-se</a>
-                
+                Don't have an account yet?
+                <a [routerLink]="['register']">Create Account</a>     
             </p>
-            
         </form>
     </div>
 </div>
