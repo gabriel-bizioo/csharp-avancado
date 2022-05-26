@@ -23,9 +23,11 @@ namespace Controller.Controllers
         [Route("api")]
         public IActionResult GenerateToken([FromBody]ClientDTO Login)
         {
+            Console.Write("entrando no login");
             if(Login != null && Login.login != null && Login.passwd != null)
             {
                 var user = model.Client.GetLogin(Login);
+                Response.Headers.Add("Access-Control-Allow-Origin", "*");
                 if(user != null )
                 {
                     var claims = new[]
@@ -59,7 +61,7 @@ namespace Controller.Controllers
             }
             else
             {
-                return BadRequest();
+                return BadRequest("deu ruim");
             }
         }
 

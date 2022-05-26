@@ -1,10 +1,8 @@
 ﻿using Interfaces;
+using System.Linq;
+namespace DAO;
 
-namespace DAO
+public class Client : Person
 {
-    public class Client : Person
-    {
-        public static Client client;
-
-    }
 }
+

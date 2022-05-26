@@ -9,23 +9,23 @@ import axios from 'axios';
 export class LoginComponent implements OnInit {
   titlePage="Login";
   constructor() { }
-  ngOnInit(): void {
-  }
 
   loginClient(){
-    let user = document.getElementById("nome_login")
-    let passwd = document.getElementById("password")
+    let user = document.getElementById("nome") as HTMLInputElement;
+    let passwd = document.getElementById("password") as HTMLInputElement;
 
-    var data = JSON.stringify({
-      "login": user,
-      "passwd": passwd
-    })
+    var data = JSON.stringify(
+      {
+      "login": user.value,
+      "passwd": passwd.value
+    }
+    )
 
-    console.log(user, passwd)
+    console.log(data)
 
     var config = {
       method: 'post',
-      url: 'http://localhost:5118/client/login',
+      url: 'http://localhost:5118/client/api',
       headers: {
         'Content-type':'application/json'
       },
@@ -33,6 +33,16 @@ export class LoginComponent implements OnInit {
     };
 
     axios(config)
+  .then(function (response:any) {
+    console.log(JSON.stringify(response.data));
+  })
+  .catch(function (error:any) {
+    console.log(error);
+  });
   }
+
+  ngOnInit(): void {
+  }
+
 }
 

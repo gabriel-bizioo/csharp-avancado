@@ -1,8 +1,8 @@
 ﻿using Interfaces;
 using DAO;
 using DTO;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
+//using System.Linq;
 
 namespace model
 {
@@ -98,14 +98,13 @@ namespace model
                 };
             }
         }
-
         public static Client GetLogin(ClientDTO ClientLogin)
         {
             Client? obj;
 
             using(var context = new DaoContext())
             {
-                var Client = context.Client.FirstOrDefault(c => c.login == ClientLogin.login && c.passwd == ClientLogin.passwd);
+                var Client = context.Client.Single(c => c.login == ClientLogin.login && c.passwd == ClientLogin.passwd);
 
                 if(Client != null)
                 {
@@ -117,7 +116,7 @@ namespace model
                         name = Client.name,
                         login = Client.login,
                         passwd = Client.passwd,
-                        phone = client.phone
+                        phone = Client.phone
                     };
                 }
                 else

@@ -1,27 +1,26 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
 <div class="content">
     <div id="login">
-        <form method="post" action="">
+       
             <h1>LOGIN</h1>
-            <div class="input-group">
-                <div class="input-box">
-                    <label for="nome_login">Login</label>
-                    <input id="nome+login" name="nome-login" required="required" type="text"/>
-                </div>
-                <div class="input-box"> 
-                    <label for="password">Password</label>
-                    <input id="password" name="password" required="required" type="password"/> 
-                </div>    
-            </div>
-            
-            <div class="register-button"> 
-                <button [routerLink]="['/']" type="submit">Log In</button>
-             </div>
+            <p>
+                <label for="nome_login">Login</label>
+                <input id="nome" name="nome-login" required="required" type="text"/>
+            </p>
+            <p> 
+                <label for="password">Password</label>
+                <input id="password" name="password" required="required" type="password"/> 
+            </p>
+
+            <p> 
+                <button  (click)="loginClient()">logar</button> 
+            </p>
                
             <p class="link">
                 Don't have an account yet?
                 <a [routerLink]="['register']">Create Account</a>     
             </p>
-        </form>
+            
+        
     </div>
 </div>
