@@ -9,6 +9,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { RegisterAddressComponent } from './register-address/register-address.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RegisterComponent } from './register/register.component';
     ProductListComponent,
     ProductDetailComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterAddressComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { RegisterComponent } from './register/register.component';
       {path: '', component : ProductListComponent},
       {path: 'product/:productID', component: ProductDetailComponent},
       {path: 'login', component: LoginComponent},
-      {path: 'register', component: RegisterComponent}
+      {path: 'register', component: RegisterComponent},
+      {path: 'address', component:RegisterAddressComponent}
     ])
   ],
   providers: [],

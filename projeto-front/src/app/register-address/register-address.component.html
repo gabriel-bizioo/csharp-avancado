@@ -1,0 +1,41 @@
+<app-top-bar [titulo]="titlePage"></app-top-bar>
+<div class="content">
+    <div id="cadastro">
+        <form method="post" action="">
+            <h1>REGISTER ADDRESS</h1>
+
+
+            <div class="input-group">
+                <div class="input-box2"> 
+                    <label for="Street">Street</label>
+                    <input  id="Street" name="Street" required="required" type="text" />
+                </div>
+                <div class="input-box2">
+                </div>
+                <div class="input-box"> 
+                    <label for="State">State</label>
+                    <input id="State" name="State" required="required" type="text" />
+                </div>
+                    
+                <div class="input-box"> 
+                    <label for="City">City</label>
+                    <input id="City" name="City" required="required" type="text" />
+                </div>
+           
+                <div class="input-box"> 
+                    <label for="State">Country</label>
+                    <input id="State" name="State" required="required" type="text"/> 
+                </div>
+                   
+                <div class="input-box"> 
+                    <label for="Postal">Postal Code</label>
+                    <input id="Postal" name="Postal" required="required" type="text"/>          
+                </div>
+            </div>
+            <div class="register-button"> 
+               <button [routerLink]="['/']" type="submit">Register</button>
+            </div>
+        </form>
+    </div>
+</div>     
+            
