@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Interfaces;
 public interface IDataController<T, O>
 {
-    public T findById(int id);
+    //public T findById(int id);
 
     //public List<T> getAll();
 

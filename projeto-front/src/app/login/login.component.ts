@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
+
 
 @Component({
   selector: 'app-login',
@@ -8,18 +10,17 @@ import axios from 'axios';
 })
 export class LoginComponent implements OnInit {
   titlePage="Login";
-  constructor() { }
+  constructor(private router: Router) { }
 
   loginClient(){
     let user = document.getElementById("nome") as HTMLInputElement;
     let passwd = document.getElementById("password") as HTMLInputElement;
 
     var data = JSON.stringify(
-      {
+    {
       "login": user.value,
       "passwd": passwd.value
-    }
-    )
+    })
 
     console.log(data)
 
@@ -32,17 +33,19 @@ export class LoginComponent implements OnInit {
       data: data
     };
 
+  let instance = this;
+  
     axios(config)
   .then(function (response:any) {
-    console.log(JSON.stringify(response.data));
+    localStorage.setItem('authToken', response.data);
+    instance.router.navigate(['/']);
   })
   .catch(function (error:any) {
     console.log(error);
   });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {  }
 
 }
 

@@ -8,7 +8,7 @@ namespace model
     {
         string name;
         string bar_code;
-
+        string img_link;
         public void setName(string name)
         {
             this.name = name;
@@ -56,15 +56,18 @@ namespace model
 
             product.name = obj.name;
             product.bar_code = obj.bar_code;
+            product.img_link = obj.img_link;
 
             return product;
         }
 
-        public ProductDTO findById(int id)
+        public static DAO.Product findById(int id)
         {
-            ProductDTO product = null;
-
-            return product;
+            using(var context = new DaoContext())
+            {
+                var product = context.Product.Where(p => p.ID == id).Single();
+                return product;
+            }  
         }
 
         public List<ProductDTO> getAll()

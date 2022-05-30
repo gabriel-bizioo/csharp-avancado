@@ -31,6 +31,7 @@ namespace Controller.Controllers
             {
                 name = productDTO.name,
                 bar_code = productDTO.bar_code,
+                img_link = productDTO.img_link,
                 ID = id
             };
         }
@@ -50,5 +51,19 @@ namespace Controller.Controllers
             model.Product.update(id, productDTO);
         }
         
+        [HttpGet]
+        [Route("get/{id}")]
+        public object getProduct(int id)
+        {
+            var product = model.Product.findById(id);
+
+            return new
+            {
+                name = product.name,
+                bar_code = product.bar_code,
+                img_link = product.img_link,
+                ID = id
+            };
+        }
     }
 }

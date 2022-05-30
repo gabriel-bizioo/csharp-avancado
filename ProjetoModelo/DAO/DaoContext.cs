@@ -68,8 +68,9 @@ namespace DAO
             modelBuilder.Entity<Product>(entity =>
             {
                 entity.HasKey(e => e.ID);
-                entity.Property(e => e.name).IsRequired();
                 entity.Property(e => e.bar_code).IsRequired();
+                entity.Property(e => e.img_link);
+                entity.Property(e => e.name).IsRequired();
             });
 
             modelBuilder.Entity<Purchase>(entity =>

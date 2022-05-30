@@ -10,16 +10,10 @@ import axios from 'axios';
 export class ProductListComponent implements OnInit {
   titlePage="Products";
   products: [Product] | undefined;
-  constructor()
-  {
-    //this.getAllProducts();
-  }
+  constructor() { }
 
-  ngOnInit(): void {
-  }
-
-  getAllProducts()
-  {
+  ngOnInit(): void 
+  {  
     var config = {
       method: 'get',
       url: 'http://localhost:5118/product/getAll',
@@ -31,11 +25,10 @@ export class ProductListComponent implements OnInit {
     axios(config)
     .then(function (response) {
       instance.products = response.data;
+      console.log(response.data);
     })
     .catch(function (error) {
       console.log(error);
     });
   }
-
-
 }
