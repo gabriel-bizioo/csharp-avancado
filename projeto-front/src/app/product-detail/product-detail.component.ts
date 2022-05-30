@@ -23,7 +23,7 @@ export class ProductDetailComponent implements OnInit {
       url: 'http://localhost:5118/product/get/' + productIdfromRoute,
       headers: { }
     };
-    
+
     let instance = this;
     axios(config)
     .then(function (response) {

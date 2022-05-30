@@ -22,7 +22,7 @@ namespace DAO
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(@"Server=GABRIEL-BIZIO\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
-            optionsBuilder.UseSqlServer(@"Server=CTPC3628\SQLEXPRESS;Database=teste2;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=CTPC3628\SQLEXPRESS;Database=teste3;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

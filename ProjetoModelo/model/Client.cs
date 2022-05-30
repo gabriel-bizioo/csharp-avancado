@@ -154,6 +154,7 @@ namespace model
                 {
                     name = this.name,
                     email = this.email,
+                    document = this.document,
                     phone = this.phone,
                     login = this.login,
                     passwd = this.passwd,

@@ -1,7 +1,7 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
 <div class="content">
     <div id="cadastro">
-        <form method="post" action="">
+      
             <h1>CREATE ACCOUNT</h1>
 
             <div class="input-group">
@@ -11,8 +11,8 @@
                 </div>
     
                 <div class="input-box"> 
-                    <label for="nome_cad">Name Login</label>
-                    <input id="nome_cad" name="nome_cad" required="required" type="text" />
+                    <label for="nome_cad">Login Name</label>
+                    <input id="login_cad" name="login_cad" required="required" type="text" />
                 </div>
     
                 <div class="input-box"> 
@@ -21,7 +21,7 @@
                 </div>
     
                 <div class="input-box"> 
-                    <label for="Birthday">  Date of Birthday</label>
+                    <label for="Birthday">  Date of birth</label>
                     <input id="Birthday" name="Birthday" required="required" type="date" />
                 </div>
     
@@ -42,18 +42,18 @@
     
                 <div class="input-box"> 
                     <label for="password">Confirm Password</label>
-                    <input id="password" name="Confirmpassword" required="required" type="password"/>          
+                    <input id="confirmPassword" name="Confirmpassword" required="required" type="password"/>          
                 </div>        
             </div>
             
             <div class="register-button"> 
-               <button [routerLink]="['/']" type="submit">Register</button>
+               <button (click)="registerAccount()">Register</button>
             </div>
             <p class="link">  
                 Already have an account?
-                <a [routerLink]="['login']"> Login </a>
+                <a [routerLink]="['/login']"> Login </a>
            </p>
-        </form>
+       
     </div>
 </div>     
             
