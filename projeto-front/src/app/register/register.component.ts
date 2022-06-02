@@ -26,7 +26,6 @@ export class RegisterComponent implements OnInit {
 
     if(passwd.value == confirm.value)
     {
-      alert("aqui");
       var data = JSON.stringify({
         "name": name.value,
         "date_of_birth": date_of_birth.value,

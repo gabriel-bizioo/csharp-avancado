@@ -1,16 +1,14 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
 <div class="content">
     <div id="cadastro">
-        <form method="post" action="">
             <h1>REGISTER ADDRESS</h1>
 
-
             <div class="input-group">
-                <div class="input-box2"> 
+                <div class="input-box"> 
                     <label for="Street">Street</label>
                     <input  id="Street" name="Street" required="required" type="text" />
                 </div>
-                <div class="input-box2">
+                <div class="input-box">
                 </div>
                 <div class="input-box"> 
                     <label for="State">State</label>
@@ -23,8 +21,8 @@
                 </div>
            
                 <div class="input-box"> 
-                    <label for="State">Country</label>
-                    <input id="State" name="State" required="required" type="text"/> 
+                    <label for="Country">Country</label>
+                    <input id="Country" name="Country" required="required" type="text"/> 
                 </div>
                    
                 <div class="input-box"> 
@@ -33,9 +31,8 @@
                 </div>
             </div>
             <div class="register-button"> 
-               <button [routerLink]="['/']" type="submit">Register</button>
+               <button (click)="registerAddress()" type="submit">Register</button>
             </div>
-        </form>
     </div>
 </div>     
             
