@@ -11,7 +11,7 @@ namespace DTO
         public int quantity;
         public double unit_price;
 
-        public StoreDTO store;
-        public ProductDTO product;
+        public StoreDTO? store;
+        public ProductDTO? product;
     }
 }

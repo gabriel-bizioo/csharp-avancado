@@ -8,10 +8,10 @@ namespace DTO
 {
     public class AddressDTO
     {
-        public string street;
-        public string city;
-        public string state;
-        public string country;
-        public string postal_code;
+        public string? street;
+        public string? city;
+        public string? state;
+        public string? country;
+        public string? postal_code;
     }
 }

@@ -1,13 +1,11 @@
-﻿using Interfaces;
-
-namespace DAO
+﻿namespace DAO
 {
     public class Store
     {
         public int ID;
-        public Owner owner;
-        public string name;
-        public string cnpj;
+        public Owner? owner;
+        public string? name;
+        public string? cnpj;
 
     }
 }

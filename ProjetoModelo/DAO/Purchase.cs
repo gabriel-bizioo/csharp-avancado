@@ -1,23 +1,20 @@
-﻿using Enums;
-using Interfaces;
-
-namespace DAO
+﻿namespace DAO
 {
     public class Purchase
     {
         public int ID;
         public DateTime purchase_date;
-        public string confirmation_number;
-        public string number_nf;
+        public string? confirmation_number;
+        public string? number_nf;
         public int Payment;
         public int PurchaseStatus;
         public double purchase_value;
 
-        public Client client;
+        public Client? client;
 
-        public Product product;
+        public Product? product;
 
-        public Store store;
+        public Store? store;
 
     }
 }

@@ -25,7 +25,7 @@ namespace Controller.Controllers
         {
             var store = model.Store.convertDTOToModel(storeDTO);
 
-            int id = store.save(store.owner.getID());
+            int id = store.save(store.Owner.getID());
 
             return new
             {

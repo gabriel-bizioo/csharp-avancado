@@ -93,9 +93,7 @@ namespace model
 
         public StocksDTO findById(int id)
         {
-            StocksDTO purchase = null;
-
-            return purchase;
+            throw new NotImplementedException();
         }
 
         public List<StocksDTO> getAll()
@@ -109,34 +107,35 @@ namespace model
         {
             var id = 0;
             
-
             using (var context = new DaoContext())
             {
                 var store = context.Store.FirstOrDefault(s => s.cnpj == this.store.getCNPJ());
 
                 var product = context.Product.FirstOrDefault(p => p.bar_code == this.product.getBarCode());
 
-                var stocks = new DAO.Stocks
+                if(store != null && product != null)
                 {
-                    quantity = this.quantity,
+                    var stocks = new DAO.Stocks
+                    {
+                        quantity = this.quantity,
 
-                    unit_price = this.unit_price,
+                        unit_price = this.unit_price,
 
-                    store = store,
+                        store = store,
 
-                    product = product
-                };
+                        product = product
+                    };
 
 
-                context.Stocks.Add(stocks);
+                    context.Stocks.Add(stocks);
 
-                context.Entry(stocks.store).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
-                context.Entry(stocks.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                    context.Entry(stocks.store).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                    context.Entry(stocks.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
 
-                context.SaveChanges();
+                    context.SaveChanges();
 
-                id = stocks.ID;
-
+                    id = stocks.ID;
+                }
             }
             return id;
         }

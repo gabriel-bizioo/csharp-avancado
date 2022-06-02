@@ -7,61 +7,58 @@ namespace model
 {
     public class Store : IValidateDataObject, IDataController<StoreDTO, Store>
     {
-        public Owner owner;
-        string name;
-        string cnpj;
+        public Owner Owner;
+        string Name;
+        string Cnpj;
 
         List<Purchase> purchases = new List<Purchase>();
 
         public Store(string name, string cnpj, Owner owner)
         {
-            this.owner = owner;
-            this.name = name;
-            this.cnpj = cnpj;
+            this.Owner = owner;
+            this.Name = name;
+            this.Cnpj = cnpj;
             purchases = new List<Purchase>();
         }
 
         public Store(string name, string cnpj, Owner owner, List<Purchase> purchases)
         {
-            this.owner = owner;
-            this.name = name;
-            this.cnpj = cnpj;
+            this.Owner = owner;
+            this.Name = name;
+            this.Cnpj = cnpj;
             this.purchases = purchases;
         }
 
-        public Store()
-        {
-
-        }
+        public Store(){}
         
         public Store(Owner owner)
         {
-            this.owner = owner;
+            this.Owner = owner;
         }
 
         public void setName(string name)
         {
-            this.name = name;
+            this.Name = name;
         }
 
         public void setCNPJ(string cnpj)
         {
-            this.cnpj=cnpj;
+            this.Cnpj=cnpj;
         }
 
         public string getName()
         {
-            return name;
+            return Name;
         }
 
         public string getCNPJ()
         {
-            return cnpj;
+            return Cnpj;
         }
 
         public Owner getOwner()
         {
-            return owner;
+            return Owner;
         }
         
         public void AddNewPurchase(Purchase purchase)
@@ -71,9 +68,9 @@ namespace model
 
         public Boolean validateObject()
         {
-            if (name == null) return false;
+            if (Name == null) return false;
 
-            if(cnpj == null) return false;
+            if(Cnpj == null) return false;
 
 
             return true;
@@ -82,9 +79,9 @@ namespace model
         public StoreDTO convertModelToDTO()
         {
             StoreDTO obj = new StoreDTO();
-            obj.name = this.name;
-            obj.CNPJ = this.cnpj;
-            obj.Owner = this.owner.convertModelToDTO();
+            obj.name = this.Name;
+            obj.CNPJ = this.Cnpj;
+            obj.Owner = this.Owner.convertModelToDTO();
 
             foreach(var product in purchases)
             {
@@ -101,11 +98,11 @@ namespace model
 
             if(obj.Owner != null)
             {
-                store.owner = Owner.convertDTOToModel(obj.Owner);
+                store.Owner = Owner.convertDTOToModel(obj.Owner);
             }
 
-            store.name = obj.name;
-            store.cnpj = obj.CNPJ;
+            store.Name = obj.name;
+            store.Cnpj = obj.CNPJ;
 
             foreach (var purchase in obj.purchases)
             {
@@ -117,9 +114,7 @@ namespace model
 
         public StoreDTO findById(int id)
         {
-            StoreDTO store = null;
-
-            return store;
+            throw new NotImplementedException();
         }
 
         public static DAO.Store find(int id)
@@ -169,8 +164,8 @@ namespace model
                 var store = new DAO.Store
                 {
                     owner = owner,
-                    name = this.name,
-                    cnpj = this.cnpj
+                    name = this.Name,
+                    cnpj = this.Cnpj
                 };
 
                 context.Store.Add(store);
@@ -187,12 +182,12 @@ namespace model
 
         public void update(StoreDTO store)
         {
-            Console.WriteLine("Not yet implemented");
+            throw new NotImplementedException();
         }
 
         public void delete(StoreDTO store)
         {
-            Console.WriteLine("Not yet implemented");
+            throw new NotImplementedException();
         }
     }
 }
