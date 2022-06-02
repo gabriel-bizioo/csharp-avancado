@@ -98,8 +98,8 @@ label{
     left: 0px;
     height: 10px;
     width:  100%!important;
-    top: 583px;
-    padding: 8px 25px 25px 30px;
+    margin-top: 22px;
+    padding: 2px 25px 18px 30px;
     font-size: 15px;
     text-align: center;
     border: 5.5px solid #dbe5e8;
@@ -110,7 +110,7 @@ label{
 .link a{
     font-weight: bold;
     background: #f7f8f1;
-    padding: 6px;
+    padding: 3px;
     color: rgb(29,162,193);
     margin-left: 10px;
     border-radius: 4px;

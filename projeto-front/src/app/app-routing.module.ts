@@ -4,11 +4,15 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { LoginComponent } from './login/login.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { RegisterComponent } from './register/register.component';
+import { RegisterAddressComponent } from './register-address/register-address.component';
+import { WishListComponent } from './wish-list/wish-list.component';
 
 const routes: Routes = [ {path: '', component : ProductListComponent},
 {path: 'product/:productID', component: ProductDetailComponent},
 {path: 'login', component: LoginComponent},
-{path: 'register', component: RegisterComponent}];
+{path: 'register', component: RegisterComponent},
+{path: 'address', component: RegisterAddressComponent},
+{path: 'wishList', component: WishListComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

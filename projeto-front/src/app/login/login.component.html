@@ -3,18 +3,18 @@
     <div id="login">
        
             <h1>LOGIN</h1>
-            <p>
+            <div class="input-box">
                 <label for="nome_login">Login</label>
                 <input id="nome" name="nome-login" required="required" type="text"/>
-            </p>
-            <p> 
+            </div>
+            <div class="input-box"> 
                 <label for="password">Password</label>
                 <input id="password" name="password" required="required" type="password"/> 
-            </p>
+            </div>
 
-            <p> 
-                <button  (click)="loginClient()">logar</button> 
-            </p>
+            <div class="register-button"> 
+                <button [routerLink]="['/']" type="submit">Log in</button>
+            </div>
                
             <p class="link">
                 Don't have an account yet?

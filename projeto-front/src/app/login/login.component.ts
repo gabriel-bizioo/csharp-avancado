@@ -22,6 +22,8 @@ export class LoginComponent implements OnInit {
       "passwd": passwd.value
     })
 
+
+
     console.log(data)
 
     var config = {
@@ -48,4 +50,5 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {  }
 
 }
+
 

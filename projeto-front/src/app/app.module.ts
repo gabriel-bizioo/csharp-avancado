@@ -10,6 +10,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RegisterAddressComponent } from './register-address/register-address.component';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { WishListComponent } from './wish-list/wish-list.component';
 
 
 @NgModule({
@@ -20,7 +22,8 @@ import { RegisterAddressComponent } from './register-address/register-address.co
     ProductDetailComponent,
     LoginComponent,
     RegisterComponent,
-    RegisterAddressComponent
+    RegisterAddressComponent,
+    WishListComponent
   ],
   imports: [
     BrowserModule,
@@ -30,8 +33,10 @@ import { RegisterAddressComponent } from './register-address/register-address.co
       {path: 'product/:productID', component: ProductDetailComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'address', component:RegisterAddressComponent}
-    ])
+      {path: 'address', component:RegisterAddressComponent},
+      {path: 'wishList', component:WishListComponent}
+    ]),
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,13 @@
+<app-top-bar></app-top-bar>
+<div  class = "productsList">
+    <div class = "productComponent" *ngFor="let wishList of wishLists">
+        <div>
+            <img>{{wishList.img}}>
+        </div>
+        <div>
+            <h2>{{wishList.name}}</h2>
+            <h1>{{wishList.price | currency}}</h1>
+            <p>{{wishList.details}}</p>    
+        </div>  
+    </div>
+</div>

@@ -1,3 +1,31 @@
-a{
-    color: white;
+body{
+    font-size: 100%;
+    list-style-type: none;
 }
+  
+  a {
+    color: #ffff;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+  
+  a:hover {
+    opacity: 0.7;
+  }
+  
+  .logo {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+  }
+  
+  nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-family: system-ui, -apple-system, Helvetica, Arial, sans-serif;
+    background: #dd8705;
+    height: 10vh;                     
+  }
+  
+ 
