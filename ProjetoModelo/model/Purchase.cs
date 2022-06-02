@@ -175,7 +175,7 @@ namespace model
             {
                 var Store = context.Store.FirstOrDefault(s => s.cnpj == this.Store.getCNPJ());
 
-                var Client = context.Client.FirstOrDefault(c => c.login == this.Client.getLogin());
+                var Client = context.Client.FirstOrDefault(c => c.Login == this.Client.getLogin());
 
                 var Product = context.Product.FirstOrDefault(p => p.bar_code == this.Products.First().getBarCode());
                 

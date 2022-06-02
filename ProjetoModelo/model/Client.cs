@@ -2,99 +2,80 @@
 using DAO;
 using DTO;
 using Microsoft.EntityFrameworkCore;
-//using System.Linq;
 
 namespace model
 {
     public class Client : Person, IValidateDataObject, IDataController<ClientDTO, Client>
     {
-        public static Client client;
 
         Guid uuid;
         
-        private Client(Address address) : base(address)
-        {
-            this.address = address;
-        }
-
-        private Client()
-        {
-            
-        }
+        private Client(string name, DateTime date_of_birth, string document, string email,
+         string login, string passwd) : base(name, date_of_birth, document, email, login, passwd){}
 
         public static Client getInstance(Address endereco)
         {
-            if(client == null)
-            {
-                client = new Client(endereco);
-            }
-
-            return client;
+            throw new NotImplementedException();
         }
         
         public Boolean validateObject()
         {
-            if(document == null) return false;
-            if(name == null) return false;
-            if(email == null) return false;
-            if(phone == null) return false;
-            if(login == null) return false;
-            if(passwd == null) return false;
+            if(Document == null) return false;
+            if(Name == null) return false;
+            if(Email == null) return false;
+            if(Phone == null) return false;
+            if(Login == null) return false;
+            if(Passwd == null) return false;
 
             return true;
         }
 
         public ClientDTO convertModelToDTO()
         {
-            ClientDTO obj = new ClientDTO();
-            obj.name = this.name;
-            obj.email = this.email;
-            obj.phone = this.phone;
-            obj.document = this.document;
-            obj.login = this.login;
-            obj.passwd = this.passwd;
-            obj.date_of_birth = this.date_of_birth;
+            ClientDTO obj = new ClientDTO(this.Name, this.DateOfBirth, this.Email, this.Document, this.Login, this.Passwd);
+
+            obj.Phone = this.Phone;
 
             return obj;
         }
 
         public static Client convertDTOToModel(ClientDTO obj)
         {
-            Client client = new Client();
+            Client Client = new Client(obj.Name, obj.DateOfBirth,
+             obj.Document, obj.Email, obj.Login, obj.Passwd);
 
-            if(obj.client_address != null) { client.address = Address.convertDTOToModel(obj.client_address); }
+            if(obj.Address != null) { Client.Address = Address.convertDTOToModel(obj.Address); }
 
-            client.name = obj.name;
-            client.email = obj.email;
-            client.phone = obj.phone;
-            client.login = obj.login;
-            client.passwd = obj.passwd;
-            client.document = obj.document;
-            client.date_of_birth = obj.date_of_birth;
-
-            return client;
+            return Client;
         }
 
         public ClientDTO findById(int id)
         {
-            return new ClientDTO();
+            throw new NotImplementedException();
         }
 
         public static object find(int id)
         {
             using(var context = new DaoContext())
             {
-                var client = context.Client.Include(i => i.address).FirstOrDefault(c => c.ID == id);
+                var client = context.Client.Include(i => i.Address).FirstOrDefault(c => c.ID == id);
+                if(client != null)
+                {
+                    return new
+                    {
+                        name = client.Name,
+                        email = client.Email,
+                        phone = client.Phone,
+                        login = client.Login,
+                        passwd = client.Passwd,
+                        document = client.Document,
+                        date_of_birth = client.DateOfBirth,
+                        address = client.Address
+                    };
+                }
                 return new
                 {
-                    name = client.name,
-                    email = client.email,
-                    phone = client.phone,
-                    login = client.login,
-                    passwd = client.passwd,
-                    document = client.document,
-                    date_of_birth = client.date_of_birth,
-                    address = client.address
+                    status = "failed"
                 };
             }
         }
@@ -104,19 +85,13 @@ namespace model
 
             using(var context = new DaoContext())
             {
-                var Client = context.Client.Single(c => c.login == ClientLogin.login && c.passwd == ClientLogin.passwd);
+                var Client = context.Client.Single(c => c.Login == ClientLogin.Login && c.Passwd == ClientLogin.Passwd);
 
                 if(Client != null)
                 {
-                    obj = new Client
+                    obj = new Client(Client.Name, Client.DateOfBirth, Client.Document, Client.Email, Client.Login, Client.Passwd)
                     {
-                        date_of_birth = Client.date_of_birth,
-                        document = Client.document,
-                        email = Client.email,
-                        name = Client.name,
-                        login = Client.login,
-                        passwd = Client.passwd,
-                        phone = Client.phone
+                        Phone = Client.Phone
                     };
                 }
                 else
@@ -141,35 +116,26 @@ namespace model
 
             using (var context = new DaoContext())
             {
-                var save_address = new DAO.Address
+                if(this.Address != null)
                 {
-                    street = this.address.getStreet(),
-                    city = this.address.getCity(),
-                    state = this.address.getState(),
-                    country = this.address.getCountry(),
-                    postal_code = this.address.getPostalCode()
-                };
+                    var save_address = new DAO.Address(this.Address.getStreet(), this.Address.getCity(), 
+                    this.Address.getState(), this.Address.getCountry(), this.Address.getPostalCode());
+                    var client = new DAO.Client(this.Name, this.DateOfBirth, this.Email, this.Document, this.Login, this.Passwd);
 
-                var client = new DAO.Client
+                    context.Client.Add(client);
+                    context.SaveChanges();
+                    id = client.ID;
+                }
+                else
                 {
-                    name = this.name,
-                    email = this.email,
-                    document = this.document,
-                    phone = this.phone,
-                    login = this.login,
-                    passwd = this.passwd,
-                    date_of_birth = this.date_of_birth,
-                    address = save_address
-                };
-
-
-                context.Client.Add(client);
-
-                context.SaveChanges();
-
-                id = client.ID;
-
-
+                    var client = new DAO.Client(this.Name, this.DateOfBirth, this.Document, this.Email, this.Login, this.Passwd)
+                    {
+                        Phone = this.Phone
+                    };
+                    context.Client.Add(client);
+                    context.SaveChanges();
+                    id = client.ID;
+                }          
             }
             return id;
         }
@@ -178,7 +144,7 @@ namespace model
         {
             using(var context = new DaoContext())
             {
-                var Client = context.Client.FirstOrDefault(c => c.login == this.login && c.passwd == this.passwd);
+                var Client = context.Client.FirstOrDefault(c => c.Login == this.Login && c.Passwd == this.Passwd);
                 if(Client != null)
                 {
                     return Client.ID;
@@ -192,14 +158,12 @@ namespace model
 
         public void update(ClientDTO client)
         {
-            Console.WriteLine("Not yet implemented");
+            throw new NotImplementedException();
         }
 
         public void delete(ClientDTO client)
         {
-            Console.WriteLine("Not yet implemented");
+            throw new NotImplementedException();
         }
-
-
     }
 }

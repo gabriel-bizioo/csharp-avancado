@@ -33,10 +33,8 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
 
     public static Address convertDTOToModel(AddressDTO obj)
     {
-        return new Address(obj.street, obj.city, obj.state, obj.country, obj.postal_code);
-    }
-
-
+        return new Address(obj.Street, obj.City, obj.State, obj.Country, obj.PostalCode);
+    }   
      public Boolean validateObject()
     {
         return true;
@@ -47,16 +45,15 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
         using(var context = new DaoContext())
         {
             var address = context.Address.FirstOrDefault(a => a.ID == id);
-            var client = context.Client.FirstOrDefault(c => c.address.ID == address.ID);
-            var owner = context.Owner.FirstOrDefault(o => o.address.ID == address.ID);
+            var client = context.Client.FirstOrDefault(c => c.Address.ID == address.ID);
+            var owner = context.Owner.FirstOrDefault(o => o.Address.ID == address.ID);
             if(client != null)
             {
-                context.Remove(client.address);
-
+                context.Remove(client.Address);
             }
             else if(owner != null)
             {
-                context.Remove(owner.address);
+                context.Remove(owner.Address);
             }
             else
             {
@@ -73,21 +70,13 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
 
         using (var context = new DaoContext())
         {
-            var address = new DAO.Address
-            {
-                street = this.street,
-                city = this.city,
-                state = this.state,
-                country = this.country,
-                postal_code = this.postal_code
-            };
+            var address = new DAO.Address(this.street, this.city, this.state, this.country, this.postal_code);
 
             context.Address.Add(address);
 
             context.SaveChanges();
 
             id = address.ID;
-
         }
         return id;
     }
@@ -99,20 +88,20 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
             var address = context.Address.FirstOrDefault(a => a.ID == id);
 
             if(address != null){
-                if(addressDTO.street != null){
-                    address.street = addressDTO.street;
+                if(addressDTO.Street != null){
+                    address.Street = addressDTO.Street;
                 }
-                if(addressDTO.city != null){
-                    address.city = addressDTO.city;
+                if(addressDTO.City != null){
+                    address.City = addressDTO.City;
                 }
-                if(addressDTO.state != null){
-                    address.state = addressDTO.state;
+                if(addressDTO.State != null){
+                    address.State = addressDTO.State;
                 }
-                if(addressDTO.country != null){
-                    address.country = addressDTO.country;
+                if(addressDTO.Country != null){
+                    address.Country = addressDTO.Country;
                 }
-                if(addressDTO.postal_code != null){
-                    address.postal_code = addressDTO.postal_code;
+                if(addressDTO.PostalCode != null){
+                    address.PostalCode = addressDTO.PostalCode;
                 }
             }
             context.SaveChanges();
@@ -122,7 +111,7 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
     public AddressDTO findById(int id)
     {
         
-        return new AddressDTO();
+        throw new NotImplementedException();
     }
 
     public static object find(int id)
@@ -132,11 +121,11 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
             var address = context.Address.FirstOrDefault(a => a.ID == id);
             return new
             {
-                street = address.street,
-                state = address.state,
-                city = address.city,
-                country = address.country,
-                postal_code = address.postal_code
+                street = address.Street,
+                state = address.State,
+                city = address.City,
+                country = address.Country,
+                postal_code = address.PostalCode
 
             };
         }
@@ -150,17 +139,8 @@ public class Address : IValidateDataObject, IDataController<AddressDTO, Address>
 
     public AddressDTO convertModelToDTO()
     {
-        var addressDTO = new AddressDTO();
-
-        addressDTO.street = this.street;
-
-        addressDTO.state = this.state;
-
-        addressDTO.city = this.city;
-
-        addressDTO.country = this.country;
-
-        addressDTO.postal_code = this.postal_code;
+        var addressDTO = new AddressDTO(this.street, this.city,
+         this.state, this.country, this.postal_code);
 
         return addressDTO;
     }

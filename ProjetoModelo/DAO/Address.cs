@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAO;
-namespace DAO;
+﻿namespace DAO;
 
     public class Address
     {
+        public Address(string street, string city, string state, string country, string postal_code)
+        {
+            this.Street = street;
+            this.City = city;
+            this.State = state;
+            this.Country = country;
+            this.PostalCode = postal_code;
+        }
+        
         public int ID;
-        public String? street;
-        public String? city;
-        public String? state;
-        public String? country;
-        public String? postal_code;
+        public String Street;
+        public String City;
+        public String State;
+        public String Country;
+        public String PostalCode;
 
     }

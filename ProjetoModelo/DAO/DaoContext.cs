@@ -28,35 +28,35 @@ namespace DAO
             modelBuilder.Entity<Address>(entity =>
             {
                 entity.HasKey(e => e.ID);
-                entity.Property(e => e.street).IsRequired();
-                entity.Property(e => e.city).IsRequired();
-                entity.Property(e => e.state).IsRequired();
-                entity.Property(e => e.country).IsRequired();
-                entity.Property(e => e.postal_code).IsRequired();
+                entity.Property(e => e.Street).IsRequired();
+                entity.Property(e => e.City).IsRequired();
+                entity.Property(e => e.State).IsRequired();
+                entity.Property(e => e.Country).IsRequired();
+                entity.Property(e => e.PostalCode).IsRequired();
             });
 
             modelBuilder.Entity<Client>(entity =>
             {
                 entity.HasKey(e => e.ID);
-                entity.Property(e => e.name).IsRequired();
-                entity.HasOne(d => d.address);
-                entity.Property(e => e.document);
-                entity.Property(e => e.email).IsRequired();
-                entity.Property(e => e.phone).IsRequired();
-                entity.Property(e => e.login).IsRequired();
-                entity.Property(e => e.passwd);
+                entity.Property(e => e.Name).IsRequired();
+                entity.HasOne(d => d.Address);
+                entity.Property(e => e.Document);
+                entity.Property(e => e.Email).IsRequired();
+                entity.Property(e => e.Phone).IsRequired();
+                entity.Property(e => e.Login).IsRequired();
+                entity.Property(e => e.Passwd);
             });
 
             modelBuilder.Entity<Owner>(entity =>
             {
                 entity.HasKey(e => e.ID);
-                entity.Property(e => e.name).IsRequired();
-                entity.HasOne(d => d.address);
-                entity.Property(e => e.document);
-                entity.Property(e => e.email).IsRequired();
-                entity.Property(e => e.phone).IsRequired();
-                entity.Property(e => e.login).IsRequired();
-                entity.Property(e => e.passwd).IsRequired();
+                entity.Property(e => e.Name).IsRequired();
+                entity.HasOne(d => d.Address);
+                entity.Property(e => e.Document);
+                entity.Property(e => e.Email).IsRequired();
+                entity.Property(e => e.Phone).IsRequired();
+                entity.Property(e => e.Login).IsRequired();
+                entity.Property(e => e.Passwd).IsRequired();
             });
 
             modelBuilder.Entity<Product>(entity =>

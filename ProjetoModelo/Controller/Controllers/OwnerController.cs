@@ -1,4 +1,3 @@
-using System;
 using DTO;
 using model;
 using Microsoft.AspNetCore.Mvc;
@@ -19,17 +18,16 @@ namespace Controller.Controllers
 
             return new 
             {
-                name = ownerDTO.name,
-                date_of_birth = ownerDTO.date_of_birth,
-                document = ownerDTO.document,
-                email = ownerDTO.email,
-                phone = ownerDTO.phone,
-                login = ownerDTO.login,
-                passwd = ownerDTO.passwd,
-                address = Address.convertDTOToModel(ownerDTO.owner_address),
+                name = ownerDTO.Name,
+                date_of_birth = ownerDTO.DateOfBirth,
+                document = ownerDTO.Document,
+                email = ownerDTO.Email,
+                phone = ownerDTO.Phone,
+                login = ownerDTO.Login,
+                passwd = ownerDTO.Passwd,
+                address = Address.convertDTOToModel(ownerDTO.Address),
                 ID = id
             };
-
         }
 
         [HttpGet]

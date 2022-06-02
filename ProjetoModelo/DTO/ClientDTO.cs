@@ -4,20 +4,29 @@ namespace DTO
 {
     public class ClientDTO
     {
-        public AddressDTO? client_address;
+        public ClientDTO(string name, DateTime date_of_birth, string document, string email, string login, string passwd)
+        {
+            this.Name = name;
+            this.DateOfBirth = date_of_birth;
+            this.Document = document;
+            this.Email = email;
+            this.Login = login;
+            this.Passwd = passwd;
+        }
+        public AddressDTO? Address;
 
-        public string? name;
+        public string Name;
 
-        public DateTime date_of_birth;
+        public DateTime DateOfBirth;
 
-        public string? document;
+        public string Document;
 
-        public string? email;
+        public string Email;
 
-        public string? phone;
+        public string? Phone;
 
-        public string? login;
+        public string Login;
 
-        public string? passwd;
+        public string Passwd;
     }
 }

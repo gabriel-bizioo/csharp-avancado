@@ -2,85 +2,93 @@
 namespace model;
 public class Person
 {
-    protected string name;
-    protected DateTime date_of_birth;
-    protected string document;
-    protected string email;
-    protected string phone;
-    protected string login;
-    protected string passwd;
-    protected Address address;
+    protected string Name;
+    protected DateTime DateOfBirth;
+    protected string Document;
+    protected string Email;
+    protected string? Phone;
+    protected string Login;
+    protected string Passwd;
+    protected Address? Address;
 
-    public Person(Address address)
+    public Person(string name, DateTime date_of_birth, string document, string email, string login, string passwd)
     {
-      this.address = address;
+      this.Name = name;
+      this.DateOfBirth = date_of_birth;
+      this.Document = document;
+      this.Email = email;
+      this.Login = login;
+      this.Passwd = passwd;
     }
-
-    public Person() { }
 
     public void setName(string name)
     {
-        this.name = name;
+        this.Name = name;
     }
 
     public void setDateOfBirth(DateTime date)
     {
-        this.date_of_birth = date;
+        this.DateOfBirth = date;
     }
 
     public void setDocument(string document)
     {
-        this.document = document;
+        this.Document = document;
     }
 
     public void setEmail(string email)
     {
-        this.email = email;
+        this.Email = email;
     }
 
     public void setPhone(string phone)
     {
-        this.phone = phone;
+        this.Phone = phone;
     }
 
     public void setLogin(string login)
     {
-        this.login = login;
+        this.Login = login;
     }
 
     public string getName()
     {
-        return name;
+        return Name;
     }
 
     public DateTime getDateOfBirth()
     {
-        return date_of_birth;
+        return DateOfBirth;
     }
 
     public string getDocument()
     {
-        return document;
+        return Document;
     }
 
     public string getEmail()
     {
-        return email;
+        return Email;
     }
 
     public string getPhone()
     {
-        return phone;
+        if(this.Phone != null)
+            return Phone;
+
+        throw new NullReferenceException();
     }
 
     public string getLogin()
     {
-        return login;
+        return Login;
     }
 
     public Address getAddress()
     {
-        return address;
-    }
+        if(this.Address != null)
+            return Address;
 
+        throw new NullReferenceException();
+    }
 }

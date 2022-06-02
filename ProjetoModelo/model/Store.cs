@@ -18,7 +18,6 @@ namespace model
             this.Owner = owner;
             this.Name = name;
             this.Cnpj = cnpj;
-            purchases = new List<Purchase>();
         }
 
         public Store(string name, string cnpj, Owner owner, List<Purchase> purchases)

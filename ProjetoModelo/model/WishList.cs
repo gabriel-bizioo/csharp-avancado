@@ -14,11 +14,6 @@ namespace model
         {
             this.client = client;
         }
-
-        public WishList()
-        {
-
-        }
         
         public void addProductToWishList(Product product)
         {
@@ -60,9 +55,7 @@ namespace model
         public static WishList convertDTOToModel(WishListDTO obj)
         {
 
-            WishList wishlist = new WishList();
-
-            wishlist.client = Client.convertDTOToModel(obj.client);
+            WishList wishlist = new WishList(Client.convertDTOToModel(obj.client));
 
             foreach(var product in obj.wishlist_products)
             {
@@ -74,9 +67,7 @@ namespace model
 
         public WishListDTO findById(int id)
         {
-            WishListDTO wishlist = null;
-
-            return wishlist;
+            throw new NotImplementedException();
         }
 
         public List<WishListDTO> getAll()
@@ -92,7 +83,7 @@ namespace model
 
             using (var context = new DaoContext())
             {
-                var client = context.Client.FirstOrDefault(c => c.login == this.client.getLogin());
+                var client = context.Client.FirstOrDefault(c => c.Login == this.client.getLogin());
                 
                 
                 foreach(var product in this.products)
@@ -125,11 +116,11 @@ namespace model
             Console.WriteLine("Not yet implemented");
         }
 
-        public async void delete()
+        public void delete()
         {
             using(var context = new DaoContext())
             {
-                var wishlist = context.WishList.Where(w => w.client.login == this.client.getLogin());
+                var wishlist = context.WishList.Where(w => w.client.Login == this.client.getLogin());
                 foreach(var product in this.products)
                 {
                     context.Remove(wishlist.FirstOrDefault(w => w.product.bar_code == product.getBarCode()));

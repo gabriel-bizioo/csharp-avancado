@@ -1,6 +1,4 @@
-using System;
 using DTO;
-using model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Controller.Controllers
@@ -20,11 +18,11 @@ namespace Controller.Controllers
                 var id = address.save();
                 return new 
                 {
-                    street = addressDTO.street,
-                    state = addressDTO.state,
-                    city = addressDTO.city,
-                    country = addressDTO.country,
-                    postal_code = addressDTO.postal_code,
+                    street = addressDTO.Street,
+                    state = addressDTO.State,
+                    city = addressDTO.City,
+                    country = addressDTO.Country,
+                    postal_code = addressDTO.PostalCode,
                     id = id
                 };
         }

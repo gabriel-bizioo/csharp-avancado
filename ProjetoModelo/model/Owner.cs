@@ -10,29 +10,28 @@ namespace model
 {
     public class Owner : Person, IValidateDataObject, IDataController<OwnerDTO, Owner>
     {
-        public static Owner owner;
-
         Guid uuid;
 
 
-        public Owner(Address endereco) : base(endereco)
-        {
-            address = endereco;
-        }
+        private Owner(string name, DateTime date_of_birth, string document, string email,
+         string login, string passwd) : base(name, date_of_birth, document, email, login, passwd)
+        {  }
         
-        private Owner() { }
         
         public static Owner getInstance(Address endereco)
         {
-            if(owner == null)
-            {
-                owner = new Owner(endereco);
-            }
-            return owner;
+            throw new NotImplementedException();
         }
 
         public Boolean validateObject()
         {
+            if(Document == null) return false;
+            if(Name == null) return false;
+            if(Email == null) return false;
+            if(Phone == null) return false;
+            if(Login == null) return false;
+            if(Passwd == null) return false;
+
             return true;
         }
 
@@ -40,7 +39,7 @@ namespace model
         {
             using(var context = new DaoContext())
             {
-                var owner = context.Owner.FirstOrDefault(i => i.login == this.login);
+                var owner = context.Owner.FirstOrDefault(i => i.Login == this.Login);
                 if (owner != null)
                 {
                     return owner.ID;
@@ -55,56 +54,45 @@ namespace model
 
         public OwnerDTO convertModelToDTO()
         {
-            OwnerDTO obj = new OwnerDTO();
-            obj.owner_address = address.convertModelToDTO();
-            obj.name = this.name;
-            obj.email = this.email;
-            obj.phone = this.phone;
-            obj.login = this.login;
-            obj.document = this.document;
-            obj.passwd = this.passwd;
-            obj.date_of_birth = this.date_of_birth;
+            OwnerDTO obj = new OwnerDTO(this.Name, this.DateOfBirth, this.Document, this.Email, this.Login, this.Passwd);
+            if(this.Address != null)
+            {
+                obj.Address = Address.convertModelToDTO();
+            }       
+
+            obj.Phone = this.Phone;
 
             return obj;
         }
 
         public static Owner convertDTOToModel(OwnerDTO obj)
         {
-            Owner owner = new Owner();
-            if(obj.owner_address != null) { owner.address = Address.convertDTOToModel(obj.owner_address); }
-            owner.name = obj.name;
-            owner.email = obj.email;
-            owner.document = obj.document;
-            owner.phone = obj.phone;
-            owner.login = obj.login;
-            owner.passwd = obj.passwd;
-            owner.date_of_birth = obj.date_of_birth;
+            Owner owner = new Owner(obj.Name, obj.DateOfBirth, obj.Document, obj.Email, obj.Login, obj.Passwd);
+            if(obj.Address != null) { owner.Address = Address.convertDTOToModel(obj.Address); }
 
             return owner;
         }
 
         public OwnerDTO findById(int id)
         {
-            OwnerDTO owner = null;
-
-            return owner;
+            throw new NotImplementedException();
         }
 
         public static object find(int id)
         {
             using (var context = new DaoContext())
             {
-                var owner = context.Owner.Include(i => i.address).FirstOrDefault(c => c.ID == id);
+                var owner = context.Owner.Include(i => i.Address).FirstOrDefault(c => c.ID == id);
                 return new
                 {
-                    name = owner.name,
-                    email = owner.email,
-                    phone = owner.phone,
-                    login = owner.login,
-                    passwd = owner.passwd,
-                    document = owner.document,
-                    date_of_birth = owner.date_of_birth,
-                    address = owner.address
+                    name = owner.Name,
+                    email = owner.Email,
+                    phone = owner.Phone,
+                    login = owner.Login,
+                    passwd = owner.Passwd,
+                    document = owner.Document,
+                    date_of_birth = owner.DateOfBirth,
+                    address = owner.Address
                 };
             }
         }
@@ -122,44 +110,41 @@ namespace model
 
             using (var context = new DaoContext())
             {
-                var save_address = new DAO.Address
+                if(this.Address != null)
                 {
-                    street = this.address.getStreet(),
-                    city = this.address.getCity(),
-                    state = this.address.getState(),
-                    country = this.address.getCountry(),
-                    postal_code = this.address.getPostalCode()
-                };
+                    var save_address = new DAO.Address(this.Address.getStreet(), this.Address.getCity(), 
+                    this.Address.getState(), this.Address.getCountry(), this.Address.getPostalCode());
 
-                var owner = new DAO.Owner
+                    var Owner = new DAO.Owner(this.Name, this.DateOfBirth, this.Document, this.Email, this.Login, this.Passwd)
+                    {
+                        Address = save_address
+                    };
+                    context.Owner.Add(Owner);
+                    context.SaveChanges();
+                    id = Owner.ID;
+                }
+                else
                 {
-                    name = this.name,
-                    email = this.email,
-                    phone = this.phone,
-                    login = this.login,
-                    passwd = this.passwd,
-                    date_of_birth = this.date_of_birth,
-                    address = save_address
-                };
-
-                context.Owner.Add(owner);
-
-                context.SaveChanges();
-
-                id = owner.ID;
-
+                    var Owner = new DAO.Owner(this.Name, this.DateOfBirth, this.Email, this.Document, this.Login, this.Passwd)
+                    {
+                        Phone = this.Phone
+                    };
+                    context.Owner.Add(Owner);
+                    context.SaveChanges();
+                    id = Owner.ID;
+                }          
             }
             return id;
         }
 
         public void update(OwnerDTO owner)
         {
-            Console.WriteLine("Not yet implemented");
+            throw new NotImplementedException();
         }
 
         public void delete(OwnerDTO owner)
         {
-            Console.WriteLine("Not yet implemented");
+            throw new NotImplementedException();
         }
     }
 }

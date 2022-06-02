@@ -24,7 +24,7 @@ namespace Controller.Controllers
         public IActionResult GenerateToken([FromBody]ClientDTO Login)
         {
             Console.Write("entrando no login");
-            if(Login != null && Login.login != null && Login.passwd != null)
+            if(Login != null && Login.Login != null && Login.Passwd != null)
             {
                 var user = model.Client.GetLogin(Login);
                 Response.Headers.Add("Access-Control-Allow-Origin", "*");
@@ -75,14 +75,14 @@ namespace Controller.Controllers
 
             return new 
             {
-                name = clientDTO.name,
-                date_of_birth = clientDTO.date_of_birth,
-                document = clientDTO.document,
-                email = clientDTO.email,
-                phone = clientDTO.phone,
-                login = clientDTO.login,
-                passwd = clientDTO.passwd,
-                address = clientDTO.client_address,
+                name = clientDTO.Name,
+                date_of_birth = clientDTO.DateOfBirth,
+                document = clientDTO.Document,
+                email = clientDTO.Email,
+                phone = clientDTO.Phone,
+                login = clientDTO.Login,
+                passwd = clientDTO.Passwd,
+                address = clientDTO.Address,
                 id = id
             };
 
