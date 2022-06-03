@@ -25,7 +25,7 @@ namespace Controller.Controllers
                 phone = ownerDTO.Phone,
                 login = ownerDTO.Login,
                 passwd = ownerDTO.Passwd,
-                address = Address.convertDTOToModel(ownerDTO.Address),
+                address = ownerDTO.Address,
                 ID = id
             };
         }

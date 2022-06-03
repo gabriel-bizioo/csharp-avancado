@@ -119,19 +119,12 @@ namespace model
 
         public PurchaseDTO convertModelToDTO()
         {
-            PurchaseDTO obj = new PurchaseDTO();
-            obj.purchase_date = this.PurchaseDate;
-            obj.payment_type = (int)this.PaymentType;
-            obj.purchase_value = this.PurchaseValue;
-            obj.purchase_status = (int)this.PurchaseStatus;
-            obj.confirmation_number = this.ConfirmationNumber;
-            obj.number_nf = this.NumberNF;
-            obj.client = this.Client.convertModelToDTO();
-            obj.store = this.Store.convertModelToDTO();
+            PurchaseDTO obj = new PurchaseDTO(this.PurchaseDate, this.PurchaseValue , (int)this.PaymentType,
+             (int)this.PurchaseStatus, this.ConfirmationNumber, this.NumberNF, this.Store.convertModelToDTO(), this.Client.convertModelToDTO());
             
             foreach(var product in this.Products)
             {
-                obj.purchase_products.Add(product.convertModelToDTO());
+                obj.PurchaseProducts.Add(product.convertModelToDTO());
             }
 
             return obj;
@@ -139,12 +132,12 @@ namespace model
 
         public static Purchase convertDTOToModel(PurchaseDTO obj)
         {
-            Purchase purchase = new Purchase(obj.purchase_date, obj.confirmation_number, obj.number_nf, (PaymentEnum)obj.payment_type, (PurchaseStatusEnum)obj.purchase_status,
-                obj.purchase_value, model.Store.convertDTOToModel(obj.store), model.Client.convertDTOToModel(obj.client));
+            Purchase purchase = new Purchase(obj.PurchaseDate, obj.ConfirmationNumber, obj.NumberNF, (PaymentEnum)obj.PaymentType, (PurchaseStatusEnum)obj.PurchaseStatus,
+                obj.PurchaseValue, model.Store.convertDTOToModel(obj.Store), model.Client.convertDTOToModel(obj.Client));
 
-            if(obj.purchase_products != null)
+            if(obj.PurchaseProducts != null)
             {
-                foreach(var product in obj.purchase_products)
+                foreach(var product in obj.PurchaseProducts)
                 {
 
                     purchase.Products.Add(Product.convertDTOToModel(product));
@@ -216,24 +209,24 @@ namespace model
 
                 if(purchase != null)
                 {
-                    if(purchaseDTO.purchase_date != null)
+                    if(purchaseDTO.PurchaseDate != null)
                     {
-                        purchase.purchase_date = purchaseDTO.purchase_date;
+                        purchase.purchase_date = purchaseDTO.PurchaseDate;
                     }
-                    if(purchaseDTO.confirmation_number != null)
+                    if(purchaseDTO.ConfirmationNumber != null)
                     {
-                        purchase.confirmation_number = purchaseDTO.confirmation_number;
+                        purchase.confirmation_number = purchaseDTO.ConfirmationNumber;
                     }
-                    if(purchaseDTO.number_nf != null)
+                    if(purchaseDTO.NumberNF != null)
                     {
-                        purchase.number_nf = purchaseDTO.number_nf;
+                        purchase.number_nf = purchaseDTO.NumberNF;
                     }
                     
-                    purchase.Payment = purchaseDTO.payment_type;
+                    purchase.Payment = purchaseDTO.PaymentType;
  
-                    purchase.PurchaseStatus = purchaseDTO.purchase_status;
+                    purchase.PurchaseStatus = purchaseDTO.PurchaseStatus;
                     
-                    purchase.purchase_value = purchaseDTO.purchase_value;
+                    purchase.purchase_value = purchaseDTO.PurchaseValue;
                 }
                 
                 context.SaveChanges();

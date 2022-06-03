@@ -101,10 +101,7 @@ namespace DAO
                 entity.HasOne(d => d.client);
                 entity.HasOne(d => d.product);
             });
-
         }
     }
-
-
 }
 
