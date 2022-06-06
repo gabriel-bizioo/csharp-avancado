@@ -2,6 +2,7 @@
 using DAO;
 using DTO;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace model
 {
@@ -72,11 +73,19 @@ namespace model
             return wishlist;
         }
 
-        public WishListDTO findById(int id)
+        public static List<object> GetAllProducts(int ClientId)
         {
-            WishListDTO wishlist = null;
-
-            return wishlist;
+            List<object> products = new List<object>();
+            using(var context = new DaoContext())
+            {
+                var wishlists = context.WishList.Include(x => x.product).Where(wishlists => wishlists.client.ID == ClientId);
+                foreach(var wishlist in wishlists)
+                {
+                    if(wishlist.product != null)
+                        products.Add(wishlist.product);
+                }
+                return products;              
+            }
         }
 
         public List<WishListDTO> getAll()
@@ -122,7 +131,7 @@ namespace model
 
         public void update(WishListDTO wishlist)
         {
-            Console.WriteLine("Not yet implemented");
+            throw new NotImplementedException();
         }
 
         public async void delete()

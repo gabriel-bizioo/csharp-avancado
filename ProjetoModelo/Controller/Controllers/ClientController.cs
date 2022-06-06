@@ -51,7 +51,12 @@ namespace Controller.Controllers
                         expires: DateTime.UtcNow.AddMinutes(10),
                         signingCredentials: SignIn);
 
-                    return Ok(new JwtSecurityTokenHandler().WriteToken(Token));
+                    var response = new{
+                        token = new JwtSecurityTokenHandler().WriteToken(Token),
+                        clientId = user.getId().ToString()
+                    }   ;
+
+                    return Ok(response);
                 }
                 else
                 {

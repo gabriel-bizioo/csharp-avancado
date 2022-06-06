@@ -39,6 +39,12 @@ namespace Controller.Controllers
                 problems = "no"
             };
         }
-        
+
+        [HttpGet]
+        [Route("getproducts/{ClientId}")]
+        public List<object> GetProducts(int ClientId)
+        {
+            return WishList.GetAllProducts(ClientId);
+        }  
     }
 }
