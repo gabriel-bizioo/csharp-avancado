@@ -10,7 +10,7 @@ import { wishList } from '../wishList';
   styleUrls: ['./wish-list.component.css']
 })
 export class WishListComponent implements OnInit {
-  titlePage="Products";
+  titlePage="WishList";
   wishLists: [wishList] | undefined;
 
   constructor() { }
