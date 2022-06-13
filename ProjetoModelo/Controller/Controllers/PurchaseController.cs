@@ -9,7 +9,6 @@ namespace Controller.Controllers
     [Route("purchase")]
     public class PurchaseController
     {
-
         [HttpGet]
         [Route("getclient/{clientID}")]
         public List<object> getClientPurchases(int clientID)
@@ -36,8 +35,13 @@ namespace Controller.Controllers
                 purchase_id = id,
                 purchase_date = purchase.getPurchaseDate()
             };
-
         }
-        
+
+        [HttpGet]
+        [Route("getpurchase/{id}")]
+        public object GetPurchase(int id)
+        {
+            return model.Purchase.findById(id);
+        }   
     }
 }
