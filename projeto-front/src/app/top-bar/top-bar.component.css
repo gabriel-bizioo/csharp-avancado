@@ -24,7 +24,7 @@ body{
     position: absolute;
     width: 448px;
     height: 200px;
-    left: 25px;
+    left: -10px;
     top: -83px;  
   }
   .logo:hover{
@@ -36,7 +36,7 @@ body{
     justify-content: space-evenly;
     position: absolute;
     width: 100%;
-    height: 8vh;
+    height: 10vh;
     left: 0px;
     top: 0px;
     background: #990000;        
@@ -44,23 +44,21 @@ body{
   .a1{
     font-weight: 400;
     font-size: 20px;
-    line-height: 98px;
-    margin-left: 140px;
-    margin-right: 1150px;
-    color: #ffff;
-   
+    line-height: 80px;
+    margin-left: 280px;
+    color: #ffff; 
   }
   
    ul {
     float: right;
     margin-right: 0px;
   }
-    li {
+  li {
     display: block;
     line-height: 30px;
     margin-top: 35px;
   }
-    li {
+  li {
     color: #ffffff;
     font-size: 20px;
     padding: 7px 20px;
@@ -72,26 +70,105 @@ body{
     width: 20%;
     height: 100vh;
     background: #990000;
-    top: 75px;
+    top: 60px;
     right: -80%;
     text-align: center;
     transition: all .5s;
   }
 
   .checkbtn i {
+    position: absolute;
     font-size: 30px;
     color: #ffff;
     float: right;
     line-height: 80px; 
-    right: 3px;
+    right: 40px;
     cursor: pointer;
     display: block;
   }
+
+  .checkbtn i:hover {
+    opacity: 0.7;
+  }
+
   #check {
     display: none; 
   }
   #check:checked ~ ul {
     right: 0;
+  }
+
+  @media only screen and (max-width: 1024px) {
+    .logo {
+      left: -29px;
+      top: -93px;  
+    }
+
+    .a1{
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 60px;
+      margin-left: 170px;
+      color: #ffff; 
+    }
+    nav{
+      height: 8vh;
+      position: fixed;
+    }
+
+    li {
+      color: #ffffff;
+      font-size: 18px;
+      padding: 7px 20px;
+      border-radius: 3px;
+    }
+  
+
+    ul{
+      width: 40%;
+      height: 100vh;
+      top: 55px;
+      right: -80%;
+    }
+
+    .checkbtn i {
+      line-height: 58px; 
+      right: 25px;
+    }
+  }
+
+  @media only screen and (max-width: 450px) {
+    .logo {
+      width: 148px;
+      height: 50px;
+      left: -29px;
+      top: -93px;  
+    }
+
+    .a1{
+      display:none;
+    }
+  
+    ul{
+      width: 100%;
+      top: 55px;
+      right: -100%;
+    }
+
+    .checkbtn i {
+      line-height: 58px; 
+      right: 25px;
+      font-size: 25px;
+    }
+  }
+
+  @media only screen and (max-width: 300px) {
+    .logo{
+      width: 20px;
+      height: 8px;
+      left: -42px;
+      top: -90px; 
+    }
   }
 
  

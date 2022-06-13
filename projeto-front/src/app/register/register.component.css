@@ -98,7 +98,7 @@ label{
     left: 0px;
     height: 10px;
     width:  100%!important;
-    margin-top: 11.5px;
+    margin-top: 1px;
     padding: 3px 25px 25px 30px;
     font-size: 17px;
     text-align: center;
@@ -128,9 +128,9 @@ label{
 
 #cadastro{
     position: absolute;
-    margin-top: 15%;
+    margin-top: 7%;
     width: 88%;
-    height: 630px;
+    height: 636px;
     padding: 18px 6% 60px 6%;
     background: #f7f7f7;
     border: 2px solid #990000;
@@ -148,4 +148,43 @@ label{
     animation-delay: .1s;
 }
 
+@media only screen and (max-width: 1024px) {
 
+    #login{
+        margin-top: 10%;
+        margin-left: 10%;
+        width: 80%;
+    }
+
+    .link{
+        font-size: 13px;
+    }
+
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    #login{
+        margin-top: 10%;
+        margin-left: 20%;
+        width: 60%;
+    }
+
+    .link{
+        font-size: 8px;
+    }
+
+    .link button{
+        margin-left: 5px;
+    }
+
+    .content{
+        width: 400px;
+        min-height: 600px;
+        margin:0px auto;
+        position: relative;
+        top: 80px;
+    }
+
+} 
