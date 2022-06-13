@@ -1,13 +1,16 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
 <div  class = "productsList">
-    <div class = "productComponent" *ngFor="let wishList of wishLists">
+    <div class = "productComponent" *ngFor="let product of products">
         <div>
-            <img>{{wishList.img}}>
+            <img src="{{product.img_link}}">
         </div>
         <div>
-            <h2>{{wishList.name}}</h2>
-            <h1>{{wishList.price | currency}}</h1>
-            <p>{{wishList.details}}</p>    
+            <a [title]="product.name + 'details'"
+            [routerLink]="['/product', product.id]" class="Product">
+                {{product.name}}
+            </a>
+            <h1>{{product.price | currency}}</h1>
+            <p>{{product.description}}</p>    
         </div>  
     </div>
 </div>

@@ -99,20 +99,18 @@ namespace model
 
             using (var context = new DaoContext())
             {
-
                 var product = new DAO.Product
                 {
                     name = this.name,
-                    bar_code = this.bar_code
+                    bar_code = this.bar_code,
+                    img_link = this.img_link
                 };
-
 
                 context.Product.Add(product);
 
                 context.SaveChanges();
 
                 id = product.ID;
-
             }
             return id;
         }
