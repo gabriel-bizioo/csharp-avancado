@@ -155,9 +155,18 @@ namespace model
             return purchase;
         }
 
-        public PurchaseDTO findById(int id)
+        public static DAO.Purchase findById(int id)
         {
-            throw new NotImplementedException();
+            using(var context = new DaoContext())
+            {
+                var purchase = context.Purchase
+                    .Include(p => p.product)
+                    .Include( p => p.store)
+                    .Include(p => p.client)
+                    .FirstOrDefault(p => p.ID == id);
+
+                return purchase;
+            }
         }
 
         public static List<PurchaseDTO> getAll(int id, bool client)

@@ -16,7 +16,7 @@ namespace DAO
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             //optionsBuilder.UseSqlServer(@"Server=GABRIEL-BIZIO\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
-            optionsBuilder.UseSqlServer(@"Server=CTPC3628\SQLEXPRESS;Database=teste3;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer(@"Server=CTPC3628\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -74,6 +74,7 @@ namespace DAO
                 entity.Property(e => e.PurchaseStatus).IsRequired();
                 entity.Property(e => e.Payment).IsRequired();
                 entity.HasOne(d => d.client).WithMany();
+                entity.Property(e => e.purchase_value);
                 entity.HasOne(m => m.product);
                 entity.HasOne(d => d.store);
             });
@@ -83,6 +84,7 @@ namespace DAO
             {
                 entity.HasKey(e => e.ID);
                 entity.Property(e => e.quantity).IsRequired();
+                entity.Property(e => e.unit_price);
                 entity.HasOne(d => d.store);
                 entity.HasOne(d => d.product);
             });

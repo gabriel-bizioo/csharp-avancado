@@ -109,6 +109,37 @@ namespace model
             }
         }
 
+        public static Owner GetLogin(OwnerDTO ClientLogin)
+        {
+            Owner? obj;
+
+            using(var context = new DaoContext())
+            {
+                var owner = context.Owner.Single(c => c.login == ClientLogin.login && c.passwd == ClientLogin.passwd);
+
+                if(owner != null)
+                {
+                    obj = new Owner
+                    {
+                        date_of_birth = owner.date_of_birth,
+                        document = owner.document,
+                        email = owner.email,
+                        name = owner.name,
+                        login = owner.login,
+                        passwd = owner.passwd,
+                        phone = owner.phone
+                    };
+                }
+                else
+                {
+                    obj = null;
+                }
+                
+            }
+
+            return obj;
+        }
+
         public List<OwnerDTO> getAll()
         {
             List<OwnerDTO> list = new List<OwnerDTO>();

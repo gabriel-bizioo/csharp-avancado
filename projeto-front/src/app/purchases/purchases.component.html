@@ -1,1 +1,16 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
+<div  class = "productsList">
+    <div class = "productComponent" *ngFor="let purchase of purchases">
+        <div>
+            <img src="{{purchase.product.img_link}}">
+        </div>
+        <div>            
+            <a [title]="'purchase id ' + purchase.id + ' details'"
+            [routerLink]="['/purchase-detail', purchase.id]" class="Product">
+                {{purchase.product.name}}
+            </a>
+            <h1>{{purchase.product.price | currency}}</h1>
+            <p>{{purchase.product.description}}</p>    
+        </div>  
+    </div>
+</div>

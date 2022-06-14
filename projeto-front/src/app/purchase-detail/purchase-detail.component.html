@@ -1,1 +1,15 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
+<div *ngIf="purchase">
+    <div id="div1">
+        <img class="detailImage" src={{purchase.product.img_link}}> 
+
+        <button class="buttonDetail">Purchase</button>
+    </div>
+    <div id="div2">
+        <h3>{{ purchase.product.name }}</h3>
+        <h4>{{ purchase.product.price | currency }}</h4>
+        <p>
+            {{ purchase.product.description }}
+        </p>
+    </div>  
+</div>

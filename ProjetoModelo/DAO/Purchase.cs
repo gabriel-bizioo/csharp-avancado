@@ -15,6 +15,5 @@
         public Product? product;
 
         public Store? store;
-
     }
 }
