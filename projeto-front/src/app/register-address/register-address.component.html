@@ -1,14 +1,15 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
+
 <div class="content">
     <div id="cadastro">
             <h1>REGISTER ADDRESS</h1>
 
-            <div class="input-group">
-                <div class="input-box"> 
-                    <label for="Street">Street</label>
-                    <input  id="Street" name="Street" required="required" type="text" />
-                </div>
+
+            <div class="input-box2"> 
+                <label for="Street">Street</label>
+                <input  id="Street" name="Street" required="required" type="text" />
             </div>
+
             <div class="input-group">
                 <div class="input-box"> 
                     <label for="State">State</label>
@@ -33,6 +34,10 @@
             <div class="register-button"> 
                <button (click)="registerAddress()" type="submit">Register</button>
             </div>
+            <p class="link">  
+                register address later
+                <button [routerLink]="['/login']"> Login </button>
+           </p>
     </div>
 </div>     
             

@@ -2,22 +2,22 @@
 *, *:before, *:after{
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
 }
 
 .content{
     width: 900px;
     min-height: 500px;
-    margin:0px auto;
+    margin: auto;
     position: relative;
-    top: 40px;
+    top: 50%;
+    transform: translateY(50%);
     align-items: center;
 }
 
 
 h1{
     font-size: 48px;
-    color: #066a75;
+    color: #990000;
     font-family: Arial, sans-serif;
     font-weight: bold;
     text-align: center;
@@ -30,25 +30,22 @@ h1:after{
     width: 100%;
     height: 2px;
     margin-top: 10px;
-    background: rgba(147,184,189,0.8)
+    background: #990000;
 }
 
 p{
     margin-bottom: 15px;
 }
 
-.content p:first-child{
-    margin: 0px;
-}
 
 label{
-    color: #405c60;
+    color: #4d0d0d;
     position: relative;
 }
 
 .register-button button{
     width: 100%!important;
-    background: rgb(61,157,179);
+    background: #990000;
     padding: 10px 5px;
     color: #fff;
     font-size: 20px;
@@ -61,7 +58,7 @@ label{
 }
 
 .register-button button:hover{
-    background-color:  rgb(92, 182, 202);
+    background-color: #af0303;
 }
 .input-group{
     display: flex;
@@ -71,67 +68,76 @@ label{
     padding: 0rem;
 }
 
-.input-box{
-    display: flex;
-
-    flex-direction: column;
-    margin-bottom: 1.1rem;
-    width: 300px;
-}
-
-.input-box2{
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 1.1rem;
-    width: 300px;    
-}
-
 .input-box input{
     margin: 0.6rem 0;
     padding: 0.8rem 1.2rem;
     border: none;
     border-radius: 4px;
-    box-shadow: 1px 1px 6px rgba(80, 104, 107, 0.8) ;
+    box-shadow: 1px 1px 6px #491e1e ;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+    width: 300px;
 }
 
 .input-box2 input{
     margin: 0.6rem 0;
-    width: 50.3vw;
-    height : 6.5vh;
     border: none;
     border-radius: 4px;
-    box-shadow: 1px 1px 6px rgba(80, 104, 107, 0.8) ;
+    box-shadow: 1px 1px 6px #491e1e ;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+    width: 100%;
+    padding: 0.8rem;
 }
 
 .input-box input:hover{
-    background-color: rgb(212, 239, 245);
+    background-color: #fdffc8;
 }
 
 .input-box input:focus-visible{
-    outline: 1px solid rgb(61,157,179);
+    outline: 1px solid #990000;
 }
 
 .input-box2 input:hover{
-    background-color: rgb(212, 239, 245);
+    background-color: #fdffc8;
 }
 
 .input-box2 input:focus-visible{
-    outline: 1px solid rgb(61,157,179);
+    outline: 1px solid #990000;
 }
 .link{
     position: absolute;
-    background: #e1eaeb;
+    background: #F0F472;
     color: #7f7c7c;
     left: 0px;
     height: 10px;
     width:  100%!important;
-    top: 503.5px;
-    padding: 8px 25px 25px 30px;
-    font-size: 15px;
+    margin-top: 15.5px;
+    padding: 0px 10px 26px 30px;
+    font-size: 17px;
     text-align: center;
-    border: 5.5px solid #dbe5e8;
-    border-radius: 5px;
+    border: 5.5px solid #F0F472;
 
+}
+
+.link button{
+    font-weight: bold;
+    background: #F0F472;
+    padding: 4px;
+    color: #FF5B00;
+    border: 1px solid #FF5B00;
+    margin-left: 10px;
+    border-radius: 4px;
+    transition: all 0.4s linear;
+    align-items: center;
+}
+
+.link button:hover{
+    color: #FF5B00;
+    background: #f7f7f7;
+    border: 1px solid #D4D925;
 }
 
 #cadastro{
@@ -139,10 +145,9 @@ label{
     width: 88%;
     height: 500px;
     padding: 18px 6% 60px 6%;
-    background: #f7f7f7;
-    border: 1px solid rgba(147,184,189,0.8);
-
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.70);
+    border: 3px solid #990000;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
     animation-duration: 0.5s;
     animation-timing-function: ease;
     animation-fill-mode: both;

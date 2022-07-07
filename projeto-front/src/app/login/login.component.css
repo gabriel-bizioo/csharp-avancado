@@ -13,7 +13,9 @@ body{
     min-height: 560px;
     margin:0px auto;
     position: relative;
-    top: 80px;
+    top: 50%;
+    transform: translateY(30%);
+    align-items: center;
 }
 
 
@@ -105,7 +107,6 @@ label{
     font-size: 15px;
     text-align: center;
     border: 5.5px solid #F0F472;
-    border-radius: 5px;
     justify-content: center;
 }
 
@@ -132,10 +133,10 @@ label{
     margin-top: 10%;
     width: 88%;
     padding: 18px 6% 60px 6%;
-    background: #f7f7f7;
-    border: 2px solid #990000;
 
-    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.70);
+    border: 3px solid #990000;
+    box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
     animation-duration: 0.5s;
     animation-timing-function: ease;
     animation-fill-mode: both;
