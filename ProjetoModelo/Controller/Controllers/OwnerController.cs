@@ -94,9 +94,7 @@ namespace Controller.Controllers
                 address = Address.convertDTOToModel(ownerDTO.owner_address),
                 ID = id
             };
-
         }
-
         
         [HttpGet]
         [Route("get")]
