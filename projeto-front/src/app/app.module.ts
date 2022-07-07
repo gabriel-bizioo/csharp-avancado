@@ -14,6 +14,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 import { PurchaseDetailComponent } from './purchase-detail/purchase-detail.component';
+import { RegisterStoreComponent } from './register-store/register-store.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { PurchaseDetailComponent } from './purchase-detail/purchase-detail.compo
     RegisterAddressComponent,
     WishListComponent,
     PurchasesComponent,
-    PurchaseDetailComponent
+    PurchaseDetailComponent,
+    RegisterStoreComponent
   ],
   imports: [
     BrowserModule,
@@ -37,10 +39,11 @@ import { PurchaseDetailComponent } from './purchase-detail/purchase-detail.compo
       {path: 'product/:productID', component: ProductDetailComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
-      {path: 'address', component:RegisterAddressComponent},
+      {path: 'address-register', component:RegisterAddressComponent},
       {path: 'wishList', component:WishListComponent},
       {path: "purchases", component:PurchasesComponent},
-      {path: "purchase/:purchaseID", component:ProductDetailComponent}
+      {path: "purchase/:purchaseID", component:ProductDetailComponent},
+      {path: 'store-register', component: RegisterStoreComponent},
     ]),
     NoopAnimationsModule
   ],

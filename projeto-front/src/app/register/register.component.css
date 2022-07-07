@@ -2,7 +2,6 @@
 *, *:before, *:after{
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
 }
 
 .content{
@@ -13,13 +12,13 @@
     top: 50%;
     transform: translateY(+25%);
     align-items: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
 h1{
     font-size: 48px;
     color: #990000;
-    font-family: Arial, sans-serif;
     font-weight: bold;
     text-align: center;
     padding-bottom: 30px;
@@ -96,7 +95,7 @@ label{
     left: 0px;
     height: 10px;
     width:  100%!important;
-    margin-top: 1px;
+    margin-top: -1.5px;
     padding: 0px 10px 26px 30px;
     font-size: 17px;
     text-align: center;

@@ -9,7 +9,7 @@ body{
 
 .content{
     width: 500px;
-    min-height: 560px;
+    min-height: 590px;
     margin:0px auto;
     position: relative;
     top: 50%;
@@ -49,18 +49,31 @@ label{
     position: relative;
 }
 
-.register-button button{
-    width: 100%!important;
-    background: #990000;
+.save-button button{
+    width: 188px;
     padding: 10px 5px;
+    background-color: #990000;
     color: #fff;
     font-size: 20px;
-    border: 1px solid #fff;
-    margin-bottom: 10px;
+    border: 1px solid #fff; 
     text-shadow: 0 1px 1px #333;
     border-radius: 5px;
     justify-content: center;
 }
+
+.cancel-button button{
+    width: 188px;
+    padding: 10px 5px;
+    background-color: #F0F472;
+    color: #FF5B00;
+    font-size: 20px;
+    border: 1px solid #fff;
+    text-shadow: 0 1px 1px #333;
+    border-radius: 5px;
+    justify-content: center;
+}
+
+
 
 .register-button button:hover{
     background-color:  #af0303;
@@ -94,44 +107,12 @@ label{
 .input-box input:focus-visible{
     outline: 1px solid #990000;
 }
-.link{
-    position: absolute;
-    background: #F0F472;
-    color: #7f7c7c;
-    left: 0px;
-    height: 10px;
-    width: 100%!important;
-    margin-top: 22px;
-    padding: 3px 25px 24px 30px;
-    font-size: 15px;
-    text-align: center;
-    border: 5.5px solid #F0F472;
-    justify-content: center;
-}
 
-.link button{
-    font-weight: bold;
-    background: #F0F472;
-    padding: 4px;
-    color: #FF5B00;
-    border: 1px solid #FF5B00;
-    margin-left: 10px;
-    border-radius: 4px;
-    transition: all 0.4s linear;
-    align-items: center;
-}
-
-.link button:hover{
-    color: #FF5B00;
-    background: #f7f7f7;
-    border: 1px solid #D4D925;
-}
-
-#login{
+#register{
     position: absolute;
     margin-top: 10%;
     width: 88%;
-    padding: 18px 6% 60px 6%;
+    padding: 18px 6% 10% 6%;
 
     background: rgba(255, 255, 255, 0.70);
     border: 3px solid #990000;
@@ -141,16 +122,10 @@ label{
     animation-fill-mode: both;
 }
 
-/*effect button login*/
-#paralogin:target ~ .content #login{
-    z-index: 2;
-    animation-name: fadeInLeft;
-    animation-delay: .1s;
-}
 
 @media only screen and (max-width: 1024px) {
 
-    #login{
+    #register{
         margin-top: 10%;
         margin-left: 10%;
         width: 80%;
@@ -173,7 +148,7 @@ label{
 
 @media only screen and (max-width: 450px) {
 
-    #login{
+    #register{
         margin-top: 10%;
         margin-left: 20%;
         width: 60%;
