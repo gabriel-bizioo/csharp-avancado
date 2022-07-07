@@ -41,9 +41,11 @@ export class RegisterAddressComponent implements OnInit {
     axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));
+      window.alert("Address registered successfully");
     })
     .catch(function (error) {
       console.log(error);
+      window.alert("Problem registering address");
     });
 
   }

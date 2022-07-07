@@ -1,18 +1,20 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
 <div class="productsList">
     <div class="productComponent" *ngFor="let product of products">      
-        <h2>
-            <img src={{product.img_link}}>
-        </h2>
-        <h3> 
-            <a [title]="product.name + 'details'"
-            [routerLink]="['/product', product.id]" class="Product">
-                {{product.name}}
-            </a>
-        </h3>
-        <h2>
-            <p>
-            </p>
-        </h2>
+        <div class="">
+            <h2>
+                <img src={{product.img_link}}>
+            </h2>
+            <h3> 
+                <a [title]="product.name + 'details'"
+                [routerLink]="['/product', product.id]" class="Product">
+                    {{product.name}}
+                </a>
+            </h3>
+            <h2>
+                <p>
+                </p>
+            </h2>
+        </div>
     </div>
 </div>
