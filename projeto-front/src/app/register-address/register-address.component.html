@@ -32,11 +32,10 @@
                 </div>
             </div>
             <div class="register-button"> 
-               <button (click)="registerAddress()" type="submit">Register</button>
+               <button (click)="registerAddress()" type="submit" [routerLink]="['/']">Register</button>
             </div>
-            <p class="link">  
+            <p class="link" [routerLink]="['/']">  
                 register address later
-                <button [routerLink]="['/login']"> Login </button>
            </p>
     </div>
 </div>     

@@ -12,13 +12,13 @@
     top: 50%;
     transform: translateY(50%);
     align-items: center;
+    font-family: 'Montserrat', sans-serif;
 }
 
 
 h1{
     font-size: 48px;
     color: #990000;
-    font-family: Arial, sans-serif;
     font-weight: bold;
     text-align: center;
     padding-bottom: 30px;
@@ -114,31 +114,18 @@ label{
     left: 0px;
     height: 10px;
     width:  100%!important;
-    margin-top: 15.5px;
-    padding: 0px 10px 26px 30px;
+    margin-top: 15px;
+    padding: 5px 10px 22px 30px;
     font-size: 17px;
     text-align: center;
     border: 5.5px solid #F0F472;
-
 }
 
-.link button{
-    font-weight: bold;
-    background: #F0F472;
-    padding: 4px;
+.link:hover{
     color: #FF5B00;
-    border: 1px solid #FF5B00;
-    margin-left: 10px;
-    border-radius: 4px;
-    transition: all 0.4s linear;
-    align-items: center;
+    cursor: pointer;
 }
 
-.link button:hover{
-    color: #FF5B00;
-    background: #f7f7f7;
-    border: 1px solid #D4D925;
-}
 
 #cadastro{
     position: absolute;
