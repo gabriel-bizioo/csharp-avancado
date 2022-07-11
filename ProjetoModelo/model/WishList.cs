@@ -8,7 +8,7 @@ namespace model
 {
     public class WishList : IValidateDataObject, IDataController<WishListDTO, WishList>
     {
-        List<Product> products = new List<Product>();
+        Product product = new Product();
         Client client;
 
         public WishList(Client client)
@@ -20,25 +20,15 @@ namespace model
         {
 
         }
-        
-        public void addProductToWishList(Product product)
-        {
-            products.Add(product);
-        }
 
         public Client getClient()
         {
             return client;
         }
-        
-        public List<Product> getProducts()
-        {
-            return products;
-        }
 
         public Boolean validateObject()
         {
-            if(products == null) return false;
+            if(product == null) return false;
 
             if(!client.validateObject()) return false;
 
@@ -50,10 +40,7 @@ namespace model
             WishListDTO obj = new WishListDTO();
             obj.client = this.client.convertModelToDTO();
 
-            foreach (var product in products)
-            {
-                obj.wishlist_products.Add(product.convertModelToDTO());
-            }
+            obj.wishlist_products.Add(product.convertModelToDTO());
 
             return obj;
         }
@@ -67,7 +54,7 @@ namespace model
 
             foreach(var product in obj.wishlist_products)
             {
-                wishlist.products.Add(model.Product.convertDTOToModel(product));
+                wishlist.product = (model.Product.convertDTOToModel(product));
             }
 
             return wishlist;
@@ -104,48 +91,68 @@ namespace model
                 var client = context.Client.FirstOrDefault(c => c.login == this.client.getLogin());
                 
                 
-                foreach(var product in this.products)
+                var currentProduct = context.Product.FirstOrDefault(p => p.bar_code == product.getBarCode());
+
+                var wishlist = new DAO.WishList
                 {
-                    var currentProduct = context.Product.FirstOrDefault(p => p.bar_code == product.getBarCode());
+                    client = client,
+                    product = currentProduct
 
-                    var wishlist = new DAO.WishList
-                    {
-                        client = client,
-                        product = currentProduct
+                };
 
-                    };
+                context.WishList.Add(wishlist);
 
-                    context.WishList.Add(wishlist);
+                context.Entry(wishlist.client).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                context.Entry(wishlist.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
 
-                    context.Entry(wishlist.client).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
-                    context.Entry(wishlist.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
+                context.SaveChanges();
 
-                    context.SaveChanges();
-
-                    id = wishlist.ID;
-                }                   
+                id = wishlist.ID;                 
 
             }
             return id;
         }
 
-        public void update(WishListDTO wishlist)
+        public static void Create(string clientinfo, string productinfo)
+        {
+            using(var context = new DaoContext())
+            {
+                var AddClient = context.Client.Where(cl => cl.login == clientinfo).FirstOrDefault();
+                var AddProduct = context.Product.Where(pd => pd.bar_code == productinfo).FirstOrDefault();
+
+                DAO.WishList wishList = new DAO.WishList()
+                {
+                    product = AddProduct,
+                    client = AddClient
+                };
+
+                context.Add(wishList);
+                context.SaveChanges();
+            }
+        }
+
+        public void Update(WishListDTO wishlist)
         {
             throw new NotImplementedException();
         }
 
-        public async void delete()
-        {
+       public static void Delete(string clientinfo, string productinfo)
+       {
             using(var context = new DaoContext())
             {
-                var wishlist = context.WishList.Where(w => w.client.login == this.client.getLogin());
-                foreach(var product in this.products)
+                try
                 {
-                    context.Remove(wishlist.FirstOrDefault(w => w.product.bar_code == product.getBarCode()));
-                }
+                    var wishlist = context.WishList.Where(wl => wl.product.bar_code == productinfo && wl.client.login == clientinfo).Single();
 
-                context.SaveChanges();
+                    context.Remove(wishlist);
+                    context.SaveChanges();
+                }
+                catch(Exception error)
+                {
+                    Console.WriteLine(error);
+                }
+                
             }
-        }
+       }
     }
 }

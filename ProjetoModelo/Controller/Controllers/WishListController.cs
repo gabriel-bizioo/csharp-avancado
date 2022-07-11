@@ -10,35 +10,18 @@ namespace Controller.Controllers
     public class WishListController
     {
         [HttpPost]
-        [Route("add")]
-        public object addProductToWishList([FromBody] WishListDTO wishlistDTO)
+        [Route("create/{clientinfo}/{productinfo}")]
+        public void CreateWishlist(string clientinfo, string productinfo)
         {
-            var wishlist = model.WishList.convertDTOToModel(wishlistDTO);
-            
-            int id = wishlist.save();
-            
-            return new 
-            {
-                id = id,
-                client = wishlist.getClient().getLogin(),
-                product = wishlist.getProducts()
-            };
+            WishList.Create(clientinfo, productinfo);
         }
 
         [HttpDelete]
-        [Route("remove")]
-        public object removeProductFromwishList([FromBody] WishListDTO wishListDTO)
+        [Route("remove/{clientinfo}/{productinfo}")]
+        public void RemoveWishList(string clientinfo, string productinfo)
         {
-            var wishlist = model.WishList.convertDTOToModel(wishListDTO);
-
-            wishlist.delete();
-
-            return new 
-            {
-                delete = "ok",
-                problems = "no"
-            };
-        }
+            WishList.Delete(clientinfo, productinfo);
+        }      
 
         [HttpGet]
         [Route("getproducts/{ClientId}")]

@@ -31,4 +31,8 @@ export class ProductListComponent implements OnInit {
       console.log(error);
     });
   }
+
+  wishlist(){
+    
+  }
 }

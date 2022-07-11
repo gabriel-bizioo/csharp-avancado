@@ -1,0 +1,17 @@
+Feitos:
+	-Listar produtos disponíveis
+	-Realizar login de clientes
+	-Realizar login de logistas
+	-Mostrar todas as compras de um determindado cliente
+	-Cadastrar novo cliente
+	-Listar wishlist
+	
+
+À fazer:
+	-Realizar login de logistas
+	-Efetuar compra de um produto
+	-Mostrar todas as vendas de um determinado logista
+	-Redirecionar caso rota esteja sob autorização de login e sem token
+	-Cadastrar produto novo
+	-Adicionar produto a wishlit (end-point feito)
+	-Remover produto da wishlist (end-point feito)
