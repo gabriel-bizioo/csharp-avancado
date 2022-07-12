@@ -32,7 +32,23 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  wishlist(){
+  wishlist(bar_code:string){
+    var data = '';
+
+    var config = {
+      method: 'post',
+      url: 'http://localhost:5118/wishlist/create/' + localStorage.getItem("email") +'/' +  bar_code,
+      headers: {},
+      data: data
+    };
     
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        window.alert("AAAAAA");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 }

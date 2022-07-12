@@ -100,7 +100,7 @@ namespace model
         }
         public static Client GetLogin(ClientDTO ClientLogin)
         {
-            Client? obj;
+            Client obj;
 
             using(var context = new DaoContext())
             {

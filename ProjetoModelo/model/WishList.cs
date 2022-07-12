@@ -113,21 +113,34 @@ namespace model
             return id;
         }
 
-        public static void Create(string clientinfo, string productinfo)
+        public static bool Create(string clientinfo, string productinfo)
         {
             using(var context = new DaoContext())
             {
-                var AddClient = context.Client.Where(cl => cl.login == clientinfo).FirstOrDefault();
+                var AddClient = context.Client.Where(cl => cl.email == clientinfo).FirstOrDefault();
                 var AddProduct = context.Product.Where(pd => pd.bar_code == productinfo).FirstOrDefault();
 
-                DAO.WishList wishList = new DAO.WishList()
-                {
-                    product = AddProduct,
-                    client = AddClient
-                };
+                var repeats = context.WishList.Where(wl => wl.client.ID == AddClient.ID && wl.product.ID == AddProduct.ID).FirstOrDefault();
 
-                context.Add(wishList);
-                context.SaveChanges();
+                Console.WriteLine(repeats);
+
+                if(repeats == null)
+                {
+                    DAO.WishList wishList = new DAO.WishList()
+                    {
+                        product = AddProduct,
+                        client = AddClient
+                    };
+
+                    context.Add(wishList);
+                    context.SaveChanges();
+                    
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }                
             }
         }
 
@@ -142,7 +155,7 @@ namespace model
             {
                 try
                 {
-                    var wishlist = context.WishList.Where(wl => wl.product.bar_code == productinfo && wl.client.login == clientinfo).Single();
+                    var wishlist = context.WishList.Where(wl => wl.product.bar_code == productinfo && wl.client.email == clientinfo).Single();
 
                     context.Remove(wishlist);
                     context.SaveChanges();

@@ -11,16 +11,36 @@ namespace Controller.Controllers
     {
         [HttpPost]
         [Route("create/{clientinfo}/{productinfo}")]
-        public void CreateWishlist(string clientinfo, string productinfo)
+        public object CreateWishlist(string clientinfo, string productinfo)
         {
-            WishList.Create(clientinfo, productinfo);
+            if(WishList.Create(clientinfo, productinfo))
+            {
+                return new
+                {
+                    status = "product added"
+                };
+            }
+            else
+            {
+               WishList.Delete(clientinfo, productinfo);
+
+               return new
+               {
+                    status = "product removed"
+               };
+            }
         }
 
         [HttpDelete]
         [Route("remove/{clientinfo}/{productinfo}")]
-        public void RemoveWishList(string clientinfo, string productinfo)
+        public object RemoveWishList(string clientinfo, string productinfo)
         {
             WishList.Delete(clientinfo, productinfo);
+
+            return new
+            {
+                status = "product removed"
+            };
         }      
 
         [HttpGet]

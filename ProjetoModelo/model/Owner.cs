@@ -111,7 +111,7 @@ namespace model
 
         public static Owner GetLogin(OwnerDTO ClientLogin)
         {
-            Owner? obj;
+            Owner obj;
 
             using(var context = new DaoContext())
             {
@@ -134,7 +134,6 @@ namespace model
                 {
                     obj = null;
                 }
-                
             }
 
             return obj;

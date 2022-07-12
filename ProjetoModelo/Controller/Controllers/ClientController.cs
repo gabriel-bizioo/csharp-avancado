@@ -36,8 +36,7 @@ namespace Controller.Controllers
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
                         new Claim("UserId", user.getId().ToString()),
-                        new Claim("UserName", user.getName()),
-                        new Claim("Email", user.getEmail())
+                        new Claim("UserName", user.getName())
                     };
 
                     var Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -53,8 +52,8 @@ namespace Controller.Controllers
 
                     var response = new{
                         token = new JwtSecurityTokenHandler().WriteToken(Token),
-                        clientId = user.getId().ToString()
-                    }   ;
+                        clientId = user.getId().ToString(),
+                        email = user.getEmail()                    };
 
                     return Ok(response);
                 }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DAO
 {
@@ -15,15 +16,24 @@ namespace DAO
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer(@"Server=GABRIEL-BIZIO\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
-            optionsBuilder.UseSqlServer(@"Server=CTPC3628\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
+            if(!optionsBuilder.IsConfigured)
+            {
+                if(Environment.MachineName == "GABRIEL-BIZIO")
+                {
+                    optionsBuilder.UseSqlServer(@"Server=GABRIEL-BIZIO\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
+                }
+                else
+                {
+                    optionsBuilder.UseSqlServer(@"Server=CTPC3628\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
+                }
+                //optionsBuilder.UseSqlServer(@"Server=tcp:gabriel.database.windows.net,1433;Database=MarketPlace;User ID=gabriel@gabriel;Password=Database123;
+                //Trusted_Connection=False;Encrypt=True;");
+            }            
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
-         
 
             modelBuilder.Entity<Address>(entity =>
             {
