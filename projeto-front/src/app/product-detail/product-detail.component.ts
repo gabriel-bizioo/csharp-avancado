@@ -34,4 +34,33 @@ export class ProductDetailComponent implements OnInit {
       console.log(error);
     });
   }
+
+  makePurchase(){
+    var data = JSON.stringify({
+      "confirmation_number": "this is a test",
+      "number_nf": "this is a test",
+      "payment_type": 1,
+      "purchase_status": 1,
+      "purchase_value": this.product?.price
+    });
+
+    var config = {
+      method: 'post',
+      url: 'http://localhost:5118/purchase/create/000000/' + this.product?.bar_code + '/' + localStorage.getItem('email'),
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    };
+
+    axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        window.alert("Eu quero dormir");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
 }

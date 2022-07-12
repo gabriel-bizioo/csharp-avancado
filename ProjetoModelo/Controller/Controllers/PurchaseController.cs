@@ -24,17 +24,13 @@ namespace Controller.Controllers
         }
 
         [HttpPost]
-        [Route("make")]
-        public object makePurchase([FromBody] PurchaseDTO purchaseDTO)
+        [Route("create/{storeinfo}/{productinfo}/{clientinfo}")]
+        public void makePurchase([FromBody] PurchaseDTO purchaseDTO, string storeinfo, string productinfo, string clientinfo)
         {
-            var purchase = model.Purchase.convertDTOToModel(purchaseDTO);
-            int id = purchase.save();
+            var purchase = Purchase.convertDTOToModel(purchaseDTO);
 
-            return new
-            {
-                purchase_id = id,
-                purchase_date = purchase.getPurchaseDate()
-            };
+            Purchase.Create(purchase, storeinfo, productinfo, clientinfo);
+
         }
 
         [HttpGet]

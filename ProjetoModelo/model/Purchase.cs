@@ -313,5 +313,66 @@ namespace model
                 return purchases;
             }
         }
+
+        public static void Create(Purchase purchase, string storeinfo, string productinfo, string clientinfo)
+        {
+            using(var context = new DaoContext())
+            {
+                try
+                {
+                    var Query = context.Store
+                        .Join(context.Stocks, str => str.ID, stc => stc.store.ID, (str, stc) => new
+                        {
+                            StoreId = str.ID,
+                            StoreCNPJ = str.cnpj,
+                            ProductId = stc.product.ID,
+                            ProductBarCode = stc.product.bar_code,
+                            ProductQuantity = stc.quantity,
+                            StocksId = stc.ID
+                        })
+                        .Join(context.Product, stc => stc.ProductId, pd => pd.ID, (stc, pd) => new
+                        {
+                            StoreId = stc.StoreId,
+                            StoreCNPJ = stc.StoreCNPJ,
+                            ProductId = stc.ProductId,
+                            ProductBarCode = stc.ProductBarCode
+                        })
+                        .Where(c => c.ProductBarCode == productinfo && c.StoreCNPJ == storeinfo)
+                        .Single();
+
+                    var Product = context.Product
+                        .Where(w => w.ID == Query.ProductId)
+                        .Single();
+
+                    var Store = context.Store
+                        .Where(w => w.ID == Query.StoreId)
+                        .Single();
+
+                    var Client = context.Client
+                        .Where(w => w.email == clientinfo)
+                        .Single();
+
+                    DAO.Purchase NewPurchase = new DAO.Purchase
+                    {
+                        client = Client,
+                        product = Product,
+                        store = Store,
+                        number_nf = purchase.NumberNF,
+                        confirmation_number = purchase.ConfirmationNumber,
+                        purchase_date = DateTime.Now,
+                        Payment = (int)purchase.PaymentType,
+                        PurchaseStatus = (int)purchase.PurchaseStatus,
+                        purchase_value = purchase.PurchaseValue
+                    };
+
+                    context.Add(NewPurchase);
+                    context.SaveChanges();
+                }
+                catch(Exception error)
+                {
+                    Console.WriteLine(error);
+                }
+            }
+        }
     }
 }
