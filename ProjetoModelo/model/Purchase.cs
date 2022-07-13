@@ -314,7 +314,7 @@ namespace model
             }
         }
 
-        public static void Create(Purchase purchase, string storeinfo, string productinfo, string clientinfo)
+        public void Create(string storeinfo, string productinfo, string clientinfo)
         {
             using(var context = new DaoContext())
             {
@@ -357,12 +357,12 @@ namespace model
                         client = Client,
                         product = Product,
                         store = Store,
-                        number_nf = purchase.NumberNF,
-                        confirmation_number = purchase.ConfirmationNumber,
+                        number_nf = this.NumberNF,
+                        confirmation_number = this.ConfirmationNumber,
                         purchase_date = DateTime.Now,
-                        Payment = (int)purchase.PaymentType,
-                        PurchaseStatus = (int)purchase.PurchaseStatus,
-                        purchase_value = purchase.PurchaseValue
+                        Payment = (int)this.PaymentType,
+                        PurchaseStatus = (int)this.PurchaseStatus,
+                        purchase_value = this.PurchaseValue
                     };
 
                     context.Add(NewPurchase);

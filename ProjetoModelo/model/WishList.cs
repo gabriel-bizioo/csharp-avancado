@@ -60,18 +60,16 @@ namespace model
             return wishlist;
         }
 
-        public static List<object> GetAllProducts(int ClientId)
+        public static IEnumerable<object> GetAllProducts(string clientinfo)
         {
-            List<object> products = new List<object>();
             using(var context = new DaoContext())
             {
-                var wishlists = context.WishList.Include(x => x.product).Where(wishlists => wishlists.client.ID == ClientId);
-                foreach(var wishlist in wishlists)
-                {
-                    if(wishlist.product != null)
-                        products.Add(wishlist.product);
-                }
-                return products;              
+                var wishlists = context.WishList.Include(x => x.product)
+                    .Where(wishlists => wishlists.client.email == clientinfo)
+                    .Select(w => w.product)
+                    .ToList();
+
+                return wishlists;              
             }
         }
 

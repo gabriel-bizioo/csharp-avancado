@@ -19,7 +19,7 @@ export class WishListComponent implements OnInit
   {    
     var config = {
       method: 'get',
-      url: 'http://localhost:5118/wishlist/getproducts/' + localStorage.getItem("clientId"),
+      url: 'http://localhost:5118/wishlist/getproducts/' + localStorage.getItem("email"),
       headers: { }
     };
     

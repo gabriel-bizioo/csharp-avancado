@@ -44,10 +44,10 @@ namespace Controller.Controllers
         }      
 
         [HttpGet]
-        [Route("getproducts/{ClientId}")]
-        public List<object> GetProducts(int ClientId)
+        [Route("getproducts/{clientinfo}")]
+        public IEnumerable<object> GetProducts(string clientinfo)
         {
-            return WishList.GetAllProducts(ClientId);
+            return WishList.GetAllProducts(clientinfo);
         }  
     }
 }

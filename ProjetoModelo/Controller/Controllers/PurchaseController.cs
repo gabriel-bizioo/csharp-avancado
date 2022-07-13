@@ -29,7 +29,7 @@ namespace Controller.Controllers
         {
             var purchase = Purchase.convertDTOToModel(purchaseDTO);
 
-            Purchase.Create(purchase, storeinfo, productinfo, clientinfo);
+            purchase.Create(storeinfo, productinfo, clientinfo);
 
         }
 
