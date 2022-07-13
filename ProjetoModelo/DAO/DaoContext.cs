@@ -18,16 +18,10 @@ namespace DAO
         {
             if(!optionsBuilder.IsConfigured)
             {
-                if(Environment.MachineName == "GABRIEL-BIZIO")
-                {
-                    optionsBuilder.UseSqlServer(@"Server=GABRIEL-BIZIO\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
-                }
-                else
-                {
-                    optionsBuilder.UseSqlServer(@"Server=CTPC3628\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
-                }
-                //optionsBuilder.UseSqlServer(@"Server=tcp:gabriel.database.windows.net,1433;Database=MarketPlace;User ID=gabriel@gabriel;Password=Database123;
-                //Trusted_Connection=False;Encrypt=True;");
+                //criar esse arquivo manualmente no local abaixo pra evitar vazamento de dados ok.
+                string ConnectionString = System.IO.File.ReadAllText(@"../../connection_string.txt");
+
+                optionsBuilder.UseSqlServer(ConnectionString);
             }            
         }
 

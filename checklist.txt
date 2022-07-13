@@ -7,13 +7,12 @@ Feitos:
 	-Listar wishlist
 	
 Quase prontos:
-		-Adicionar produto a wishlit (Só falta o ícone do coração)
-		-Remover produto da wishlist (Só falta o ícone do coração)
-		-Efetuar compra de um produto(70% funcional)
+	-Adicionar produto a wishlit (Só falta o ícone do coração)
+	-Remover produto da wishlist (Só falta o ícone do coração)
+	-Efetuar compra de um produto(70% funcional)
 
 À fazer:
 	-Realizar login de logistas
 	-Mostrar todas as vendas de um determinado logista
 	-Redirecionar caso rota esteja sob autorização de login e sem token
 	-Cadastrar produto novo
-
