@@ -62,7 +62,7 @@ namespace model
         {
             Client client = new Client();
 
-            if(obj.client_address != null) { client.address = Address.convertDTOToModel(obj.client_address); }
+            if(obj.address != null) { client.address = Address.convertDTOToModel(obj.address); }
 
             client.name = obj.name;
             client.email = obj.email;

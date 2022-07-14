@@ -20,7 +20,7 @@ namespace model
             address = endereco;
         }
         
-        private Owner() { }
+        public Owner() { }
         
         public static Owner getInstance(Address endereco)
         {
@@ -56,7 +56,7 @@ namespace model
         public OwnerDTO convertModelToDTO()
         {
             OwnerDTO obj = new OwnerDTO();
-            obj.owner_address = address.convertModelToDTO();
+            obj.address = address.convertModelToDTO();
             obj.name = this.name;
             obj.email = this.email;
             obj.phone = this.phone;
@@ -71,7 +71,7 @@ namespace model
         public static Owner convertDTOToModel(OwnerDTO obj)
         {
             Owner owner = new Owner();
-            if(obj.owner_address != null) { owner.address = Address.convertDTOToModel(obj.owner_address); }
+            if(obj.address != null) { owner.address = Address.convertDTOToModel(obj.address); }
             owner.name = obj.name;
             owner.email = obj.email;
             owner.document = obj.document;
@@ -166,6 +166,7 @@ namespace model
                     name = this.name,
                     email = this.email,
                     phone = this.phone,
+                    document = this.document,
                     login = this.login,
                     passwd = this.passwd,
                     date_of_birth = this.date_of_birth,

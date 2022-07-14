@@ -30,13 +30,19 @@
                     <label for="Postal">Postal Code</label>
                     <input id="Postal" name="Postal" required="required" type="text"/>          
                 </div>
+
+                <div>
+                    <label for="radio">Register as:</label>
+                    <br>
+                    <input type="radio" name="user_type" [value]=true ngModel="isClient" (click)="change(true)"> Client
+                    <br>
+                    <input type="radio" name="user_type" [value]=false ngModel="isClient" (click)="change(false)"> Owner
+                </div>
+                
             </div>
             <div class="register-button"> 
-               <button (click)="registerAddress()" type="submit" [routerLink]="['/']">Register</button>
+               <button (click)="registerAccount()" type="submit">Register</button>
             </div>
-            <p class="link" [routerLink]="['/']">  
-                register address later
-           </p>
     </div>
 </div>     
             

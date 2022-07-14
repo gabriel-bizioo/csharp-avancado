@@ -1,7 +1,6 @@
-using System;
+using Microsoft.AspNetCore.Mvc;
 using DTO;
 using model;
-using Microsoft.AspNetCore.Mvc;
 
 namespace Controller.Controllers
 {
@@ -10,17 +9,17 @@ namespace Controller.Controllers
     public class PurchaseController
     {
         [HttpGet]
-        [Route("getclient/{clientID}")]
-        public List<object> getClientPurchases(int clientID)
+        [Route("getclient/{clientinfo}")]
+        public IEnumerable<object> getClientPurchases(string clientinfo)
         {
-            return model.Purchase.getClientPurchases(clientID);
+            return model.Purchase.getClientPurchases(clientinfo);
         }
 
         [HttpGet]
-        [Route("getstore/{storeID}")]
-        public List<object> getStorePurchases(int storeID)
+        [Route("getstore/{storeinfo}")]
+        public IEnumerable<object> getStorePurchases(string storeinfo)
         {
-            return model.Purchase.getStorePurchases(storeID);
+            return model.Purchase.getStorePurchases(storeinfo);
         }
 
         [HttpPost]
@@ -30,7 +29,6 @@ namespace Controller.Controllers
             var purchase = Purchase.convertDTOToModel(purchaseDTO);
 
             purchase.Create(storeinfo, productinfo, clientinfo);
-
         }
 
         [HttpGet]

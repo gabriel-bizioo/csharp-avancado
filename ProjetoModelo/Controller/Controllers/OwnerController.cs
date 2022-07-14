@@ -91,7 +91,7 @@ namespace Controller.Controllers
                 phone = ownerDTO.phone,
                 login = ownerDTO.login,
                 passwd = ownerDTO.passwd,
-                address = Address.convertDTOToModel(ownerDTO.owner_address),
+                address = Address.convertDTOToModel(ownerDTO.address),
                 ID = id
             };
         }

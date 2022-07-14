@@ -23,7 +23,6 @@ namespace Controller.Controllers
         [Route("api")]
         public IActionResult GenerateToken([FromBody]ClientDTO Login)
         {
-            Console.Write("entrando no login");
             if(Login != null && Login.login != null && Login.passwd != null)
             {
                 var user = model.Client.GetLogin(Login);
@@ -35,7 +34,7 @@ namespace Controller.Controllers
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("UserId", user.getId().ToString()),
+                        new Claim("UserEmail", user.getEmail()),
                         new Claim("UserName", user.getName())
                     };
 
@@ -50,10 +49,11 @@ namespace Controller.Controllers
                         expires: DateTime.UtcNow.AddMinutes(10),
                         signingCredentials: SignIn);
 
-                    var response = new{
+                    var response = new
+                    {
                         token = new JwtSecurityTokenHandler().WriteToken(Token),
-                        clientId = user.getId().ToString(),
-                        email = user.getEmail()                    };
+                        email = user.getEmail()                    
+                    };
 
                     return Ok(response);
                 }
@@ -86,7 +86,7 @@ namespace Controller.Controllers
                 phone = clientDTO.phone,
                 login = clientDTO.login,
                 passwd = clientDTO.passwd,
-                address = clientDTO.client_address,
+                address = clientDTO.address,
                 id = id
             };
 

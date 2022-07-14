@@ -159,7 +159,7 @@ namespace model
         {
             using(var context = new DaoContext())
             {
-                var purchase = context.Purchase
+                var purchase = context.Purchase           
                     .Include(p => p.product)
                     .Include( p => p.store)
                     .Include(p => p.client)
@@ -273,44 +273,31 @@ namespace model
             }
         }
 
-        public static List<object> getClientPurchases(int clientID)
+        public static IEnumerable<object> getClientPurchases(string clientinfo)
         {
             using(var context = new DaoContext())
             {
-                var get_purchases = context.Purchase
+                var Purchases = context.Purchase
                     .Include(p => p.product)
                     .Include(p => p.store)
-                    .Where(p => p.client.ID == clientID);
+                    .Where(p => p.client.email == clientinfo)
+                    .ToList();
 
-                List<object> purchases = new List<object>();
-
-                foreach(var purchase in get_purchases)
-                {
-                    purchases.Add(purchase);
-                }
-
-                return purchases;
-                
+                return Purchases;
             }
         }
 
-        public static List<object> getStorePurchases(int storeID)
+        public static IEnumerable<object> getStorePurchases(string storeinfo)
         {
             using(var context = new DaoContext())
             {
-                var get_purchases = context.Purchase
+                var Purchases = context.Purchase
                     .Include(p => p.product)
                     .Include(p => p.store)
-                    .Where(p => p.store.ID == storeID);
+                    .Where(p => p.store.cnpj == storeinfo)
+                    .ToList();
 
-                List<object> purchases = new List<object>();
-
-                foreach(var purchase in get_purchases)
-                {
-                    purchases.Add(purchase);
-                }
-
-                return purchases;
+                return Purchases;
             }
         }
 

@@ -2,7 +2,7 @@
 <div class="content">
     <div id="login">
        
-            <h1>LOGIN</h1>
+            <h1>CLIENT</h1>
             <div class="input-box">
                 <label for="nome_login">Login</label>
                 <input id="nome" name="nome-login" required="required" type="text"/>
@@ -13,13 +13,20 @@
             </div>
 
             <div class="register-button"> 
-                <button (click)="loginClient()">Log in</button>
+                <button (click)="loginUser()">Log in</button>
+            </div>
+
+            <div>
+                <label for="radio">Login as:</label>
+                <br>
+                <input type="radio" name="user_type" [value]=true ngModel="isClient" (click)="change(true)"> Client
+                <br>
+                <input type="radio" name="user_type" [value]=false ngModel="isClient" (click)="change(false)"> Owner
             </div>
                
             <p class="link">
                 Don't have an account yet?
                 <button [routerLink]="['/register']">Create Account</button>     
-            </p>
-                    
+            </p>            
     </div>
 </div>

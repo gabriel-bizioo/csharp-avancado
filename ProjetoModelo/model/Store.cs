@@ -72,7 +72,6 @@ namespace model
 
             if(Cnpj == null) return false;
 
-
             return true;
         }
 

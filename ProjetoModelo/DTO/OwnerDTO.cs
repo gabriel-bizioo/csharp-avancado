@@ -8,7 +8,7 @@ namespace DTO
 {
     public class OwnerDTO
     {
-        public AddressDTO? owner_address;
+        public AddressDTO? address;
 
         public string? name;
 

@@ -19,7 +19,7 @@ export class PurchasesComponent implements OnInit {
     var config = 
     {
       method: 'get',
-      url: 'http://localhost:5118/purchase/getclient/' + localStorage.getItem("clientId"),
+      url: 'http://localhost:5118/purchase/getclient/' + localStorage.getItem("email"),
       headers: { }
     };
 

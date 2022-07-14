@@ -4,7 +4,7 @@ namespace DTO
 {
     public class ClientDTO
     {
-        public AddressDTO? client_address;
+        public AddressDTO? address;
 
         public string? name;
 

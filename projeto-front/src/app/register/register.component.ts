@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import axios from 'axios';
 
 @Component({
@@ -8,13 +9,15 @@ import axios from 'axios';
 })
 export class RegisterComponent implements OnInit {
   titlePage="Register"
-  constructor() { }
+
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  registerAccount(){
-   
+  
+
+  saveForNextPage(){
     let name = document.getElementById("nome_cad") as HTMLInputElement;
     let login = document.getElementById("login_cad") as HTMLInputElement;
     let Document = document.getElementById("Document") as HTMLInputElement;
@@ -24,43 +27,17 @@ export class RegisterComponent implements OnInit {
     let passwd = document.getElementById("password") as HTMLInputElement;
     let confirm = document.getElementById("confirmPassword") as HTMLInputElement;
 
-    if(passwd.value == confirm.value)
-    {
-      var data = JSON.stringify({
-        "name": name.value,
-        "date_of_birth": date_of_birth.value,
-        "document": Document.value,
-        "email": email.value,
-        "phone": phone.value,
-        "login": login.value,
-        "passwd": passwd.value,
-        "client_address": {
-          "street": "rua",
-          "city": "cidade",
-          "state": "estado",
-          "country": "pais",
-          "postal_code": "00000000"
-        }
-      }); 
-      var config = {
-        method: 'post',
-        url: 'http://localhost:5118/client/register',
-        headers: { 
-          'Content-Type': 'application/json'
-        },
-        data : data
-      };
-      
-      axios(config)
-      .then(function (response) {
-        console.log(JSON.stringify(response.data));
-        window.alert("Account registered successfully");
-      })
-      .catch(function (error) {
-        console.log(error);
-        window.alert("Problem registering account");
-      });
-    }
+    localStorage.setItem('name', name.value);
+    localStorage.setItem('login', login.value);
+    localStorage.setItem('Document', Document.value);
+    localStorage.setItem('date_of_birth', date_of_birth.value);
+    localStorage.setItem('phone', phone.value);
+    localStorage.setItem('email', email.value);
+    localStorage.setItem('passwd', passwd.value);
+    localStorage.setItem('confirm', confirm.value);
 
+    window.alert(localStorage.getItem('name'));
+
+    this.router.navigate(['/address-register']);
   }
 }
