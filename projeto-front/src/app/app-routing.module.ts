@@ -9,6 +9,7 @@ import { WishListComponent } from './wish-list/wish-list.component';
 import { PurchasesComponent } from './purchases/purchases.component';
 import { PurchaseDetailComponent } from './purchase-detail/purchase-detail.component';
 import { RegisterStoreComponent } from './register-store/register-store.component';
+import { RegisterProductComponent } from './register-product/register-product.component';
 
 const routes: Routes = [ {path: '', component : ProductListComponent},
 {path: 'product/:productID', component: ProductDetailComponent},
@@ -17,8 +18,9 @@ const routes: Routes = [ {path: '', component : ProductListComponent},
 {path: 'address-register', component: RegisterAddressComponent},
 {path: 'wishList', component: WishListComponent},
 {path: 'purchases', component:PurchasesComponent},
-{path: 'purchase-detail/:purchaseID', component:PurchaseDetailComponent},
+{path: 'purchase-detail', component:PurchaseDetailComponent},
 {path: 'store-register', component: RegisterStoreComponent},
+{path: 'product-register', component: RegisterProductComponent},
 ];
 
 @NgModule({

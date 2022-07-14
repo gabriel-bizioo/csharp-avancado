@@ -16,13 +16,18 @@ namespace DAO
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            if(!optionsBuilder.IsConfigured)
-            {
-                //criar esse arquivo manualmente no local abaixo pra evitar vazamento de dados ok.
-                string ConnectionString = System.IO.File.ReadAllText(@"../../connection_string.txt");
-
-                optionsBuilder.UseSqlServer(ConnectionString);
-            }            
+            // if(Enviroment.MachineName == "CTPC3628")
+            // {
+            //     optionsBuilder.UseSqlServer(@"Server=CTPC3628\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
+            // }
+            // else if(Enviroment.MachineName == "sadsadsagas")
+            // {
+            //     optionsBuilder.UseSqlServer(@"Server=GABRIEL-BIZIO\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
+            // }
+            // else if(Enviroment.MachineName == "JVLPC0562")
+            // {
+                optionsBuilder.UseSqlServer(@"Server=JVLPC0562\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
+            // }  
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

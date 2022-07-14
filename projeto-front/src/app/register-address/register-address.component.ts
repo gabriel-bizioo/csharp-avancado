@@ -9,7 +9,7 @@ import axios from 'axios';
   styleUrls: ['./register-address.component.css']
 })
 export class RegisterAddressComponent implements OnInit {
-  titlePage="Register"
+  titlePage="Address Register"
 
   isClient = true;
 
