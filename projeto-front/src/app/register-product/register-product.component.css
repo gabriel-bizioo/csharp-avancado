@@ -13,7 +13,7 @@ body{
     margin:0px auto;
     position: relative;
     top: 50%;
-    transform: translateY(30%);
+    transform: translateY(20%);
     align-items: center;
     font-family: 'Montserrat', sans-serif;
 }
@@ -113,7 +113,6 @@ label{
     margin-top: 10%;
     width: 88%;
     padding: 18px 6% 10% 6%;
-
     background: rgba(255, 255, 255, 0.70);
     border: 3px solid #990000;
     box-shadow: 8px 8px 4px rgba(0, 0, 0, 0.25);
@@ -121,6 +120,8 @@ label{
     animation-timing-function: ease;
     animation-fill-mode: both;
 }
+
+
 
 
 @media only screen and (max-width: 1024px) {

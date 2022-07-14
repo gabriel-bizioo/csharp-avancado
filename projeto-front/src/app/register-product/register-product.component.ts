@@ -1,6 +1,4 @@
-
 import { Component, OnInit } from '@angular/core';
-
 
 @Component({
   selector: 'app-register-product',
@@ -13,5 +11,6 @@ export class RegisterProductComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
 }
