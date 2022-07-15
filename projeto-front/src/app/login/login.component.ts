@@ -32,8 +32,6 @@ export class LoginComponent implements OnInit {
       "passwd": passwd.value
     })
 
-
-
     console.log(data)
 
     if(instance.isClient){

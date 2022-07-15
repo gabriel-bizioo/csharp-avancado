@@ -16,6 +16,7 @@ export class PurchaseDetailComponent implements OnInit {
 
   ngOnInit(): void 
   {
+    let token = localStorage.getItem('authToken')
     const RouteParams = this.route.snapshot.paramMap;
     const purchaseIdfromRoute = Number(RouteParams.get('purchaseID'));
 
@@ -23,7 +24,10 @@ export class PurchaseDetailComponent implements OnInit {
     {
       method: 'get',
       url: 'http://localhost:5118/purchase/getpurchase/' + purchaseIdfromRoute,
-      headers: { }
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
     };
 
     let instance = this;
@@ -35,7 +39,5 @@ export class PurchaseDetailComponent implements OnInit {
     .catch(function (error) {
       console.log(error);
     });
-
   }
-
 }

@@ -16,11 +16,17 @@ export class PurchasesComponent implements OnInit {
 
   ngOnInit(): void 
   {
+
+    let token = localStorage.getItem('authToken');
+
     var config = 
     {
       method: 'get',
       url: 'http://localhost:5118/purchase/getclient/' + localStorage.getItem("email"),
-      headers: { }
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
     };
 
     let instance = this

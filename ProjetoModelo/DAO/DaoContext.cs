@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace DAO
@@ -16,18 +17,21 @@ namespace DAO
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // if(Enviroment.MachineName == "CTPC3628")
-            // {
-            //     optionsBuilder.UseSqlServer(@"Server=CTPC3628\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
-            // }
-            // else if(Enviroment.MachineName == "sadsadsagas")
-            // {
-            //     optionsBuilder.UseSqlServer(@"Server=GABRIEL-BIZIO\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
-            // }
-            // else if(Enviroment.MachineName == "JVLPC0562")
-            // {
-                optionsBuilder.UseSqlServer(@"Server=JVLPC0562\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
-            // }  
+            string PC = Environment.MachineName;
+
+            switch(PC)
+            {
+                case("CTPC3628"):
+                    optionsBuilder.UseSqlServer(@"Server=CTPC3628\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
+                    break;
+                case("JVLPC0562"):
+                    optionsBuilder.UseSqlServer(@"Server=JVLPC0562\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
+                    break;
+                default:
+                    string ConString = File.ReadAllText("../../connectionstring.txt");
+                    optionsBuilder.UseSqlServer(ConString);
+                    break;
+            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

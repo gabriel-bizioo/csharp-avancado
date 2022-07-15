@@ -1,41 +1,73 @@
-using Microsoft.AspNetCore.Mvc;
+using System;
 using DTO;
 using model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Controller.Controllers
 {
     [ApiController]
     [Route("purchase")]
-    public class PurchaseController
+    public class PurchaseController : ControllerBase
     {
+        [Authorize]
         [HttpGet]
         [Route("getclient/{clientinfo}")]
-        public IEnumerable<object> getClientPurchases(string clientinfo)
+        public IActionResult getClientPurchases(string clientinfo)
         {
-            return model.Purchase.getClientPurchases(clientinfo);
+            var Purchases = model.Purchase.getClientPurchases(clientinfo);
+            
+            var result = new ObjectResult(Purchases);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            return result;
         }
 
+        [Authorize]
         [HttpGet]
         [Route("getstore/{storeinfo}")]
-        public IEnumerable<object> getStorePurchases(string storeinfo)
+        public IActionResult getStorePurchases(string storeinfo)
         {
-            return model.Purchase.getStorePurchases(storeinfo);
+            var StorePurchases = model.Purchase.getStorePurchases(storeinfo);
+            
+            var result = new ObjectResult(StorePurchases);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            return result;
         }
 
+        [Authorize]
         [HttpPost]
         [Route("create/{storeinfo}/{productinfo}/{clientinfo}")]
-        public void makePurchase([FromBody] PurchaseDTO purchaseDTO, string storeinfo, string productinfo, string clientinfo)
+        public IActionResult makePurchase([FromBody] PurchaseDTO purchaseDTO, string storeinfo, string productinfo, string clientinfo)
         {
             var purchase = Purchase.convertDTOToModel(purchaseDTO);
 
             purchase.Create(storeinfo, productinfo, clientinfo);
+
+            var status = new
+            {
+                status = "Register ok"
+            };
+
+            var result = new ObjectResult(status);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            return result;
         }
 
+        [Authorize]
         [HttpGet]
         [Route("getpurchase/{id}")]
-        public object GetPurchase(int id)
+        public IActionResult GetPurchase(int id)
         {
-            return model.Purchase.findById(id);
+            var Purchases = model.Purchase.findById(id);
+            
+            var result = new ObjectResult(Purchases);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            return result;
         }   
     }
 }

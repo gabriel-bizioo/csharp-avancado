@@ -2,20 +2,28 @@ using System;
 using DTO;
 using model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Controller.Controllers
 {
     [ApiController]
     [Route("wishlist")]
-    public class WishListController
+    public class WishListController : ControllerBase
     {
+        [Authorize]
         [HttpPost]
         [Route("create/{clientinfo}/{productinfo}")]
-        public object CreateWishlist(string clientinfo, string productinfo)
+        public IActionResult CreateWishlist(string clientinfo, string productinfo)
         {
+            var status = new
+            {
+                status = "n feiz nada"
+            };
+            
             if(WishList.Create(clientinfo, productinfo))
             {
-                return new
+                status =  new
                 {
                     status = "product added"
                 };
@@ -24,30 +32,48 @@ namespace Controller.Controllers
             {
                WishList.Delete(clientinfo, productinfo);
 
-               return new
+               status = new
                {
                     status = "product removed"
                };
             }
+
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            var result = new ObjectResult(status);
+
+            return result;
+
         }
 
+        [Authorize]
         [HttpDelete]
         [Route("remove/{clientinfo}/{productinfo}")]
-        public object RemoveWishList(string clientinfo, string productinfo)
+        public IActionResult RemoveWishList(string clientinfo, string productinfo)
         {
             WishList.Delete(clientinfo, productinfo);
-
-            return new
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            var status = new
             {
                 status = "product removed"
             };
+
+            var result = new ObjectResult(status);
+
+            return result;
         }      
 
+        [Authorize]
         [HttpGet]
         [Route("getproducts/{clientinfo}")]
-        public IEnumerable<object> GetProducts(string clientinfo)
+        public IActionResult GetProducts(string clientinfo)
         {
-            return WishList.GetAllProducts(clientinfo);
+            var All =  WishList.GetAllProducts(clientinfo);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            
+            var result = new ObjectResult(All);
+
+            return result;
         }  
     }
 }

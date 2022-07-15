@@ -2,6 +2,8 @@ using System;
 using DTO;
 using model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Controller.Controllers
 {
@@ -9,16 +11,17 @@ namespace Controller.Controllers
 
     [ApiController]
     [Route("address")]
-    public class AddressController
+    public class AddressController : ControllerBase
     {
         [HttpPost]
         [Route("register")]
-        public object registerAddress([FromBody] AddressDTO addressDTO)
+        public IActionResult registerAddress([FromBody] AddressDTO addressDTO)
         {
                 var address = model.Address.convertDTOToModel(addressDTO);
+                Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
                 var id = address.save();
-                return new 
+                var NewAddress = new
                 {
                     street = addressDTO.street,
                     state = addressDTO.state,
@@ -27,24 +30,48 @@ namespace Controller.Controllers
                     postal_code = addressDTO.postal_code,
                     id = id
                 };
+
+            var response = new ObjectResult(NewAddress);
+
+            return response;
         }
 
+        [Authorize]
         [HttpDelete]
         [Route("remove/{id}")]
-        public string removeAddress(int id)
+        public IActionResult removeAddress(int id)
         {
             model.Address.delete(id);
 
-            return "address removed";
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            var status = new
+            {
+                status = "Object removed"
+            };
+
+            var result = new ObjectResult(status);
+
+            return result;
         }
 
+        [Authorize]
         [HttpPut]
         [Route("update/{id}")]
-        public string updateAddress(int id, [FromBody]AddressDTO address)
+        public IActionResult updateAddress(int id, [FromBody]AddressDTO address)
         {
             model.Address.update(id, address);
 
-            return "address updated";
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            var status = new
+            {
+                status = "Object updated"
+            };
+
+            var result = new ObjectResult(status);
+
+            return result;
         }
     }
 }

@@ -2,32 +2,38 @@ using System;
 using DTO;
 using model;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Controller.Controllers
 {
     [ApiController]
     [Route("store")]
-    public class StoreController
+    public class StoreController : ControllerBase
     {
 
         [HttpGet]
         [Route("getall")]
-        public List<object> getAllStores()
+        public IActionResult getAllStores()
         {
             var storelist = model.Store.getAllStores();
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
-            return storelist; 
+            var result = new ObjectResult(storelist);
+            
+            return result; 
         }
-
+        
+        [Authorize]
         [HttpPost]
         [Route("register")]
-        public object registerStore([FromBody] StoreDTO storeDTO)
+        public IActionResult registerStore([FromBody] StoreDTO storeDTO)
         {
             var store = model.Store.convertDTOToModel(storeDTO);
 
             int id = store.save(store.Owner.getID());
 
-            return new
+            var NewStore = new
             {
                 owner = storeDTO.Owner,
                 name = storeDTO.name,
@@ -35,15 +41,24 @@ namespace Controller.Controllers
                 purchases = storeDTO.purchases,
                 id = id
             };
-        }
 
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            
+            var result = new ObjectResult(NewStore);
+            
+            return result;
+        }
+        
         [HttpGet]
         [Route("get/{storeID}")]
-        public object getStoreInformation(int storeID)
+        public IActionResult getStoreInformation(int storeID)
         {
-            var store_info = model.Store.find(storeID);
+            var StoreInfo = model.Store.find(storeID);
+            
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            var result = new ObjectResult(StoreInfo);
 
-            return store_info;
+            return result;
         }
 
     }

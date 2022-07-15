@@ -12,7 +12,8 @@ Quase prontos:
 	-Remover produto da wishlist (Só falta o ícone do coração)
 	-Efetuar compra de um produto (70% funcional, falta a tela de inserir dados da compra)
 	-Mostrar todas as vendas de um determinado logista (Falta a tela)
+	-Redirecionar caso rota esteja sob autorização de login e sem token
 	
 À fazer:
-	-Redirecionar caso rota esteja sob autorização de login e sem token
+	
 	-Cadastrar produto novo

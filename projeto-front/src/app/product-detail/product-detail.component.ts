@@ -1,7 +1,7 @@
 import { Variable } from '@angular/compiler/src/render3/r3_ast';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Product} from '../products';
+import { Product } from '../products';
 import axios from 'axios';
 
 @Component({
@@ -36,6 +36,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   makePurchase(){
+    let token = localStorage.getItem("authToken");
+    
     var data = JSON.stringify({
       "confirmation_number": "this is a test",
       "number_nf": "this is a test",
@@ -48,7 +50,8 @@ export class ProductDetailComponent implements OnInit {
       method: 'post',
       url: 'http://localhost:5118/purchase/create/000000/' + this.product?.bar_code + '/' + localStorage.getItem('email'),
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
       },
       data: data
     };

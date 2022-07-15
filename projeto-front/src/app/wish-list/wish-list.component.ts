@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../products';
+import { Route, Router } from '@angular/router';
 import axios from 'axios';
 
 
@@ -13,14 +14,18 @@ export class WishListComponent implements OnInit
   titlePage="Products";
   products : [Product] | undefined
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void 
   {    
+    var token = localStorage.getItem('authToken')
     var config = {
       method: 'get',
       url: 'http://localhost:5118/wishlist/getproducts/' + localStorage.getItem("email"),
-      headers: { }
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
     };
     
     let instance = this
@@ -31,6 +36,9 @@ export class WishListComponent implements OnInit
     })
     .catch(function (error) {
       console.log(error);
+      if (error.response.status == 401){
+        instance.router.navigate(['/login']) 
+      }
     });
     
   }

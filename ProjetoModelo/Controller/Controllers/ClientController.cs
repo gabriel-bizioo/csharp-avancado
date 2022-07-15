@@ -5,6 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Controller.Controllers
 {
@@ -71,13 +72,13 @@ namespace Controller.Controllers
 
         [HttpPost]
         [Route("register")]
-        public object registerClient([FromBody] ClientDTO clientDTO)
+        public IActionResult registerClient([FromBody] ClientDTO clientDTO)
         {
             var client = model.Client.convertDTOToModel(clientDTO);
 
             var id = client.save();
 
-            return new 
+            var NewClient = new 
             {
                 name = clientDTO.name,
                 date_of_birth = clientDTO.date_of_birth,
@@ -90,15 +91,22 @@ namespace Controller.Controllers
                 id = id
             };
 
+            var result = new ObjectResult(NewClient);
+
+            return result;
         }
 
+        [Authorize]
         [HttpGet]
         [Route("get")]
-        public object getInformations([FromBody] int clientID)
+        public IActionResult getInformations([FromBody] int clientID)
         {
-            var clientInfo = model.Client.find(clientID);
+            var ClientInfo = model.Client.find(clientID);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
-            return clientInfo;
+            var result = new ObjectResult(ClientInfo);
+
+            return result;
         }
     }
 }

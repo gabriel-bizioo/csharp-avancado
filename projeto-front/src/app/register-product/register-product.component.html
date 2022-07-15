@@ -14,11 +14,6 @@
             <div class="input-box"> 
                 <label for="name">Photo</label>          
                  <input class="form-control" type="file" id="formFile">
-               
-  
-                
-
-               
             </div>
 
             <div>
@@ -26,12 +21,12 @@
                     <tr>
                         <td>
                             <div class="save-button"> 
-                                <button>Save Product</button>
+                                <button (click)="registerProduct()">Register</button>
                             </div>
                         </td>
                         <td>
                             <div class="cancel-button"> 
-                                <button>Cancel</button>
+                                <button [routerLink]="['/']">Cancel</button>
                             </div>
                         </td>
                     </tr>                                   

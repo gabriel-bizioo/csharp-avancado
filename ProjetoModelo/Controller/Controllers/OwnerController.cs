@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Controller.Controllers
 {
@@ -72,17 +73,15 @@ namespace Controller.Controllers
         }
 
 
-
-
         [HttpPost]
         [Route("register")]
-        public object registerOwner([FromBody]OwnerDTO ownerDTO)
+        public IActionResult registerOwner([FromBody]OwnerDTO ownerDTO)
         {
-            var owner = model.Owner.convertDTOToModel(ownerDTO);
+            var Owner = model.Owner.convertDTOToModel(ownerDTO);
 
-            var id = owner.save();
+            var id = Owner.save();
 
-            return new 
+            var NewOwner = new 
             {
                 name = ownerDTO.name,
                 date_of_birth = ownerDTO.date_of_birth,
@@ -94,15 +93,26 @@ namespace Controller.Controllers
                 address = Address.convertDTOToModel(ownerDTO.address),
                 ID = id
             };
+            
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            var result = new ObjectResult(NewOwner);
+
+            return result;
         }
         
+        [Authorize]
         [HttpGet]
         [Route("get")]
-        public object getInformations([FromBody] int ownerID)
+        public IActionResult getInformations([FromBody] int ownerID)
         {
-            var ownerInfo = model.Owner.find(ownerID);
+            var OwnerInfo = model.Owner.find(ownerID);
 
-            return ownerInfo;
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            var result = new ObjectResult(OwnerInfo);
+
+            return result;
         }
     }
 }
