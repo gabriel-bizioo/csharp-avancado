@@ -4,10 +4,9 @@ export interface Purchase
 {
     id: number;
     payment: number;
-    confirmation_number: number;
-    number_nf: number;
+    confirmationNumber: number;
     product: Product;
     store: Store;
-    purchase_date: Date;
-    purchase_value: number;
+    purchaseDate: Date;
+    purchaseValue: number;
 }

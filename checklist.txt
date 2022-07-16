@@ -6,6 +6,7 @@ Feitos:
 	-Cadastrar novo cliente
 	-Listar wishlist
 	-Realizar login de logistas (meio na gambiarra mas foi)
+	-Cadastrar produto novo
 
 Quase prontos:
 	-Adicionar produto a wishlit (Só falta o ícone do coração)
@@ -15,5 +16,3 @@ Quase prontos:
 	-Redirecionar caso rota esteja sob autorização de login e sem token
 	
 À fazer:
-	
-	-Cadastrar produto novo

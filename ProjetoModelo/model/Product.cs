@@ -61,11 +61,23 @@ namespace model
             return product;
         }
 
-        public static DAO.Product findById(int id)
+        public static object findById(int id)
         {
             using(var context = new DaoContext())
             {
-                var product = context.Product.Where(p => p.ID == id).Single();
+                var product = context.Stocks
+                    .Where(x => x.product.ID == id)
+                    .Select(x => new
+                    {
+                        id = x.product.ID,
+                        storeId = x.store.ID,
+                        name = x.product.name,
+                        price = x.unit_price,
+                        imgLink = x.product.img_link,
+                        barCode = x.product.bar_code
+                    })
+                    .Single();
+
                 return product;
             }  
         }

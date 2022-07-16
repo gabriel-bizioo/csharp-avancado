@@ -32,7 +32,7 @@ namespace model
 
         Client Client;
 
-        List<Product> Products = new List<Product>();
+        Product Product = new Product();
 
         public void setDataPurchase(DateTime date)
         {
@@ -59,9 +59,9 @@ namespace model
             this.PurchaseStatus = status;
         }
 
-        public void setProducts(List<Product> products)
+        public void setProducts(Product product)
         {
-            this.Products = products;
+            this.Product = product;
         }
 
         public DateTime getPurchaseDate()
@@ -94,9 +94,9 @@ namespace model
             return Store;
         }
 
-        public List<Product> getProducts()
+        public Product getProduct()
         {
-            return Products;
+            return Product;
         }
 
         public int getPurchaseStatus()
@@ -129,10 +129,8 @@ namespace model
             obj.client = this.Client.convertModelToDTO();
             obj.store = this.Store.convertModelToDTO();
             
-            foreach(var product in this.Products)
-            {
-                obj.purchase_products.Add(product.convertModelToDTO());
-            }
+
+            obj.Product = this.Product.convertModelToDTO();
 
             return obj;
         }
@@ -142,15 +140,10 @@ namespace model
             Purchase purchase = new Purchase(obj.purchase_date, obj.confirmation_number, obj.number_nf, (PaymentEnum)obj.payment_type, (PurchaseStatusEnum)obj.purchase_status,
                 obj.purchase_value, model.Store.convertDTOToModel(obj.store), model.Client.convertDTOToModel(obj.client));
 
-            if(obj.purchase_products != null)
+            if(obj.Product != null)
             {
-                foreach(var product in obj.purchase_products)
-                {
-
-                    purchase.Products.Add(Product.convertDTOToModel(product));
-                }
+                purchase.Product = Product.convertDTOToModel(obj.Product);
             }
-            
 
             return purchase;
         }
@@ -186,7 +179,7 @@ namespace model
 
                 var Client = context.Client.FirstOrDefault(c => c.login == this.Client.getLogin());
 
-                var Product = context.Product.FirstOrDefault(p => p.bar_code == this.Products.First().getBarCode());
+                var Product = context.Product.FirstOrDefault(p => p.bar_code == this.Product.getBarCode());
                 
                 if(Store != null && Client != null && Product != null)
                 {
@@ -278,9 +271,30 @@ namespace model
             using(var context = new DaoContext())
             {
                 var Purchases = context.Purchase
-                    .Include(p => p.product)
                     .Include(p => p.store)
-                    .Where(p => p.client.email == clientinfo)
+                    .Include(p => p.product)
+                    .Where(x => x.client.email == clientinfo)
+                    .Join(context.Stocks, pr => pr.product.ID, sc => sc.product.ID, (pr, sc) => new
+                    {
+                        id = pr.ID,
+                        payment = pr.Payment,
+                        confirmationNumber = pr.confirmation_number,
+                        product = new
+                        {
+                            id = pr.ID,
+                            storeId = pr.store.ID,
+                            name = pr.product.name,
+                            price = sc.unit_price,
+                            imgLink = pr.product.img_link,
+                            barCode = pr.product.bar_code
+                        },
+                        store = new
+                        {
+
+                        },
+                        purchaseDate = pr.purchase_date,
+                        purchaseValue = pr.purchase_value
+                    })
                     .ToList();
 
                 return Purchases;
@@ -301,30 +315,31 @@ namespace model
             }
         }
 
-        public void Create(string storeinfo, string productinfo, string clientinfo)
+            // StoreId = str.ID,
+            // StoreCNPJ = str.cnpj,
+            // ProductId = stc.product.ID,
+            // ProductBarCode = stc.product.bar_code,
+            // ProductQuantity = stc.quantity,
+            // StocksId = stc.ID
+    
+
+        public void Create(int storeinfo)
         {
             using(var context = new DaoContext())
             {
                 try
                 {
-                    var Query = context.Store
-                        .Join(context.Stocks, str => str.ID, stc => stc.store.ID, (str, stc) => new
+                    var Query = context.Stocks
+                        .Select(x => new
                         {
-                            StoreId = str.ID,
-                            StoreCNPJ = str.cnpj,
-                            ProductId = stc.product.ID,
-                            ProductBarCode = stc.product.bar_code,
-                            ProductQuantity = stc.quantity,
-                            StocksId = stc.ID
+                            StoreId = x.store.ID,
+                            StoreCNPJ = x.store.cnpj,
+                            ProductId = x.product.ID,
+                            ProductBarCode = x.product.bar_code,
+                            ProductQuantity = x.quantity,
+                            StocksId = x.ID
                         })
-                        .Join(context.Product, stc => stc.ProductId, pd => pd.ID, (stc, pd) => new
-                        {
-                            StoreId = stc.StoreId,
-                            StoreCNPJ = stc.StoreCNPJ,
-                            ProductId = stc.ProductId,
-                            ProductBarCode = stc.ProductBarCode
-                        })
-                        .Where(c => c.ProductBarCode == productinfo && c.StoreCNPJ == storeinfo)
+                        .Where(c => c.ProductBarCode == this.Product.getBarCode() && c.StoreId == storeinfo)
                         .Single();
 
                     var Product = context.Product
@@ -336,7 +351,7 @@ namespace model
                         .Single();
 
                     var Client = context.Client
-                        .Where(w => w.email == clientinfo)
+                        .Where(w => w.email == this.Client.getEmail())
                         .Single();
 
                     DAO.Purchase NewPurchase = new DAO.Purchase
@@ -344,7 +359,6 @@ namespace model
                         client = Client,
                         product = Product,
                         store = Store,
-                        number_nf = this.NumberNF,
                         confirmation_number = this.ConfirmationNumber,
                         purchase_date = DateTime.Now,
                         Payment = (int)this.PaymentType,

@@ -31,7 +31,7 @@ namespace Controller.Controllers
         {
             var store = model.Store.convertDTOToModel(storeDTO);
 
-            int id = store.save(store.Owner.getID());
+            int id = store.Save();
 
             var NewStore = new
             {

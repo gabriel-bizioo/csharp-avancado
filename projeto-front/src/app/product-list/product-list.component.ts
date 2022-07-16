@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../products';
+import { Router } from '@angular/router';
 import axios from 'axios';
 
 @Component({
@@ -10,45 +11,51 @@ import axios from 'axios';
 export class ProductListComponent implements OnInit {
   titlePage="Products";
   products: [Product] | undefined;
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void 
   {  
     var config = {
       method: 'get',
-      url: 'http://localhost:5118/product/getAll',
+      url: 'http://localhost:5118/stock/get',
       headers: { }
     };
 
     var instance = this;
     
     axios(config)
-    .then(function (response) {
+    .then(function (response: any) {
       instance.products = response.data;
       console.log(response.data);
     })
-    .catch(function (error) {
+    .catch(function (error: any) {
       console.log(error);
     });
   }
 
-  wishlist(bar_code:string){
-    var data = '';
+  wishlist(product: Product){
+    
+    let token = localStorage.getItem('authToken');
 
     var config = {
       method: 'post',
-      url: 'http://localhost:5118/wishlist/create/' + localStorage.getItem("email") +'/' +  bar_code,
-      headers: {},
-      data: data
+      url: `http://localhost:5118/wishlist/create/${localStorage.getItem("email")}/${product.barCode}/${product.storeId}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
     };
-    
+    let instance = this;
     axios(config)
-      .then(function (response) {
+      .then(function (response: any) {
         console.log(JSON.stringify(response.data));
-        window.alert("AAAAAA");
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch(function (error: any) {
+
+        //n ta aparecendo status 401
+        if (error.response.status == 0) {
+          instance.router.navigate(['/login']);
+        }
       });
   }
 }

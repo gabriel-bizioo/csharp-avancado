@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Purchase } from '../purchase';
+import { Product } from '../products';
 
 @Component({
   selector: 'app-purchase-detail',
@@ -12,13 +13,13 @@ export class PurchaseDetailComponent implements OnInit {
 
   titlePage="Purchase Detail";
   purchase: Purchase | undefined
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void 
   {
     let token = localStorage.getItem('authToken')
     const RouteParams = this.route.snapshot.paramMap;
-    const purchaseIdfromRoute = Number(RouteParams.get('purchaseID'));
+    const purchaseIdfromRoute = Number(RouteParams.get('productID'));
 
     var config = 
     {
@@ -38,6 +39,9 @@ export class PurchaseDetailComponent implements OnInit {
     })
     .catch(function (error) {
       console.log(error);
+      if (error.response.status == 0) {
+        instance.router.navigate(['/login'])
+      }
     });
   }
 }

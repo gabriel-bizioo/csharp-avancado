@@ -1,8 +1,8 @@
 export interface Product {
     id: number;
+    storeId : number;
     name: string;
     price: number;
-    img_link: string;
-    description: string;
-    bar_code: string;
+    imgLink: string;
+    barCode: string;
   }

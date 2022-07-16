@@ -13,15 +13,17 @@ namespace Controller.Controllers
     {
         [Authorize]
         [HttpPost]
-        [Route("create/{clientinfo}/{productinfo}")]
-        public IActionResult CreateWishlist(string clientinfo, string productinfo)
+        [Route("create/{clientinfo}/{productinfo}/{storeinfo}")]
+        public IActionResult CreateWishlist(string clientinfo, string productinfo, int storeinfo)
         {
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+            
             var status = new
             {
                 status = "n feiz nada"
             };
             
-            if(WishList.Create(clientinfo, productinfo))
+            if(WishList.Save(clientinfo, productinfo, storeinfo))
             {
                 status =  new
                 {
@@ -37,13 +39,11 @@ namespace Controller.Controllers
                     status = "product removed"
                };
             }
-
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+           
 
             var result = new ObjectResult(status);
 
             return result;
-
         }
 
         [Authorize]

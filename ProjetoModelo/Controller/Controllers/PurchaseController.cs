@@ -39,18 +39,18 @@ namespace Controller.Controllers
 
         [Authorize]
         [HttpPost]
-        [Route("create/{storeinfo}/{productinfo}/{clientinfo}")]
-        public IActionResult makePurchase([FromBody] PurchaseDTO purchaseDTO, string storeinfo, string productinfo, string clientinfo)
+        [Route("create/{storeinfo}")]
+        public IActionResult makePurchase([FromBody] PurchaseDTO purchaseDTO, int storeinfo)
         {
             var purchase = Purchase.convertDTOToModel(purchaseDTO);
 
-            purchase.Create(storeinfo, productinfo, clientinfo);
+            purchase.Create(storeinfo);
 
             var status = new
             {
                 status = "Register ok"
             };
-
+    
             var result = new ObjectResult(status);
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 

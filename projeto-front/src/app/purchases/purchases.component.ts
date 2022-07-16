@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../products';
+import { Router } from '@angular/router';
 import axios from 'axios';
 import { Purchase } from '../purchase';
 
@@ -12,7 +13,7 @@ export class PurchasesComponent implements OnInit {
   titlePage="Purchases";
   purchases : [Purchase] | undefined
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void 
   {
@@ -37,6 +38,9 @@ export class PurchasesComponent implements OnInit {
     })
     .catch(function (error) {
       console.log(error);
+      if (error.response.status == 0) {
+        instance.router.navigate(['/login'])
+      }
     });
 
   }

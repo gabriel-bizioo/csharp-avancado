@@ -2,7 +2,7 @@
 <div  class = "productsList">
     <div class = "productComponent" *ngFor="let product of products">
         <div>
-            <img src="{{product.img_link}}">
+            <img src="{{product.imgLink}}">
         </div>
         <div>
             <a [title]="product.name + 'details'"
@@ -10,7 +10,9 @@
                 {{product.name}}
             </a>
             <h1>{{product.price | currency}}</h1>
-            <p>{{product.description}}</p>    
+            <p>
+                
+            </p>    
         </div>  
     </div>
 </div>

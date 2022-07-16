@@ -15,7 +15,7 @@ namespace DTO
         public string? confirmation_number;
         public string? number_nf;
 
-        public List<ProductDTO> purchase_products = new List<ProductDTO>();
+        public ProductDTO Product = new ProductDTO();
         public StoreDTO store = new StoreDTO();
         public ClientDTO client = new ClientDTO();
     }

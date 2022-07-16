@@ -28,7 +28,7 @@ namespace DAO
                     optionsBuilder.UseSqlServer(@"Server=JVLPC0562\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
                     break;
                 default:
-                    string ConString = File.ReadAllText("../../connectionstring.txt");
+                    string ConString = File.ReadAllText("../../connection_string.txt");
                     optionsBuilder.UseSqlServer(ConString);
                     break;
             }
@@ -113,8 +113,8 @@ namespace DAO
             modelBuilder.Entity<WishList>(entity =>
             {
                 entity.HasKey(e => e.ID);
-                entity.HasOne(d => d.client);
-                entity.HasOne(d => d.product);
+                entity.HasOne(d => d.Client);
+                entity.HasOne(d => d.Stock);
             });
 
         }

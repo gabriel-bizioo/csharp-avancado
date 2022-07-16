@@ -8,12 +8,12 @@ namespace model
 {
     public class WishList : IValidateDataObject, IDataController<WishListDTO, WishList>
     {
-        Product product = new Product();
-        Client client;
+        Stocks Stock = new Stocks();
+        Client Client;
 
         public WishList(Client client)
         {
-            this.client = client;
+            this.Client = client;
         }
 
         public WishList()
@@ -23,14 +23,14 @@ namespace model
 
         public Client getClient()
         {
-            return client;
+            return Client;
         }
 
         public Boolean validateObject()
         {
-            if(product == null) return false;
+            if(Stock == null) return false;
 
-            if(!client.validateObject()) return false;
+            if(!Client.validateObject()) return false;
 
             return true;
         }
@@ -38,9 +38,9 @@ namespace model
         public WishListDTO convertModelToDTO()
         {
             WishListDTO obj = new WishListDTO();
-            obj.client = this.client.convertModelToDTO();
+            obj.Client = this.Client.convertModelToDTO();
 
-            obj.wishlist_products.Add(product.convertModelToDTO());
+            obj.Stock = Stock.convertModelToDTO();
 
             return obj;
         }
@@ -50,26 +50,47 @@ namespace model
 
             WishList wishlist = new WishList();
 
-            wishlist.client = Client.convertDTOToModel(obj.client);
+            wishlist.Client = Client.convertDTOToModel(obj.Client);
 
-            foreach(var product in obj.wishlist_products)
-            {
-                wishlist.product = (model.Product.convertDTOToModel(product));
-            }
+
+            wishlist.Stock = model.Stocks.convertDTOToModel(obj.Stock);
 
             return wishlist;
         }
 
         public static IEnumerable<object> GetAllProducts(string clientinfo)
         {
+            // .Join(context.Stocks, ws => ws.Stocks.ID, sc => sc.ID, (ws, sc) => new
+            // {
+
+            //     price = sc.unit_price,
+            //     StoreId = sc.store.ID,
+            //     ProductId = sc.product.
+            // })
+            // .Join(context.Product, sc => sc.ProductId, pd => pd.ID, (sc, pd) => new
+            // {
+            //     id = pd.ID,
+            //     storeId = sc.StoreId
+            //     price = sc.price,
+            // })
+
+            //.Where(wishlists => wishlists.client.email == clientinfo)
+
             using(var context = new DaoContext())
             {
-                var wishlists = context.WishList.Include(x => x.product)
-                    .Where(wishlists => wishlists.client.email == clientinfo)
-                    .Select(w => w.product)
+                var wishlists = context.WishList
+                    .Select(w => new
+                    {
+                        id = w.Stock.product.ID,
+                        storeId = w.Stock.store.ID,
+                        name = w.Stock.product.name,
+                        price = w.Stock.unit_price,
+                        imgLink = w.Stock.product.img_link,
+                        barCode = w.Stock.product.bar_code
+                    })
                     .ToList();
 
-                return wishlists;              
+                return wishlists;      
             }
         }
 
@@ -80,54 +101,29 @@ namespace model
             return list;
         }
 
-        public int save()
-        {
-            var id = 0;
 
-            using (var context = new DaoContext())
-            {
-                var client = context.Client.FirstOrDefault(c => c.login == this.client.getLogin());
-                
-                
-                var currentProduct = context.Product.FirstOrDefault(p => p.bar_code == product.getBarCode());
-
-                var wishlist = new DAO.WishList
-                {
-                    client = client,
-                    product = currentProduct
-
-                };
-
-                context.WishList.Add(wishlist);
-
-                context.Entry(wishlist.client).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
-                context.Entry(wishlist.product).State = Microsoft.EntityFrameworkCore.EntityState.Unchanged;
-
-                context.SaveChanges();
-
-                id = wishlist.ID;                 
-
-            }
-            return id;
-        }
-
-        public static bool Create(string clientinfo, string productinfo)
+        public static bool Save(string clientinfo, string productinfo, int storeinfo)
         {
             using(var context = new DaoContext())
             {
-                var AddClient = context.Client.Where(cl => cl.email == clientinfo).FirstOrDefault();
-                var AddProduct = context.Product.Where(pd => pd.bar_code == productinfo).FirstOrDefault();
+                var AddClient = context.Client
+                    .Where(cl => cl.email == clientinfo)
+                    .FirstOrDefault();
 
-                var repeats = context.WishList.Where(wl => wl.client.ID == AddClient.ID && wl.product.ID == AddProduct.ID).FirstOrDefault();
+                var AddStock = context.Stocks
+                    .Where(sc => sc.product.bar_code == productinfo && sc.store.ID == storeinfo)
+                    .FirstOrDefault();
 
-                Console.WriteLine(repeats);
+                var repeats = context.WishList
+                    .Where(wl => wl.Client.ID == AddClient.ID && wl.Stock.ID == AddStock.ID)
+                    .FirstOrDefault();
 
                 if(repeats == null)
                 {
                     DAO.WishList wishList = new DAO.WishList()
                     {
-                        product = AddProduct,
-                        client = AddClient
+                        Stock = AddStock,
+                        Client = AddClient
                     };
 
                     context.Add(wishList);
@@ -153,7 +149,9 @@ namespace model
             {
                 try
                 {
-                    var wishlist = context.WishList.Where(wl => wl.product.bar_code == productinfo && wl.client.email == clientinfo).Single();
+                    var wishlist = context.WishList
+                        .Where(wl => wl.Stock.product.bar_code == productinfo && wl.Client.email == clientinfo)
+                        .Single();
 
                     context.Remove(wishlist);
                     context.SaveChanges();

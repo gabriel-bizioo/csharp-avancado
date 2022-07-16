@@ -2,8 +2,8 @@
 {
     public class WishList
     {
-        public Client? client;
-        public Product? product;
+        public Client? Client;
+        public Stocks? Stock;
         public int ID;
     }
 }

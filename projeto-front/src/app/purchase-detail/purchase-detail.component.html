@@ -1,35 +1,15 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
-<!-- <div *ngIf="purchase">
-    <div id="div1">
-        <img class="detailImage" src={{purchase.product.img_link}}> 
-
-        <button class="buttonDetail">Purchase</button>
-    </div>
-    <div id="div2">
-        <h3>{{ purchase.product.name }}</h3>
-        <h4>{{ purchase.product.price | currency }}</h4>
-        <p>
-            {{ purchase.product.description }}
-        </p>
-    </div>  
-</div> -->
 
 <h1 class="title">SMARTPHONE</h1>
-<div class="purchase_container grid">
+<div class="purchase_container grid" *ngIf="purchase">
     <div class="img_container">
-        <img src="assets/imgs/samsungflip.jpg" alt="">
+        <img src={{ purchase.product.imgLink }}>
     </div>
     
     <div class="li-box">        
         <ul>
             <li>
-                <P>NF Number:</P>
-            </li>
-            <li>
                 <P>Date of purchase:</P>
-            </li>
-            <li>
-                <P>Purchase amount:</P>
             </li>
             <li>
                 <P>Payment type:</P>
@@ -42,20 +22,15 @@
 
     <div class="li-box">        
         <ul>
+
             <li>
-                <P>123456</P>
+                <P>{{purchase.purchaseDate}}</P>
             </li>
             <li>
-                <P>05/03/2022</P>
+                <P>{{purchase.payment}}</P>
             </li>
             <li>
-                <P>1</P>
-            </li>
-            <li>
-                <P>Credit</P>
-            </li>
-            <li>
-                <P>654321</P>
+                <P>{{purchase.confirmationNumber}}</P>
             </li>
         </ul>
     </div>      

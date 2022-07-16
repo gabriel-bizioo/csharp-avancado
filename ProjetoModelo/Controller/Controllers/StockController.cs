@@ -50,6 +50,19 @@ namespace Controller.Controllers
             var result = new ObjectResult(status);
 
             return result;
-        }     
+        }   
+
+        [HttpGet]
+        [Route("get")]
+        public IActionResult GetAll()
+        {
+            var AllStocks = model.Stocks.GetAll();
+
+            var result = new ObjectResult(AllStocks);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            return result;
+
+        }  
     }
 }

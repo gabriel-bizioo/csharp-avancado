@@ -1,6 +1,9 @@
 ﻿using Interfaces;
 using DAO;
 using DTO;
+using Microsoft.EntityFrameworkCore;
+
+
 namespace model
 {
     public class Stocks : IValidateDataObject, IDataController<StocksDTO, Stocks>
@@ -95,12 +98,33 @@ namespace model
         {
             throw new NotImplementedException();
         }
-
-        public List<StocksDTO> getAll()
+// .Join(context.Product, stocks => stocks.product.ID, pd => pd.ID, (stocks, pd) => new 
+//                     {
+//                         id = stocks.ID,
+//                         storeId = stocks.store.ID,
+//                         name = pd.name,
+//                         price = stocks.unit_price,
+//                         imgLink = pd.img_link,
+//                         barCode = pd.bar_code
+//     })
+        public static IEnumerable<object> GetAll()
         {
-            List<StocksDTO> list = new List<StocksDTO>();
+            using(var context = new DaoContext())
+            {
+                var AllStocks = context.Stocks
+                    .Select(x => new
+                    {
+                        id = x.ID,
+                        storeId = x.store.ID,
+                        name = x.product.name,
+                        price = x.unit_price,
+                        imgLink = x.product.img_link,
+                        barCode = x.product.bar_code
+                    })
+                    .ToList();
 
-            return list;
+                return AllStocks;
+            }            
         }
 
         public int save()

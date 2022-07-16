@@ -24,6 +24,7 @@ namespace Controller.Controllers
             return result;
         }
 
+        [Authorize]
         [HttpPost]
         [Route("register")]
         public IActionResult registerProducts([FromBody]ProductDTO productDTO)
@@ -91,17 +92,9 @@ namespace Controller.Controllers
         {
             var Product = model.Product.findById(id);
 
-            var GetProduct = new
-            {
-                name = Product.name,
-                bar_code = Product.bar_code,
-                img_link = Product.img_link,
-                ID = id
-            };
-
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
-            var result = new ObjectResult(GetProduct);
+            var result = new ObjectResult(Product);
 
             return result;
         }

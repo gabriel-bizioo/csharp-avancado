@@ -37,9 +37,9 @@ namespace Controller.Controllers
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("UserId", user.getID().ToString()),
+                        new Claim("UserEmail", user.getEmail()),
                         new Claim("UserName", user.getName()),
-                        new Claim("Email", user.getEmail())
+                        
                     };
 
                     var Key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -53,10 +53,11 @@ namespace Controller.Controllers
                         expires: DateTime.UtcNow.AddMinutes(10),
                         signingCredentials: SignIn);
 
-                    var response = new{
+                    var response = new
+                    {
                         token = new JwtSecurityTokenHandler().WriteToken(Token),
-                        clientId = user.getID().ToString()
-                    }   ;
+                        email = user.getEmail()
+                    };
 
                     return Ok(response);
                 }

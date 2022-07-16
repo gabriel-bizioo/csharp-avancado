@@ -3,14 +3,14 @@
     <div class="productComponent" *ngFor="let product of products">      
             <div>
                 <h2>
-                    <img src={{product.img_link}}>
+                    <img src={{product.imgLink}}>
                 </h2>
                 <h3>
                     <a [title]="product.name + 'details'" [routerLink]="['/product', product.id]" class="Product">
                         {{product.name}}
                     </a>
                     <br>
-                    <button (click)="wishlist(product.bar_code)">lista de desejos</button>
+                    <button (click)="wishlist(product)">lista de desejos</button>
                 </h3>
             </div>
     </div>

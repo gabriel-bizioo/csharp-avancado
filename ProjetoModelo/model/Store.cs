@@ -151,14 +151,16 @@ namespace model
             }
         }
 
-        public int save(int ownerID)
+        public int Save()
         {
             var id = 0;
 
             using (var context = new DaoContext())
             {
 
-                var owner = context.Owner.Where(o => o.ID == ownerID).Single();
+                var owner = context.Owner
+                    .Where(o => o.email == this.Owner.getEmail())
+                    .Single();
 
                 var store = new DAO.Store
                 {
@@ -174,7 +176,6 @@ namespace model
                 context.SaveChanges();
 
                 id = store.ID;
-
             }
             return id;
         }

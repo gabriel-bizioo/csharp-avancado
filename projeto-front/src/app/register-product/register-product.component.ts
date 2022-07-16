@@ -18,15 +18,15 @@ export class RegisterProductComponent implements OnInit {
 
   registerProduct()
   {
-    window.alert("Tome"); 
     let token = localStorage.getItem('authToken');
     let name = (document.getElementById('name') as HTMLInputElement).value;
-    let barCode = (document.getElementById('barCode') as HTMLInputElement).value;
-
+    let barCode = (document.getElementById('bar_code') as HTMLInputElement).value;
+    let photo = (document.getElementById('photo') as HTMLInputElement).value;
+    
     var data = JSON.stringify({
       'name': name,
-      'barCode': barCode,
-      'img_link': 'asdsad'
+      'bar_code': barCode,
+      'img_link': photo
     });
 
     var config = {
@@ -36,7 +36,7 @@ export class RegisterProductComponent implements OnInit {
       headers: { 
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
-      },
+      }
     };
 
     axios(config)
