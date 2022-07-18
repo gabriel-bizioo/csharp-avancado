@@ -12,13 +12,14 @@ import { RegisterStoreComponent } from './register-store/register-store.componen
 import { RegisterProductComponent } from './register-product/register-product.component';
 
 const routes: Routes = [ {path: '', component : ProductListComponent},
-{path: 'product/:productID', component: ProductDetailComponent},
+// {path: 'product/:productID', component: ProductDetailComponent},
+{path: 'product', component: ProductDetailComponent},
 {path: 'login', component: LoginComponent},
 {path: 'register', component: RegisterComponent},
 {path: 'address-register', component: RegisterAddressComponent},
 {path: 'wishList', component: WishListComponent},
 {path: 'purchases', component:PurchasesComponent},
-{path: 'purchase-detail', component:PurchaseDetailComponent},
+{path: "purchase-detail/:purchaseID", component:PurchaseDetailComponent},
 {path: 'store-register', component: RegisterStoreComponent},
 {path: 'product-register', component: RegisterProductComponent},
 ];

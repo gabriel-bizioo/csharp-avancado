@@ -1,8 +1,10 @@
+<app-top-bar [titulo]="titlepage"></app-top-bar>
+
 <!-- <div *ngIf="product">
     <div id="div1">
         <img class="detailImage" src={{product.imgLink}}> 
 
-        <button class="buttonDetail" (click)="makePurchase()">Purchase</button>
+        <button class="buttonPurchase" (click)="makePurchase()">Purchase</button>
     </div>
     <div id="div2">
         <h3>{{ product.name }}</h3>
@@ -14,28 +16,15 @@
 </div>
  -->
 
- <h1 class="title">SMARTPHONE</h1>
-<div class="purchase_container grid">
+<div class="purchase_container grid" *ngIf="product">
     <div class="img_container">
-        <img src="assets/imgs/samsungflip.jpg" alt="">
+        <img src={{product.imgLink}}>
     </div>
     
-    <div class="li-box">        
-        <ul>
-            <li>
-                <P>NF Number:</P>
-            </li>
-            <li>
-                <P>Date of purchase:</P>
-            </li>
-            <li>
-                <P>Purchase amount:</P>
-            </li>
-            <li>
-                <P>Payment type:</P>
-            </li>
-            <li>
-                <P>Confirmation number:</P>
-            </li>
-        </ul>
+    <div class="box">    
+        <h1 class="title">{{ product.name }}</h1>    
+        <h4 class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est error iure praesentium repudiandae</h4>
+        <h3 class="price">{{ product.price | currency }}</h3>
+
+        <button class="buttonPurchase" (click)="makePurchase()">PURCHASE</button>
     </div>

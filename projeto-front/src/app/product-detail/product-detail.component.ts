@@ -10,7 +10,7 @@ import axios from 'axios';
   styleUrls: ['./product-detail.component.css']
 })
 export class ProductDetailComponent implements OnInit {
-  titlepage= "ProductDetail"
+  titlepage= "Product Detail"
   product : Product | undefined
   constructor(private route: ActivatedRoute, private router: Router) { }
 
