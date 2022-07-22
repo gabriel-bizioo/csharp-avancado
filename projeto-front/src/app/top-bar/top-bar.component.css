@@ -69,6 +69,7 @@
     right: -80%;
     text-align: center;
     transition: all .5s;
+    z-index: 100;
   }
 
   .checkbtn i {
@@ -93,34 +94,28 @@
     right: 0;
   }
 
-  @media only screen and (max-width: 1024px) {
-    .logo {
-      left: -29px;
-      top: -93px;  
+  @media only screen and (max-width: 1400px) {
+    .logo{
+      width: 20px;
+      height: 8px;
+      left: -30px;
+      top: -90px; 
     }
 
-    .a1{
-      font-weight: 400;
-      font-size: 18px;
-      line-height: 60px;
-      margin-left: 170px;
-      color: #ffff; 
+    
+    .nav-bar {
+      height: 10vh;    
     }
-    nav{
-      height: 10vh;
-      position: fixed;
-    }
+
+
 
     li {
-      color: #ffffff;
       font-size: 18px;
-      padding: 7px 20px;
-      border-radius: 3px;
     }
   
 
     ul{
-      width: 40%;
+      width: 20%;
       height: 100vh;
       top: 55px;
       right: -80%;
@@ -157,13 +152,5 @@
     }
   }
 
-  @media only screen and (max-width: 300px) {
-    .logo{
-      width: 20px;
-      height: 8px;
-      left: -42px;
-      top: -90px; 
-    }
-  }
 
  
