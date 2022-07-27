@@ -10,9 +10,18 @@ export class TopBarComponent implements OnInit {
 
   @Input() titulo=""
   
- 
-
-  ngOnInit(): void {
+ isClient = false;
+  
+  ngOnInit(): void {   
+  this.verifica();
   }
 
+  verifica(){
+    if(localStorage.getItem('client') == 'true'){
+      this.isClient = true;
+    }
+    else{
+      this.isClient = false;
+    }
+  }
 }

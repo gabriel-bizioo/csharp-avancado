@@ -15,11 +15,14 @@
                         <li>
                             <P>Date of purchase:</P>
                         </li>
-                        <li>
-                            <P>Payment type:</P>
+                        <li *ngIf="isClient">
+                            <P>Store Name:</P>
+                        </li>
+                        <li *ngIf="!isClient">
+                            <P>Client Name:</P>
                         </li>
                         <li>
-                            <P>Confirmation number:</P>
+                            <P>Purchase Amount:</P>
                         </li>
                     </ul>
                 </div>
@@ -30,11 +33,14 @@
                         <li>
                             <P>{{purchase.purchaseDate}}</P>
                         </li>
-                        <li>
-                            <P>{{purchase.purchaseValue}}</P>
+                        <li *ngIf="isClient">
+                            <P>{{purchase.store.name}}</P>
+                        </li>
+                        <li *ngIf="!isClient">
+                            <P>{{purchase.client.name}}</P>
                         </li>
                         <li>
-                            <P>{{purchase.store.name}}</P>
+                            <P>{{purchase.purchaseValue}}</P>
                         </li>
                     </ul>
                 </div>      
@@ -47,10 +53,10 @@
                             <P>Date of purchase:</P>
                         </li>
                         <li>
-                            <P>Payment type:</P>
+                            <P>Client Name:</P>
                         </li>
                         <li>
-                            <P>Confirmation number:</P>
+                            <P>Purchase Amount:</P>
                         </li>
                     </ul>
                 </div>
@@ -62,10 +68,10 @@
                             <P>{{purchase.purchaseDate}}</P>
                         </li>
                         <li>
-                            <P>{{purchase.purchaseValue}}</P>
+                            <P>{{purchase.client.name}}</P>
                         </li>
                         <li>
-                            <P>{{purchase.client.name}}</P>
+                            <P>{{purchase.purchaseValue}}</P>
                         </li>
                     </ul>
                 </div>      

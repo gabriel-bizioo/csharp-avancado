@@ -2,12 +2,12 @@
 
 <div id="cadastro">
             <h1>REGISTER ADDRESS</h1>
-            <label for="radio">Login as:</label>      
+        
+            <label for="radio">Register as:</label>      
             <div class="input-radio">       
                 <input type="radio" name="user_type" [value]=true ngModel="isClient" (click)="change(true)"> Client
                 <input type="radio" name="user_type" [value]=false ngModel="isClient" (click)="change(false)"> Owner
             </div>
-            
             <div class="input-box2"> 
                 <label for="Street">Street</label>
                 <input  id="Street" name="Street" required="required" type="text" />

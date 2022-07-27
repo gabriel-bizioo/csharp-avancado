@@ -13,6 +13,7 @@ export class PurchaseDetailComponent implements OnInit {
 
   titlePage="Purchase Detail";
   purchase: Purchase | undefined
+  isClient = false;
   constructor(private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void 
@@ -20,6 +21,8 @@ export class PurchaseDetailComponent implements OnInit {
     let token = localStorage.getItem('authToken')
     const RouteParams = this.route.snapshot.paramMap;
     const purchaseIdfromRoute = Number(RouteParams.get('productID'));
+    
+    this.verifica();
 
     var config = 
     {
@@ -43,5 +46,14 @@ export class PurchaseDetailComponent implements OnInit {
         instance.router.navigate(['/login'])
       }
     });
+  }
+
+  verifica(){
+    if(localStorage.getItem('client') == 'true'){
+      this.isClient = true;
+    }
+    else{
+      this.isClient = false;
+    }
   }
 }

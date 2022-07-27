@@ -12,13 +12,15 @@ import { Purchase } from '../purchase';
 export class PurchasesComponent implements OnInit {
   titlePage="Purchases";
   purchases : [Purchase] | undefined
+  isClient = false;
 
   constructor( private router: Router) { }
 
   ngOnInit(): void 
   {
-
+    this.verifica();
     let token = localStorage.getItem('authToken');
+  
 
     var config = 
     {
@@ -43,6 +45,15 @@ export class PurchasesComponent implements OnInit {
       }
     });
 
+  }
+
+  verifica(){
+    if(localStorage.getItem('client') == 'true'){
+      this.isClient = true;
+    }
+    else{
+      this.isClient = false;
+    }
   }
 
 }

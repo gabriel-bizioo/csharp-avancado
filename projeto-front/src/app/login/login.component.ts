@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
 
     if(instance.isClient){
       path = 'http://localhost:5118/client/api';
+      localStorage.setItem('client', "true");
     }
     else{
       path = 'http://localhost:5118/owner/api';
@@ -59,6 +60,7 @@ export class LoginComponent implements OnInit {
   })
   .catch(function (error:any) {
     console.log(error);
+    localStorage.clear();
   });
   }
 

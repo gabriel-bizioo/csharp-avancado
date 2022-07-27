@@ -42,6 +42,7 @@ label{
     text-shadow: 0 1px 1px #333;
     border-radius: 5px;
     justify-content: center;
+    margin-top: auto;
 }
 
 .register-button button:hover{
@@ -63,7 +64,7 @@ input[type="radio"]{
     height: 14px;
     border-radius: 20px;
     border: 1.5px solid #990000;
-    margin-left: 210px;
+    margin-left: 180px;
 }
 input[type="radio"]:checked{
     background-color: #990000;

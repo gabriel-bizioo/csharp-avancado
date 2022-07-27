@@ -39,7 +39,6 @@ import { RegisterProductComponent } from './register-product/register-product.co
     RouterModule.forRoot([
       {path: '', component : ProductListComponent},
       {path: 'product/:productID', component: ProductDetailComponent},
-      // {path: 'product', component: ProductDetailComponent},
       {path: 'login', component: LoginComponent},
       {path: 'register', component: RegisterComponent},
       {path: 'address-register', component:RegisterAddressComponent},
