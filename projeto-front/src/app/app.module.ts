@@ -16,6 +16,7 @@ import { PurchasesComponent } from './purchases/purchases.component';
 import { PurchaseDetailComponent } from './purchase-detail/purchase-detail.component';
 import { RegisterStoreComponent } from './register-store/register-store.component';
 import { RegisterProductComponent } from './register-product/register-product.component';
+import { SalesComponent } from './sales/sales.component';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { RegisterProductComponent } from './register-product/register-product.co
     PurchaseDetailComponent,
     RegisterStoreComponent,
     RegisterProductComponent,
+    SalesComponent,
   ],
   imports: [
     BrowserModule,

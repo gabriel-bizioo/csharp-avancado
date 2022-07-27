@@ -10,3 +10,14 @@ export interface Purchase
     purchaseDate: Date;
     purchaseValue: number;
 }
+
+export interface Sale
+{
+    id: number;
+    payment: number;
+    confirmationNumber: number;
+    product: Product;
+    client: string
+    purchaseDate: Date;
+    purchaseValue: number;
+}

@@ -22,7 +22,7 @@
                             <P>Client Name:</P>
                         </li>
                         <li>
-                            <P>Purchase Amount:</P>
+                            <P>Purchase value:</P>
                         </li>
                     </ul>
                 </div>
@@ -33,14 +33,11 @@
                         <li>
                             <P>{{purchase.purchaseDate}}</P>
                         </li>
-                        <li *ngIf="isClient">
+                        <li>
                             <P>{{purchase.store.name}}</P>
                         </li>
-                        <li *ngIf="!isClient">
-                            <P>{{purchase.client.name}}</P>
-                        </li>
                         <li>
-                            <P>{{purchase.purchaseValue}}</P>
+                            <P>{{purchase.purchaseValue | currency}}</P>
                         </li>
                     </ul>
                 </div>      

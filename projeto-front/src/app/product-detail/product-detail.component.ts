@@ -64,6 +64,8 @@ export class ProductDetailComponent implements OnInit {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
+        window.alert("Agradecemos a sua compra!");
+        instance.router.navigate(['/']);
       })
       .catch(function (error) {
         console.log(error);

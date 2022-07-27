@@ -60,6 +60,7 @@ export class LoginComponent implements OnInit {
   })
   .catch(function (error:any) {
     console.log(error);
+    window.alert("Falha no login");
     localStorage.clear();
   });
   }
