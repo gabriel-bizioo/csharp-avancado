@@ -1,18 +1,76 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
-<div  class = "productsList">
-    <div class = "productComponent" *ngFor="let purchase of purchases">
-        <div>
-            <img src="{{purchase.product.imgLink}}">
-        </div>
+<h1 class="title">PURCHASES</h1>
+<div  class = "purchase">
+    <div class = "purchase-product" *ngFor="let purchase of purchases" [routerLink]="['/purchase-detail', purchase.id]">
+        <img src="{{purchase.product.imgLink}}">
         <div>            
             <a [title]="'purchase id ' + purchase.id + ' details'"
-            [routerLink]="['/purchase-detail', purchase.id]" class="Product">
+             class="product-name">
                 {{purchase.product.name}}
             </a>
-            <h1>{{purchase.product.price | currency}}</h1>
-            <p>
-                
-            </p>    
+            <br>
+            <div class="container-grid">
+                <div class="li-box">        
+                    <ul>
+                        <li>
+                            <P>Date of purchase:</P>
+                        </li>
+                        <li>
+                            <P>Payment type:</P>
+                        </li>
+                        <li>
+                            <P>Confirmation number:</P>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="li-box">        
+                    <ul>
+            
+                        <li>
+                            <P>{{purchase.purchaseDate}}</P>
+                        </li>
+                        <li>
+                            <P>{{purchase.purchaseValue}}</P>
+                        </li>
+                        <li>
+                            <P>{{purchase.store.name}}</P>
+                        </li>
+                    </ul>
+                </div>      
+            </div>
+
+            <!-- <div class="container-grid" *ngIf=>
+                <div class="li-box">        
+                    <ul>
+                        <li>
+                            <P>Date of purchase:</P>
+                        </li>
+                        <li>
+                            <P>Payment type:</P>
+                        </li>
+                        <li>
+                            <P>Confirmation number:</P>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="li-box">        
+                    <ul>
+            
+                        <li>
+                            <P>{{purchase.purchaseDate}}</P>
+                        </li>
+                        <li>
+                            <P>{{purchase.purchaseValue}}</P>
+                        </li>
+                        <li>
+                            <P>{{purchase.client.name}}</P>
+                        </li>
+                    </ul>
+                </div>      
+            </div> -->
+            
         </div>  
     </div>
 </div> 

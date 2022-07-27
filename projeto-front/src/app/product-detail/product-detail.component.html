@@ -26,5 +26,5 @@
         <h4 class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Est error iure praesentium repudiandae</h4>
         <h3 class="price">{{ product.price | currency }}</h3>
 
-        <button class="buttonPurchase" (click)="makePurchase()">PURCHASE</button>
+        <button class="buttonPurchase" (click)="makePurchase()" [routerLink]="['/make-purchase', product.id]">PURCHASE</button>
     </div>

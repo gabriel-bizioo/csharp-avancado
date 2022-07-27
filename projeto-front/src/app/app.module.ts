@@ -31,7 +31,7 @@ import { RegisterProductComponent } from './register-product/register-product.co
     PurchasesComponent,
     PurchaseDetailComponent,
     RegisterStoreComponent,
-    RegisterProductComponent
+    RegisterProductComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +48,7 @@ import { RegisterProductComponent } from './register-product/register-product.co
       {path: "purchase-detail/:purchaseID", component:PurchaseDetailComponent},
       {path: 'store-register', component: RegisterStoreComponent},
       {path: 'product-register', component: RegisterProductComponent},
+
     ]),
     NoopAnimationsModule
   ],

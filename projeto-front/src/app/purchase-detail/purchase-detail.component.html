@@ -1,7 +1,8 @@
 <app-top-bar [titulo]="titlePage"></app-top-bar>
 
-<h1 class="title">SMARTPHONE</h1>
+
 <div class="purchase_container grid" *ngIf="purchase">
+    <h1 class="title">{{purchase.product.name}}</h1>
     <div class="img_container">
         <img src="{{ purchase.product.imgLink }}">
     </div>
@@ -37,49 +38,52 @@
 </div>
 <hr>
 
-<div class="info-client grid">
-    <div class="subtitle">
-        <ul>
-            <li>
-                <P>Client Name:</P>
-            </li>
-            <li>
-                <P>Client document:</P>
-            </li>
-        </ul>
-    </div>
 
-    <div class="info">
-        <ul>
-            <li>
-                <P>Raissa</P>
-            </li>
-            <li>
-                <P>125.639.205.36</P>
-            </li>
-        </ul>
-    </div>
-
-    <div class="subtitle">
-        <ul>
-            <li>
-                <P>Client email:</P>
-            </li>
-            <li>
-                <P>Client phone:</P>
-            </li>
-        </ul>
-    </div>
-
-    <div class="info">
-        <ul>
-            <li>
-                <P>raissa-sabino@hotmail.com</P>
-            </li>
-            <li>
-                <P>41995250560</P>
-            </li>
-        </ul>
-    </div>
+<!-- <div *ngIf="owner">
+    <div class="info-client grid"  *ngIf="purchase">
+        <div class="subtitle">
+            <ul>
+                <li>
+                    <P>Client Name:</P>
+                </li>
+                <li>
+                    <P>Client document:</P>
+                </li>
+            </ul>
+        </div>
     
-</div>
+        <div class="info">
+            <ul>
+                <li>
+                    <P>{{purchase.client.name}}</P>
+                </li>
+                <li>
+                    <P>{{purchase.client.document}}</P>
+                </li>
+            </ul>
+        </div>
+    
+        <div class="subtitle">
+            <ul>
+                <li>
+                    <P>Client email:</P>
+                </li>
+                <li>
+                    <P>Client phone:</P>
+                </li>
+            </ul>
+        </div>
+    
+        <div class="info">
+            <ul>
+                <li>
+                    <P>{{purchase.client.email}}</P>
+                </li>
+                <li>
+                    <P>{{purchase.client.phone}}</P>
+                </li>
+            </ul>
+        </div>
+        
+    </div>
+</div> -->

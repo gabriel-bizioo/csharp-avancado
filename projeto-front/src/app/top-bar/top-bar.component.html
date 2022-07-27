@@ -7,11 +7,16 @@
 			<i class="fas fa-bars"></i>
 		</label>
         <ul>
-			<li><a [routerLink]="['/login']">Login</a></li>
-            <li><a [routerLink]="['/register']">Create account</a></li>
+			<li><a [routerLink]="['/profile']">Profile</a></li>
 			<li><a [routerLink]="['/wishList']">WishList</a></li>
 			<li><a [routerLink]="['/purchases']">Purchases</a></li>
             <li><a [routerLink]="['/store-register']">Register Store</a></li>
-            <li><a [routerLink]="['/product-register']">Register Product</a></li>
+
 		</ul>
+
+        <!-- <ul *ngIf="owner">
+			<li><a [routerLink]="['/profile']">Profile</a></li>
+			<li><a [routerLink]="['/purchases']">Purchases</a></li>
+            <li><a [routerLink]="['/product-register']">Register Product</a></li>
+		</ul> -->
     </div>

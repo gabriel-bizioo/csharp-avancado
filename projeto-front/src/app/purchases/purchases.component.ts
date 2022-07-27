@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../products';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import axios from 'axios';
 import { Purchase } from '../purchase';
 
@@ -13,7 +13,7 @@ export class PurchasesComponent implements OnInit {
   titlePage="Purchases";
   purchases : [Purchase] | undefined
 
-  constructor(private router: Router) { }
+  constructor( private router: Router) { }
 
   ngOnInit(): void 
   {
