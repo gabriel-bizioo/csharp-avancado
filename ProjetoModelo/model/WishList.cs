@@ -79,6 +79,7 @@ namespace model
             using(var context = new DaoContext())
             {
                 var wishlists = context.WishList
+                    .Where(wishlists => wishlists.Client.email == clientinfo)
                     .Select(w => new
                     {
                         id = w.Stock.product.ID,

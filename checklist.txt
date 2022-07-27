@@ -5,7 +5,6 @@ Feitos:
 	-Mostrar todas as compras de um determindado cliente
 	-Cadastrar novo cliente
 	-Listar wishlist
-	-Realizar login de logistas (meio na gambiarra mas foi)
 	-Cadastrar produto novo
 
 Quase prontos:

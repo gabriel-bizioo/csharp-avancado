@@ -290,7 +290,10 @@ namespace model
                         },
                         store = new
                         {
-
+                            id = pr.store.ID,
+                            cnpj = pr.store.cnpj,
+                            name = pr.store.name,
+                            owner_id = pr.store.owner.ID
                         },
                         purchaseDate = pr.purchase_date,
                         purchaseValue = pr.purchase_value
@@ -329,45 +332,41 @@ namespace model
             {
                 try
                 {
-                    var Query = context.Stocks
-                        .Select(x => new
-                        {
-                            StoreId = x.store.ID,
-                            StoreCNPJ = x.store.cnpj,
-                            ProductId = x.product.ID,
-                            ProductBarCode = x.product.bar_code,
-                            ProductQuantity = x.quantity,
-                            StocksId = x.ID
-                        })
-                        .Where(c => c.ProductBarCode == this.Product.getBarCode() && c.StoreId == storeinfo)
+                    var Stocks = context.Stocks
+                        .Where(c => c.product.bar_code == this.Product.getBarCode() && c.store.ID == storeinfo)
                         .Single();
 
                     var Product = context.Product
-                        .Where(w => w.ID == Query.ProductId)
+                        .Where(w => w.ID == Stocks.product.ID)
                         .Single();
 
                     var Store = context.Store
-                        .Where(w => w.ID == Query.StoreId)
+                        .Where(w => w.ID == Stocks.store.ID)
                         .Single();
 
                     var Client = context.Client
                         .Where(w => w.email == this.Client.getEmail())
                         .Single();
 
-                    DAO.Purchase NewPurchase = new DAO.Purchase
+                    
+                    if(Stocks.quantity > 0)
                     {
-                        client = Client,
-                        product = Product,
-                        store = Store,
-                        confirmation_number = this.ConfirmationNumber,
-                        purchase_date = DateTime.Now,
-                        Payment = (int)this.PaymentType,
-                        PurchaseStatus = (int)this.PurchaseStatus,
-                        purchase_value = this.PurchaseValue
-                    };
-
-                    context.Add(NewPurchase);
-                    context.SaveChanges();
+                        DAO.Purchase NewPurchase = new DAO.Purchase
+                        {
+                            client = Client,
+                            product = Product,
+                            store = Store,
+                            confirmation_number = this.ConfirmationNumber,
+                            purchase_date = DateTime.Now,
+                            Payment = (int)this.PaymentType,
+                            PurchaseStatus = (int)this.PurchaseStatus,
+                            purchase_value = this.PurchaseValue
+                        };
+                        Stocks.quantity -= 1;
+                        context.Add(NewPurchase);
+                        context.SaveChanges();
+                    }
+                    
                 }
                 catch(Exception error)
                 {

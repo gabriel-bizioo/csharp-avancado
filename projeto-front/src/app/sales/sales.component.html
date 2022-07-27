@@ -1,0 +1,76 @@
+<app-top-bar [titulo]="titlePage"></app-top-bar>
+<h1 class="title">PURCHASES</h1>
+<div  class = "purchase">
+    <div class = "purchase-product" *ngFor="let sale of sales" [routerLink]="['/sale-detail', sale.id]">
+        <img src="{{sale.product.imgLink}}">
+        <div>            
+            <a [title]="'sale id ' + sale.id + ' details'"
+             class="product-name">
+                {{sale.product.name}}
+            </a>
+            <br>
+            <div class="container-grid">
+                <div class="li-box">        
+                    <ul>
+                        <li>
+                            <P>Date of sale:</P>
+                        </li>
+                        <li>
+                            <P>Client Name:</P>
+                        </li>
+                        <li>
+                            <P>Sale value:</P>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="li-box">        
+                    <ul>
+            
+                        <li>
+                            <P>{{sale.purchaseDate}}</P>
+                        </li>
+                        <li>
+                            <P>{{sale.client}}</P>
+                        </li>
+                        <li>
+                            <P>{{sale.purchaseValue | currency}}</P>
+                        </li>
+                    </ul>
+                </div>      
+            </div>
+
+            <!-- <div class="container-grid" *ngIf=>
+                <div class="li-box">        
+                    <ul>
+                        <li>
+                            <P>Date of purchase:</P>
+                        </li>
+                        <li>
+                            <P>Client Name:</P>
+                        </li>
+                        <li>
+                            <P>Purchase Amount:</P>
+                        </li>
+                    </ul>
+                </div>
+            
+                <div class="li-box">        
+                    <ul>
+            
+                        <li>
+                            <P>{{purchase.purchaseDate}}</P>
+                        </li>
+                        <li>
+                            <P>{{purchase.client.name}}</P>
+                        </li>
+                        <li>
+                            <P>{{purchase.purchaseValue}}</P>
+                        </li>
+                    </ul>
+                </div>      
+            </div> -->
+            
+        </div>  
+    </div>
+</div> 

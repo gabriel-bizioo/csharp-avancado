@@ -6,7 +6,7 @@ VALUES
   ('Wellington', 'New Zealand','67-23','Newfoundland and Labrador','Ap #571-3282 Eu Avenue'),
   ('Ciudad Del Mexico', 'Mexico','71-16','Eastern Cape','919-7123 Eu St.'),
   ('Toronto', 'Canada','66913','Overijssel','940-5527 Metus. Avenue'),
-  ('New York', 'United States','Y2X 4E7','San Josï¿½','P.O. Box 930, 1332 Rutrum Road'),
+  ('New York', 'United States','Y2X 4E7','San José','P.O. Box 930, 1332 Rutrum Road'),
   ('Manila','Philippines','68-273','Eastern Visayas','869-3787 Ut Road'),
   ('Warsaw', 'Poland','17666-788','East Region','P.O. Box 818, 9707 Erat Road'),
   ('Roma','Italy','702315','Innlandet','564-9777 Mauris St.');
@@ -53,7 +53,7 @@ VALUES
   (4,2,4,38),
   (5,4,5,39);
 
-INSERT INTO WishList(ClientID,productID)
+INSERT INTO WishList(ClientID,StockID)
 VALUES
   (1,1),
   (2,2),
