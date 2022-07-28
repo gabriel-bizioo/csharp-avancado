@@ -18,8 +18,8 @@
             </div>
             <div class="input-box">
                 <label for="name">Store</label>
-                <select id="store" name="stores" required="required" type="text">
-                    <option *ngFor="let store of userStores" [value]="store">{{store.name}}</option>
+                <select id="store" name="stores" required="required" type="text"(change)="change()">
+                    <option *ngFor="let store of userStores" [value]="store.name">{{store.name}}</option>
                 </select>
             </div>
             <div class="input-box">

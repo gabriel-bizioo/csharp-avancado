@@ -35,6 +35,17 @@ export class RegisterProductComponent implements OnInit {
       })
   }
 
+  change(){
+    let selectStore = (document.getElementById('store') as HTMLSelectElement).value
+
+    this.userStores?.forEach(x => {
+      if (x.name == selectStore) {
+        this.selectedStore = x; 
+      }
+    })
+  }
+
+
   registerProduct()
   {
     let token = localStorage.getItem('authToken');

@@ -66,7 +66,7 @@ namespace model
             using(var context = new DaoContext())
             {
                 var product = context.Stocks
-                    .Where(x => x.product.ID == id)
+                    .Where(x => x.ID == id)
                     .Select(x => new
                     {
                         id = x.product.ID,
