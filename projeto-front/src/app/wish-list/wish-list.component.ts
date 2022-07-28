@@ -43,4 +43,36 @@ export class WishListComponent implements OnInit
     });
     
   }
+
+  wishlist(product: Product){
+    
+    let token = localStorage.getItem('authToken');
+
+    var config = {
+      method: 'remove',
+      url: `http://localhost:5118/wishlist/create/${localStorage.getItem("email")}/${product.barCode}/${product.storeId}`,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      }
+     
+    };
+    let instance = this;
+    axios(config)
+      .then(function (response: any) {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error: any) {
+
+        //n ta aparecendo status 401
+        if (error.response.status == 0) {
+          instance.router.navigate(['/login']);
+        }
+      });
+
+      
+
+
+  }
+
 }

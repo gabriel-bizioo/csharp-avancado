@@ -64,6 +64,7 @@ button{
     background-color: transparent;
     margin-top: auto;
     margin-left: auto;
+    z-index: 100;
 }
 button:hover{
     cursor: pointer;

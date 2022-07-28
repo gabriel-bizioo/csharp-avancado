@@ -27,6 +27,9 @@ namespace DAO
                 case("JVLPC0562"):
                     optionsBuilder.UseSqlServer(@"Server=JVLPC0562\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
                     break;
+                case("DESKTOP-7G73KV0"):
+                    optionsBuilder.UseSqlServer(@"Server=DESKTOP-7G73KV0\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
+                    break;
                 default:
                     string ConString = File.ReadAllText("../../connection_string.txt");
                     optionsBuilder.UseSqlServer(ConString);

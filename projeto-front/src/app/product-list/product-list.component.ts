@@ -44,6 +44,7 @@ export class ProductListComponent implements OnInit {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
       }
+     
     };
     let instance = this;
     axios(config)
@@ -57,5 +58,9 @@ export class ProductListComponent implements OnInit {
           instance.router.navigate(['/login']);
         }
       });
+
+      
+
+
   }
 }
