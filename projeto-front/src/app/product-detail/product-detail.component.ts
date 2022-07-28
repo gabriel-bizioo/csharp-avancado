@@ -64,11 +64,17 @@ export class ProductDetailComponent implements OnInit {
     axios(config)
       .then(function (response) {
         console.log(JSON.stringify(response.data));
-        window.alert("Agradecemos a sua compra!");
+        if(response.data){
+          window.alert("Agradecemos a sua compra!");
+        }
+        else{
+          window.alert("Não foi possível efetuar a sua compra.");          
+        }
         instance.router.navigate(['/']);
       })
       .catch(function (error) {
         console.log(error);
+        window.alert("Não foi possível efetuar a sua compra.");          
         if (error.response.status == 0) {
           instance.router.navigate(['/login'])
         }

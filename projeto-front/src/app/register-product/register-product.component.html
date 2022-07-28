@@ -16,6 +16,20 @@
                 <input id="photo" name="photo" required="required" type="text" />
                  <!-- <input class="form-control" type="file" id="formFile"> -->
             </div>
+            <div class="input-box">
+                <label for="name">Store</label>
+                <select id="store" name="stores" required="required" type="text">
+                    <option *ngFor="let store of userStores" [value]="store">{{store.name}}</option>
+                </select>
+            </div>
+            <div class="input-box">
+                <label for="name">Quantity</label>
+                <input id="quantity" name="Quantity" required="required" type="number" min="1"/>
+            </div>
+            <div class="input-box">
+                <label for="name">Price</label>
+                <input id="price" name="Price" required="required" type="number" min="0" step="any"/>
+            </div>
 
             <div>
                 <table>

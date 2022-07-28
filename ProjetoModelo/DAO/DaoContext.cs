@@ -21,6 +21,9 @@ namespace DAO
 
             switch(PC)
             {
+                case("GABRIEL-BIZIO"):
+                    optionsBuilder.UseSqlServer(@"Server=GABRIEL-BIZIO\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
+                    break;
                 case("CTPC3628"):
                     optionsBuilder.UseSqlServer(@"Server=CTPC3628\SQLEXPRESS;Database=teste;Trusted_Connection=True;");
                     break;

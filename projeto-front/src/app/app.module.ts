@@ -46,6 +46,7 @@ import { SalesComponent } from './sales/sales.component';
       {path: 'address-register', component:RegisterAddressComponent},
       {path: 'wishList', component:WishListComponent},
       {path: "purchases", component:PurchasesComponent},
+      {path: "sales", component: SalesComponent},
       {path: "purchase-detail/:purchaseID", component:PurchaseDetailComponent},
       {path: 'store-register', component: RegisterStoreComponent},
       {path: 'product-register', component: RegisterProductComponent},

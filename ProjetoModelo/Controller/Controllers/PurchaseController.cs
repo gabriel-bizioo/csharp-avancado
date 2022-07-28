@@ -26,6 +26,19 @@ namespace Controller.Controllers
 
         [Authorize]
         [HttpGet]
+        [Route("getowner/{ownerinfo}")]
+        public IActionResult getOwnerPurchases(string ownerinfo)
+        {
+            var Purchases = model.Purchase.getOwnerPurchases(ownerinfo);
+
+            var result = new ObjectResult(Purchases);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            return result;
+        }
+
+        [Authorize]
+        [HttpGet]
         [Route("getstore/{storeinfo}")]
         public IActionResult getStorePurchases(string storeinfo)
         {
@@ -44,14 +57,13 @@ namespace Controller.Controllers
         {
             var purchase = Purchase.convertDTOToModel(purchaseDTO);
 
-            purchase.Create(storeinfo);
-
-            var status = new
+            bool successful = false;
+            if(purchase.Create(storeinfo))
             {
-                status = "Register ok"
-            };
-    
-            var result = new ObjectResult(status);
+                successful = true;
+            }
+            
+            var result = new ObjectResult(successful);
             Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
             return result;

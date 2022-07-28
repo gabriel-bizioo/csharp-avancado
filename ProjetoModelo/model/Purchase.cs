@@ -148,7 +148,7 @@ namespace model
             return purchase;
         }
 
-        public static DAO.Purchase findById(int id)
+        public static object findById(int id)
         {
             using(var context = new DaoContext())
             {
@@ -156,7 +156,32 @@ namespace model
                     .Include(p => p.product)
                     .Include( p => p.store)
                     .Include(p => p.client)
-                    .FirstOrDefault(p => p.ID == id);
+                    .Where(x => x.ID == id)
+                    .Join(context.Stocks, pr => pr.product.ID, sc => sc.product.ID, (pr, sc) => new
+                    {
+                        id = pr.ID,
+                        payment = pr.Payment,
+                        confirmationNumber = pr.confirmation_number,
+                        product = new
+                        {
+                            id = pr.ID,
+                            storeId = pr.store.ID,
+                            name = pr.product.name,
+                            price = sc.unit_price,
+                            imgLink = pr.product.img_link,
+                            barCode = pr.product.bar_code
+                        },
+                        store = new
+                        {
+                            id = pr.store.ID,
+                            cnpj = pr.store.cnpj,
+                            name = pr.store.name,
+                            owner_id = pr.store.owner.ID
+                        },
+                        purchaseDate = pr.purchase_date,
+                        purchaseValue = pr.purchase_value
+                    })
+                    .Single();
 
                 return purchase;
             }
@@ -266,6 +291,8 @@ namespace model
             }
         }
 
+
+
         public static IEnumerable<object> getClientPurchases(string clientinfo)
         {
             using(var context = new DaoContext())
@@ -303,7 +330,44 @@ namespace model
                 return Purchases;
             }
         }
+        public static IEnumerable<object> getOwnerPurchases(string ownerinfo)
+        {
+            using (var context = new DaoContext())
+            {
+                var Purchases = context.Purchase
+                    .Include(p => p.store)
+                    .Include(p => p.product)
+                    .Where(x => x.store.owner.email == ownerinfo)
+                    .Join(context.Stocks, pr => pr.product.ID, sc => sc.product.ID, (pr, sc) => new
+                    {
+                        id = pr.ID,
+                        payment = pr.Payment,
+                        confirmationNumber = pr.confirmation_number,
+                        product = new
+                        {
+                            id = pr.ID,
+                            storeId = pr.store.ID,
+                            name = pr.product.name,
+                            price = sc.unit_price,
+                            imgLink = pr.product.img_link,
+                            barCode = pr.product.bar_code
+                        },
+                        store = new
+                        {
+                            id = pr.store.ID,
+                            cnpj = pr.store.cnpj,
+                            name = pr.store.name,
+                            owner_id = pr.store.owner.ID
+                        },
+                        purchaseDate = pr.purchase_date,
+                        purchaseValue = pr.purchase_value,
+                        Client = pr.client.name
+                    })
+                    .ToList();
 
+                return Purchases;
+            }
+        }
         public static IEnumerable<object> getStorePurchases(string storeinfo)
         {
             using(var context = new DaoContext())
@@ -318,15 +382,7 @@ namespace model
             }
         }
 
-            // StoreId = str.ID,
-            // StoreCNPJ = str.cnpj,
-            // ProductId = stc.product.ID,
-            // ProductBarCode = stc.product.bar_code,
-            // ProductQuantity = stc.quantity,
-            // StocksId = stc.ID
-    
-
-        public void Create(int storeinfo)
+        public bool Create(int storeinfo)
         {
             using(var context = new DaoContext())
             {
@@ -334,6 +390,8 @@ namespace model
                 {
                     var Stocks = context.Stocks
                         .Where(c => c.product.bar_code == this.Product.getBarCode() && c.store.ID == storeinfo)
+                        .Include(x => x.product)      
+                        .Include(x => x.store)
                         .Single();
 
                     var Product = context.Product
@@ -365,13 +423,15 @@ namespace model
                         Stocks.quantity -= 1;
                         context.Add(NewPurchase);
                         context.SaveChanges();
+
+                        return true;
                     }
-                    
                 }
                 catch(Exception error)
                 {
                     Console.WriteLine(error);
                 }
+                return false;
             }
         }
     }

@@ -11,17 +11,23 @@ export class TopBarComponent implements OnInit {
   @Input() titulo=""
   
  isClient = false;
-  
+ isOwner = false;
   ngOnInit(): void {   
   this.verifica();
   }
 
   verifica(){
-    if(localStorage.getItem('client') == 'true'){
+    if(localStorage.getItem('user') == 'client'){
       this.isClient = true;
+      this.isOwner = false;
     }
+      else if (localStorage.getItem('user') == 'owner'){
+        this.isClient = false;
+        this.isOwner = true;
+      }
     else{
       this.isClient = false;
+      this.isOwner = false;
     }
   }
 }

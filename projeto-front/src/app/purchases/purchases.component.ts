@@ -18,9 +18,7 @@ export class PurchasesComponent implements OnInit {
 
   ngOnInit(): void 
   {
-    this.verifica();
-    let token = localStorage.getItem('authToken');
-  
+    let token = localStorage.getItem('authToken');  
 
     var config = 
     {
@@ -44,16 +42,5 @@ export class PurchasesComponent implements OnInit {
         instance.router.navigate(['/login'])
       }
     });
-
   }
-
-  verifica(){
-    if(localStorage.getItem('client') == 'true'){
-      this.isClient = true;
-    }
-    else{
-      this.isClient = false;
-    }
-  }
-
 }

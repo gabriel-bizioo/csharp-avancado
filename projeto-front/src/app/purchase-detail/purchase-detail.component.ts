@@ -20,7 +20,7 @@ export class PurchaseDetailComponent implements OnInit {
   {
     let token = localStorage.getItem('authToken')
     const RouteParams = this.route.snapshot.paramMap;
-    const purchaseIdfromRoute = Number(RouteParams.get('productID'));
+    const purchaseIdfromRoute = Number(RouteParams.get('purchaseID'));
     
     this.verifica();
 

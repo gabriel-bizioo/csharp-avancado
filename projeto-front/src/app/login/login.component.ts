@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import axios from 'axios';
 
@@ -36,10 +37,11 @@ export class LoginComponent implements OnInit {
 
     if(instance.isClient){
       path = 'http://localhost:5118/client/api';
-      localStorage.setItem('client', "true");
+      localStorage.setItem('user', 'client');
     }
     else{
       path = 'http://localhost:5118/owner/api';
+      localStorage.setItem('user', 'owner');
     }
 
     var config = {
@@ -65,7 +67,9 @@ export class LoginComponent implements OnInit {
   });
   }
 
-  ngOnInit(): void {  }
+  ngOnInit(): void { 
+
+   }
 
 }
 

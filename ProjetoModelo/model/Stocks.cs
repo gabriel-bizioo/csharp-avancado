@@ -87,31 +87,25 @@ namespace model
 
         public static Stocks convertDTOToModel(StocksDTO obj)
         {
-            Stocks purchase = new Stocks(Store.convertDTOToModel(obj.store), Product.convertDTOToModel(obj.product));
+            Stocks stock = new Stocks(Store.convertDTOToModel(obj.store), Product.convertDTOToModel(obj.product));
 
-            purchase.quantity = obj.quantity;         
-
-            return purchase;
+            stock.quantity = obj.quantity;         
+            stock.unit_price = obj.unit_price;
+            
+            return stock;
         }
 
         public StocksDTO findById(int id)
         {
             throw new NotImplementedException();
         }
-// .Join(context.Product, stocks => stocks.product.ID, pd => pd.ID, (stocks, pd) => new 
-//                     {
-//                         id = stocks.ID,
-//                         storeId = stocks.store.ID,
-//                         name = pd.name,
-//                         price = stocks.unit_price,
-//                         imgLink = pd.img_link,
-//                         barCode = pd.bar_code
-//     })
+
         public static IEnumerable<object> GetAll()
         {
             using(var context = new DaoContext())
             {
                 var AllStocks = context.Stocks
+                    .Where(x => x.quantity > 0)
                     .Select(x => new
                     {
                         id = x.ID,
@@ -138,10 +132,20 @@ namespace model
                 var product = context.Product.FirstOrDefault(p => p.bar_code == this.product.getBarCode());
 
                 if(store != null && product != null)
-                {
+                {   
+                    int Quantity;
+
+                    if (this.quantity >= 0)
+                    {
+                        Quantity = this.quantity;
+                    }
+                    else
+                    {
+                        Quantity = 0;
+                    }
                     var stocks = new DAO.Stocks
                     {
-                        quantity = this.quantity,
+                        quantity = Quantity,
 
                         unit_price = this.unit_price,
 

@@ -2,6 +2,8 @@
 using DAO;
 using DTO;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace model
 {
@@ -148,6 +150,26 @@ namespace model
                 }
 
                 return storelist;
+            }
+        }
+
+        public static IEnumerable<object> getStores(string ownerinfo)
+        {
+            using(var context = new DaoContext())
+            {
+                var store = context.Store
+                    .Include(x => x.owner)
+                    .Where(x => x.owner.email == ownerinfo)
+                    .Select(x => new
+                    {
+                        id = x.ID,
+                        cnpj = x.cnpj,
+                        name = x.name,
+                        owner_id = x.owner.ID
+                    })
+                    .ToList();
+
+                return store;
             }
         }
 

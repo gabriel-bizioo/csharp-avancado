@@ -7,17 +7,7 @@ export interface Purchase
     confirmationNumber: number;
     product: Product;
     store: Store;
-    purchaseDate: Date;
-    purchaseValue: number;
-}
-
-export interface Sale
-{
-    id: number;
-    payment: number;
-    confirmationNumber: number;
-    product: Product;
-    client: string
+    client: string;
     purchaseDate: Date;
     purchaseValue: number;
 }

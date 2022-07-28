@@ -1,5 +1,6 @@
 using System;
 using DTO;
+using Controller;
 using model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
@@ -27,12 +28,30 @@ namespace Controller.Controllers
         [Authorize]
         [HttpPost]
         [Route("register")]
-        public IActionResult registerProducts([FromBody]ProductDTO productDTO)
+        public IActionResult registerProducts([FromBody]RegisterProductDTO registerproductDTO)
         {
+            ProductDTO productDTO = new ProductDTO
+            {
+                name = registerproductDTO.name,
+                img_link = registerproductDTO.img_link,
+                bar_code = registerproductDTO.bar_code
+            };
+            Console.WriteLine(registerproductDTO.unit_price);
+            StocksDTO stocksDTO = new StocksDTO
+            {
+                quantity = registerproductDTO.quantity,
+                unit_price = (double)registerproductDTO.unit_price,
+                store = registerproductDTO.store,
+                product = productDTO
+            };
+            
             var product = model.Product.convertDTOToModel(productDTO);
-            Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
             int id = product.save();
+
+            var stock = model.Stocks.convertDTOToModel(stocksDTO);
+
+            int StockId = stock.save();
 
             var obg = new
             {
@@ -43,6 +62,7 @@ namespace Controller.Controllers
             };
 
             var result = new ObjectResult(obg);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
 
             return result;            
         }

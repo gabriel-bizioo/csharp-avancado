@@ -23,6 +23,19 @@ namespace Controller.Controllers
             
             return result; 
         }
+
+        // [Authorize]
+        [HttpGet]
+        [Route("get/{ownerinfo}")]
+        public IActionResult getStore(string ownerinfo)
+        {
+            var storelist = model.Store.getStores(ownerinfo);
+            Response.Headers.Add("Access-Control-Allow-Origin", "*");
+
+            var result = new ObjectResult(storelist);
+
+            return result;
+        }
         
         [Authorize]
         [HttpPost]
@@ -50,7 +63,7 @@ namespace Controller.Controllers
         }
         
         [HttpGet]
-        [Route("get/{storeID}")]
+        [Route("getbyid/{storeID}")]
         public IActionResult getStoreInformation(int storeID)
         {
             var StoreInfo = model.Store.find(storeID);

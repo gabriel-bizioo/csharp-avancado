@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import axios from 'axios';
+import { Store } from '../store';
 
 @Component({
   selector: 'app-register-store',

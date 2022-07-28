@@ -4,8 +4,8 @@
             <h1>LOGIN</h1>
             <label for="radio">Login as:</label>      
             <div class="input-radio">       
-                <input type="radio" name="user_type" [value]=true ngModel="isClient" (click)="change(true)"> Client
-                <input type="radio" name="user_type" [value]=false ngModel="isClient" (click)="change(false)"> Owner
+                <input type="radio" name="user_type" checked (click)="change(true)"> Client
+                <input type="radio" name="user_type" (click)="change(false)"> Owner
             </div>
 
             <div class="input-box">
